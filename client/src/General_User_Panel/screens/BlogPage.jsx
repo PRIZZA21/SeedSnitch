@@ -44,7 +44,7 @@ const BlogPage = () => {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:4000/api/blogs?pageNumber=${pageNumber}`).then(res=> {
+        axios.get(`/api/blogs?pageNumber=${pageNumber}`).then(res=> {
             setBlogList(res.data.all_blogs)
             setPage(res.data.page)
             setPages(res.data.pages)

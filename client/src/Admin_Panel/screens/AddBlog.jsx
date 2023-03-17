@@ -31,7 +31,7 @@ const AddBlog = () => {
             }
           }
   
-          var { data } = await axios.post('http://localhost:4000/api/uploads', formData, config)
+          var { data } = await axios.post('/api/uploads', formData, config)
           
           data = (data.substr(8))
           data = '/' +data;
@@ -57,7 +57,7 @@ const AddBlog = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if(uploading===false) axios.post('http://localhost:4000/api/blogs/create',{title,image,content},config)
+        if(uploading===false) axios.post('/api/blogs/create',{title,image,content},config)
         navigate(redirect);
     }
   

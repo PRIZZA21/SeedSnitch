@@ -29,7 +29,7 @@ const ApplicationDetails = () => {
     
     useEffect(() => {
         setLoading(true)
-        axios.post(`http://localhost:4000/api/applications/details/`,{"appln_id":params.id},config)
+        axios.post(`/api/applications/details/`,{"appln_id":params.id},config)
         .then((res) => {
             setAppln(res.data)
 
@@ -47,13 +47,13 @@ const ApplicationDetails = () => {
 
       const acceptHandler = () => {
         if(reason==="") {alert("Reason can't be empty");}
-        axios.post(`http://localhost:4000/api/applications/accept/${params.id}`,{"email":userInfo.email,"reason":reason},config)
+        axios.post(`/api/applications/accept/${params.id}`,{"email":userInfo.email,"reason":reason},config)
         navigate('/incubator')
       }
     
       const rejectHandler = () => {
         if(reason==="") {alert("Reason can't be empty");}
-        axios.post(`http://localhost:4000/api/applications/reject/${params.id}`,{"email":userInfo.email,"reason":reason},config)
+        axios.post(`/api/applications/reject/${params.id}`,{"email":userInfo.email,"reason":reason},config)
         navigate('/incubator')
       }
     

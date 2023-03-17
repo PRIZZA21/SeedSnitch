@@ -15,7 +15,7 @@ const AddIncubator = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:4000/api/incubators/create',{name,email})
+        axios.post('/api/incubators/create',{name,email})
         navigate(redirect);
     }
 

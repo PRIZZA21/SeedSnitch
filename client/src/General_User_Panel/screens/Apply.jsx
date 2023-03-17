@@ -48,7 +48,7 @@ const Apply = () => {
     
   const submitHandler = (e) => {
     e.preventDefault()
-    axios.post(`http://localhost:4000/api/applications/create`,{name,email,startup_name,linkedin_profile,college_name,contact_number,start_up_stage,start_up_description,start_up_problem,start_up_differentiator},config)
+    axios.post(`/api/applications/create`,{name,email,startup_name,linkedin_profile,college_name,contact_number,start_up_stage,start_up_description,start_up_problem,start_up_differentiator},config)
     .then((response)=>{
       if(response.status===200) { setIsSubmitted(true);};
     })

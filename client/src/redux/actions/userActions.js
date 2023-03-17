@@ -14,7 +14,7 @@ export const login = (email,password) => async(dispatch) => {
             }
         }
 
-        const {data} = await axios.post('http://localhost:4000/api/users/signin',{email,password},config)
+        const {data} = await axios.post('/api/users/signin',{email,password},config)
         
         dispatch({
             type: USER_LOGIN_SUCCESS,
@@ -72,8 +72,8 @@ export const logout = () => (dispatch) =>{
     // handleLogout()
     localStorage.removeItem('userInfo')
     dispatch({type:USER_LOGOUT})
-    window.open('http://localhost:4000/api/users/glogout',"_self")
-    // axios.post('http://localhost:4000/api/users/logout')
+    window.open('/api/users/glogout',"_self")
+    // axios.post('/api/users/logout')
 }
 
 export const register = (name,email,password) => async(dispatch) => {
@@ -87,7 +87,7 @@ export const register = (name,email,password) => async(dispatch) => {
             }
         }
 
-        const {data} = await axios.post('http://localhost:4000/api/users/signup',{name,email,password},config)
+        const {data} = await axios.post('/api/users/signup',{name,email,password},config)
         
         dispatch({
             type: USER_REGISTER_SUCCESS,
@@ -126,7 +126,7 @@ export const updateUserProfile = (user) => async(dispatch,getState) => {
             },
         }
         
-        const { data } = await axios.put(`http://localhost:4000/api/users/profile`,user, config)
+        const { data } = await axios.put(`/api/users/profile`,user, config)
       
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
@@ -159,7 +159,7 @@ export const getUserDetails = (id) => async(dispatch,getState) => {
             },
         }
         
-        const { data } = await axios.get(`http://localhost:4000/api/users/profile`, config)
+        const { data } = await axios.get(`/api/users/profile`, config)
       
         dispatch({
             type: USER_DETAILS_SUCCESS,

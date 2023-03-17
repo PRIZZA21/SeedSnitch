@@ -80,7 +80,7 @@ const ProfileScreen = () => {
             }
           }
   
-          var { data } = await axios.post('http://localhost:4000/api/uploads', formData, config)
+          var { data } = await axios.post('/api/uploads', formData, config)
           
           data = (data.substr(8))
           data = '/' +data;

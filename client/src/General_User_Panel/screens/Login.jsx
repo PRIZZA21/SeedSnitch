@@ -8,7 +8,7 @@ import Input from '../components/Input';
 const Login = () => {
 
   const googleAuth = () => {
-    window.open('http://localhost:4000/api/users/auth/google/callback',"_self")
+    window.open('/api/users/auth/google/callback',"_self")
   }
 
   

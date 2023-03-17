@@ -63,7 +63,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(
     {
-        origin: "http://localhost:3000",
+        origin: "http://localhost:4000",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     }
@@ -89,6 +89,11 @@ app.use(express.static('uploads'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+// console.log(p);
+app.use(express.static(path.join(__dirname,'../','/client/build')))
+app.get('*', (req,res) => res.sendFile(path.resolve(__dirname,'../', 'client', 'build','index.html')));
+  
 
 // Starting the server
 app.listen(port, () => {

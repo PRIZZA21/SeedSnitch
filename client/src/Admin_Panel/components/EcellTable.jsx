@@ -56,7 +56,7 @@ const IncubatorTable = () => {
     
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:4000/api/ecells?pageNumber=${pageNumber}`)
+        axios.get(`/api/ecells?pageNumber=${pageNumber}`)
         .then(res=> {
             setEcellsList(res.data.all_ecells)
             setPage(res.data.page)
@@ -89,7 +89,7 @@ const IncubatorTable = () => {
                             <TableData child={<TableDataText text={ecell.name}/>} />
                             <TableData child={<TableDataText text={ecell.email}/>} />
                             <TableData child={<TableDataText text={ecell.college}/>} />
-                            <TableData child={<img src={`http://localhost:4000/${ecell.logo}`} alt='' className="w-8 h-8" />} />
+                            <TableData child={<img src={`http://localhost:4000//${ecell.logo}`} alt='' className="w-8 h-8" />} />
                             
                             <TableData child={
                                 <button type="button" className="inline-block text-gray-500 hover:text-gray-700">

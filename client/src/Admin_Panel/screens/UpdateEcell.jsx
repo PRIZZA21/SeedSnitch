@@ -29,7 +29,7 @@ const UpdateEcell = () => {
             }
           }
   
-          var { data } = await axios.post('http://localhost:4000/api/uploads', formData, config)
+          var { data } = await axios.post('/api/uploads', formData, config)
           
           data = (data.substr(8))
           data = '/' +data;
@@ -51,12 +51,12 @@ const UpdateEcell = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
-        if(!uploading) axios.put(`http://localhost:4000/api/ecells/details/${id}`,{name,college,email,image})
+        if(!uploading) axios.put(`/api/ecells/details/${id}`,{name,college,email,image})
         navigate(redirect);
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/ecells/details/${id}`)
+        axios.get(`/api/ecells/details/${id}`)
         .then(res=> {
             let {name,email,logo,college} =res.data;
             setName(name);

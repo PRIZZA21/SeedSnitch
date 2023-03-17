@@ -25,7 +25,7 @@ const PostCreate = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    axios.post(`http://localhost:4000/api/posts/create`,{title,description},config)
+    axios.post(`/api/posts/create`,{title,description},config)
     navigate(redirect)
   }
 

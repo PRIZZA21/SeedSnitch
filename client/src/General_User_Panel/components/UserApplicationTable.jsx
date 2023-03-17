@@ -65,7 +65,7 @@ const UserApplicationTable = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:4000/api/applications/creator/${userInfo._id}?pageNumber=${pageNumber}`,config).then(res=>{
+        axios.get(`/api/applications/creator/${userInfo._id}?pageNumber=${pageNumber}`,config).then(res=>{
             setApplicationsList(res.data.applications)
             setPage(res.data.page)
             setPages(res.data.pages)

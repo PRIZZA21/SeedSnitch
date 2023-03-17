@@ -28,7 +28,7 @@ const AddEcell = () => {
             }
           }
   
-          var { data } = await axios.post('http://localhost:4000/api/uploads', formData, config)
+          var { data } = await axios.post('/api/uploads', formData, config)
           
           data = (data.substr(8))
           data = '/' +data;
@@ -50,7 +50,7 @@ const AddEcell = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if(!uploading) axios.post('http://localhost:4000/api/ecells/create', ({name,college,email,image}))
+        if(!uploading) axios.post('/api/ecells/create', ({name,college,email,image}))
         navigate(redirect)
     }
 

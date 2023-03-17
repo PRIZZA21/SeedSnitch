@@ -65,7 +65,7 @@ const IncubatorApplications = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:4000/api/applications/incubator?pageNumber=${pageNumber}`,config)
+        axios.get(`/api/applications/incubator?pageNumber=${pageNumber}`,config)
         .then(res=> {
 
             setApplications(res.data.applications)

@@ -13,7 +13,7 @@ const Community = () => {
 
   useEffect(() => {
     setLoading(true)
-    axios.get('http://localhost:4000/api/ecells/all').then(res=> setEcellsList(res.data))
+    axios.get('/api/ecells/all').then(res=> setEcellsList(res.data))
     setLoading(false)
   }, [])
 

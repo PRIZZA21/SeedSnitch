@@ -56,7 +56,7 @@ const IncubatorTable = () => {
     
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:4000/api/blogs?pageNumber=${pageNumber}`)
+        axios.get(`/api/blogs?pageNumber=${pageNumber}`)
         .then(res=> {
             setBlogsList(res.data.all_blogs)
             setPage(res.data.page)
@@ -88,7 +88,7 @@ const IncubatorTable = () => {
                         <tr>
                             <TableData child={<TableDataText text={blog.author.name}/>} />
                             <TableData child={<TableDataText text={blog.title}/>} />
-                            <TableData child={<img src={`http://localhost:4000/${blog.banner}`} className="w-8 h-8" alt=''/>} />
+                            <TableData child={<img src={`http://localhost:4000//${blog.banner}`} className="w-8 h-8" alt=''/>} />
                             
                             <TableData child={
                                 <button type="button" className="inline-block text-gray-500 hover:text-gray-700">

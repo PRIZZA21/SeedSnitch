@@ -50,7 +50,7 @@ const TechSupport = () => {
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:4000/api/posts?pageNumber=${pageNumber}`)
+    axios.get(`/api/posts?pageNumber=${pageNumber}`)
     .then(res=> {
         setPostsList(res.data.all_posts)
         setPage(res.data.page)
@@ -68,7 +68,7 @@ const TechSupport = () => {
   }
   
   const reply_handler = (id) =>{
-    axios.post(`http://localhost:4000/api/replies/create/${id}`,{comment:reply},config).then(res=>{
+    axios.post(`/api/replies/create/${id}`,{comment:reply},config).then(res=>{
       setReply('')
     })   
   }
@@ -91,7 +91,7 @@ const TechSupport = () => {
                 </span>
             }
 
-
+          <div className='container'>
             {postsList && postsList.map( (post)=> (
               <div key={post._id}>
 
@@ -150,6 +150,7 @@ const TechSupport = () => {
             }
 
 
+          </div>
           </div>
 
             <Paginate page={page} pages={pages}/>

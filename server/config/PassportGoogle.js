@@ -8,7 +8,7 @@ passport.use(
 	{
 		clientID: process.env.CLIENT_ID,
 		clientSecret: process.env.CLIENT_SECRET,
-		callbackURL: "http://localhost:4000/api/users/auth/google/callback",
+		callbackURL: "/api/users/auth/google/callback",
 		scope: ["profile", "email"]
 	},
 	function (accessToken, refreshToken, profile, done) {

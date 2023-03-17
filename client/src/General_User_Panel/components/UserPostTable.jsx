@@ -54,7 +54,7 @@ const UserPostTable = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:4000/api/posts/creator/${userInfo._id}?pageNumber=${pageNumber}`,config)
+        axios.get(`/api/posts/creator/${userInfo._id}?pageNumber=${pageNumber}`,config)
         .then(res=> {
             setPostsList(res.data.all_posts)
             setPage(res.data.page)

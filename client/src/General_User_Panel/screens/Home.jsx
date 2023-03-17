@@ -16,7 +16,7 @@ const Home = () => {
   const getUser = () => {
     
     if(!userInfo)
-      fetch("http://localhost:4000/api/users/glogin/success", {
+      fetch("/api/users/glogin/success", {
         method: "GET",
         credentials: "include",
         headers: {

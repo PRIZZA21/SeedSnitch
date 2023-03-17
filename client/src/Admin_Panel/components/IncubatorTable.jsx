@@ -51,7 +51,7 @@ const IncubatorTable = () => {
     
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:4000/api/incubators?pageNumber=${pageNumber}`)
+        axios.get(`/api/incubators?pageNumber=${pageNumber}`)
         .then(res=> {
             setIncubatorList(res.data.incubators)
             setPage(res.data.page)

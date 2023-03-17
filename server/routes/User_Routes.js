@@ -45,7 +45,7 @@ router.get('/glogin/failed',(req,res)=>{
 
 router.get("/glogout", (req, res) => {
     req.logout();
-    res.redirect("http://localhost:3000/");
+    res.redirect("http://localhost:4000/");
 });
 
 
@@ -53,7 +53,7 @@ router.get("/auth/google", passport.authenticate("google", ["profile", "email"])
 
 router.get("/auth/google/callback",
 	passport.authenticate("google", {
-		successRedirect : 'http://localhost:3000',
+		successRedirect : 'http://localhost:4000',
 		failureRedirect : '/api/users/glogin/failed'
 	}),
 );

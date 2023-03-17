@@ -31,7 +31,7 @@ const UpdateBlog = () => {
             }
           }
   
-          var { data } = await axios.post('http://localhost:4000/api/uploads', formData, config)
+          var { data } = await axios.post('/api/uploads', formData, config)
           
           data = (data.substr(8))
           data = '/' +data;
@@ -53,12 +53,12 @@ const UpdateBlog = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
-        if(!uploading) axios.put(`http://localhost:4000/api/blogs/details/${id}`,{title,content,image})
+        if(!uploading) axios.put(`/api/blogs/details/${id}`,{title,content,image})
         navigate(redirect);
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/blogs/details/${id}`).then(res=>{
+        axios.get(`/api/blogs/details/${id}`).then(res=>{
             let {title,banner,content}=res.data;
             setTitle(title);
             setImage(banner)

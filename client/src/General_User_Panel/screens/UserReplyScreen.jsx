@@ -17,7 +17,7 @@ const UserReplyScreen = () => {
       () => { 
         setLoading(true)
 
-        axios.get(`http://localhost:4000/api/posts/post/${postid}`).then(res=>{
+        axios.get(`/api/posts/post/${postid}`).then(res=>{
 
           setPost(res.data)
         })
@@ -25,7 +25,7 @@ const UserReplyScreen = () => {
           setLoading(true)
         })
 
-        axios.get(`http://localhost:4000/api/replies/${postid}`).then(res=>{
+        axios.get(`/api/replies/${postid}`).then(res=>{
           setReplies(res.data)
         })
         .catch(err=>{
