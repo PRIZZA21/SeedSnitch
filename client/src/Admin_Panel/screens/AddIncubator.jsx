@@ -10,7 +10,7 @@ const AddIncubator = () => {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     
-    const redirect = window.location.search ? window.location.search.split('=')[1] : '/admin/incubators-collection'
+    const redirect = window.location.search ? window.location.search.split('=')[1] : '/admin/incubators/page/1'
     let navigate = useNavigate();
     
     const submitHandler = (e) => {

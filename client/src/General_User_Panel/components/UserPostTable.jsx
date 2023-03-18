@@ -44,7 +44,7 @@ const UserPostTable = () => {
     const {  userInfo } = userLogin
 
     const config = useMemo(() => {
-        return {
+        if(userInfo) return {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
             'Content-Type': 'application/json'

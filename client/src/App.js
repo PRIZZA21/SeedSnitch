@@ -59,7 +59,7 @@ const App = () => {
         <Route path = "/admin/add-ecell"                     element = {<AddEcell />} />
         <Route path = "/admin/add-incubator"                 element = {<AddIncubator />} />
         <Route path = "/admin/ecells/:id"                    element = {<UpdateEcell />} />
-        <Route path = "/admin/blog/:id"                      element = {<UpdateBlog />} /> 
+        <Route path = "/admin/blogs/:id"                      element = {<UpdateBlog />} /> 
         
 
         {/* Incubator Routes */}
