@@ -61,7 +61,10 @@ const TechSupport = () => {
 
 
 
-  const config = {
+  let config = {} ;
+
+  if(userInfo.token)
+  config = {
     headers: {
         authorization: `Bearer ${userInfo.token}`,
     },

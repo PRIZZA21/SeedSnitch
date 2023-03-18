@@ -39,123 +39,15 @@ const Apply = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
+  let config = {} ;
 
-  if(!userInfo) {
-    return(
- 
-   
-        <div className='h-500 bg-green'>
-          
-
-            <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 text-center" id="modal">
-
-                  <div class="fixed inset-0 transition-opacity">
-                    <div class="absolute inset-0 bg-gray-900 opacity-75" />
-                  </div>
-
-                  <span class="sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-
-                  <div 
-                    className=
-                    "inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                    role="dialog" 
-                    aria-modal="true" 
-                    aria-labelledby="modal-headline"
-                  >
-                    <h1 className='text-center text-lg font-bold pt-4'>Login to Continue</h1>
-                    <form
-                      className="w-full h-full max-w-lg px-12 py-6"
-                      id="contact-form"
-                      name="apply"
-                      onSubmit={loginHandler}
-                    >
-                  
-                      <div className="flex flex-wrap -mx-3 mb-4">
-                        <div className="w-full px-3">
-                          <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
-                            htmlFor="grid-email"
-                            
-                          >
-                            Email
-                          </label>
-                          <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-email"
-                            type="email"
-                            name="Email"
-                            required
-                            placeholder="Enter your email id"
-                            onChange={(e) => setLogin_Email(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="flex flex-wrap -mx-3 mb-6">
-
-
-                        <div className="w-full md:w-full px-3">
-                          <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
-                            htmlFor="grid-password"
-                          >
-                            Password
-                          </label>
-                          <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-password"
-                            type="password"
-                            required
-                            name="Subject"
-                            placeholder="Enter your password"
-                            onChange={(e) => setLogin_Password(e.target.value)}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="w-full md:w-full px-3 mb-6">
-                          <span
-                            className="block tracking-wide text-darkBlue text-m font-normal mb-2"
-                            htmlFor="grid-password"
-                          >
-                            Don't have an account <Link to='/register'className="font-bold">Register Now</Link>
-                          </span>
-                      </div>
-
-                      <div className="w-full">
-                        <div className="w-full flex flex-row items-center">
-                          <input
-                            className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
-                            type="submit"
-                            value="Login"
-                          />
-                        </div>
-                      </div>
-
-                    </form>
-
-
-                </div>
-            </div>
-
-
-
-                
-        </div>
-          
-          
-        )
-        
-  }
-
-    const config = {
+  if(userInfo.token)
+    config = {
         headers: {
             authorization: `Bearer ${userInfo.token}`,
         },
     }
     
-
-
   const submitHandler = (e) => {
     e.preventDefault()
     axios.post(`/api/applications/create`,{name,email,startup_name,linkedin_profile,college_name,contact_number,start_up_stage,start_up_description,start_up_problem,start_up_differentiator},config)
@@ -190,13 +82,15 @@ const Apply = () => {
 
 
 
-
   return (
 
   
     
+  
+      <div>
 
 
+{userInfo ?
       
 
       <div>
@@ -453,7 +347,114 @@ const Apply = () => {
         </div>
       </div>
     </section>
-   </div>
+   </div>:(
+   
+   
+          <div className='h-500 bg-green'>
+            
+
+              <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 text-center" id="modal">
+
+                    <div class="fixed inset-0 transition-opacity">
+                      <div class="absolute inset-0 bg-gray-900 opacity-75" />
+                    </div>
+
+                    <span class="sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
+                    <div 
+                      className=
+                      "inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                      role="dialog" 
+                      aria-modal="true" 
+                      aria-labelledby="modal-headline"
+                    >
+                      <h1 className='text-center text-lg font-bold pt-4'>Login to Continue</h1>
+                      <form
+                        className="w-full h-full max-w-lg px-12 py-6"
+                        id="contact-form"
+                        name="apply"
+                        onSubmit={loginHandler}
+                      >
+                    
+                        <div className="flex flex-wrap -mx-3 mb-4">
+                          <div className="w-full px-3">
+                            <label
+                              className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                              htmlFor="grid-email"
+                              
+                            >
+                              Email
+                            </label>
+                            <input
+                              className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              id="grid-email"
+                              type="email"
+                              name="Email"
+                              required
+                              placeholder="Enter your email id"
+                              onChange={(e) => setLogin_Email(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="flex flex-wrap -mx-3 mb-6">
+
+
+                          <div className="w-full md:w-full px-3">
+                            <label
+                              className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                              htmlFor="grid-password"
+                            >
+                              Password
+                            </label>
+                            <input
+                              className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              id="grid-password"
+                              type="password"
+                              required
+                              name="Subject"
+                              placeholder="Enter your password"
+                              onChange={(e) => setLogin_Password(e.target.value)}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="w-full md:w-full px-3 mb-6">
+                            <span
+                              className="block tracking-wide text-darkBlue text-m font-normal mb-2"
+                              htmlFor="grid-password"
+                            >
+                              Don't have an account <Link to='/register'className="font-bold">Register Now</Link>
+                            </span>
+                        </div>
+
+                        <div className="w-full">
+                          <div className="w-full flex flex-row items-center">
+                            <input
+                              className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
+                              type="submit"
+                              value="Login"
+                            />
+                          </div>
+                        </div>
+
+                      </form>
+
+
+                  </div>
+              </div>
+
+
+
+                  
+            </div>
+            
+            
+            )
+            
+    
+    }
+    </div>
     
   
   )
