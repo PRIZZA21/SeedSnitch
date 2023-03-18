@@ -41,7 +41,7 @@ const Apply = () => {
 
   let config = {} ;
 
-  if(userInfo.token)
+  if(userInfo && userInfo.token)
     config = {
         headers: {
             authorization: `Bearer ${userInfo.token}`,
