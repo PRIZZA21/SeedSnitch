@@ -41,7 +41,7 @@ const Home = () => {
   useEffect(() => {
       document.title = 'Home | Seedsnitch';
       getUser();
-  });
+  },[getUser]);
 
   return (
     <div>
