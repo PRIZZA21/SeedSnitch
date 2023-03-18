@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import Infobar from '../../Common_Components/Infobar'
+import { SERVER_URL } from '../../link'
 
 const Paginate = ({pages,page,isAdmin=false,keyword=''}) => {
       
@@ -63,7 +64,7 @@ const BlogPage = () => {
         <div className='flex w-3/4 mx-auto py-4 border-b-2'>
 
             <div className='w-24 h-22 rounded-xl mr-6 ml-6'>
-                <img src={`http://localhost:4000/${blog.banner}`} className='object-cover  h-full rounded-xl ' alt=''/>
+                <img src={`${SERVER_URL}/${blog.banner}`} className='object-cover  h-full rounded-xl ' alt=''/>
             </div>
             
             <div className='flex flex-col'>

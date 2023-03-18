@@ -63,7 +63,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(
     {
-        origin: "http://localhost:4000",
+        origin: "https://seed-snitch-server.onrender.com/",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     }

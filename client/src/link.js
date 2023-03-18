@@ -1,0 +1,1 @@
+export const SERVER_URL = 'https://seed-snitch-server.onrender.com'

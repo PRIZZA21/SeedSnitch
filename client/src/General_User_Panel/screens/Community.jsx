@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Infobar from '../../Common_Components/Infobar'
 import Loader from '../../Common_Components/Loader'
+import { SERVER_URL } from '../../link'
 
 
 const Community = () => {
@@ -29,7 +30,7 @@ const Community = () => {
 
         { ecellsList && ecellsList.map((ecell)=>(
         <div className="bg-white rounded-lg shadow-lg mx-6">
-          <img src={`http://localhost:4000/${ecell.logo}`} alt="" className="w-60 h-40 rounded-t-lg p-8 border-b-2"/>
+          <img src={`${SERVER_URL}/${ecell.logo}`} alt="" className="w-60 h-40 rounded-t-lg p-8 border-b-2"/>
           <div class="px-6 py-2">
             <h2 class="font-bold mb-2 text-2xl text-gray-800">{ecell.name}</h2>
           </div>

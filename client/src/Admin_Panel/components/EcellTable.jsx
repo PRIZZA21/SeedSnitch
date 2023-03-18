@@ -5,6 +5,7 @@ import Loader from '../../Common_Components/Loader'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { SERVER_URL } from '../../link'
 
 const Paginate = ({pages,page}) => {
   return pages>1 && (
@@ -89,7 +90,7 @@ const IncubatorTable = () => {
                             <TableData child={<TableDataText text={ecell.name}/>} />
                             <TableData child={<TableDataText text={ecell.email}/>} />
                             <TableData child={<TableDataText text={ecell.college}/>} />
-                            <TableData child={<img src={`http://localhost:4000//${ecell.logo}`} alt='' className="w-8 h-8" />} />
+                            <TableData child={<img src={`${SERVER_URL}/${ecell.logo}`} alt='' className="w-8 h-8" />} />
                             
                             <TableData child={
                                 <button type="button" className="inline-block text-gray-500 hover:text-gray-700">

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loader from '../../Common_Components/Loader'
+import { SERVER_URL } from '../../link'
 
 const BlogDetails = () => {
 
@@ -26,7 +27,7 @@ const BlogDetails = () => {
             
 
             <div className="flex flex-row mb-5">
-                <img src={`http://localhost:4000//${blog.banner}`} className="h-40 w-40 rounded-lg"  alt=''/>
+                <img src={`${SERVER_URL}/${blog.banner}`} className="h-40 w-40 rounded-lg"  alt=''/>
                 <div className="flex flex-col ml-5 justify-center">
                     <div className='text-3xl font-bold mb-2'>{blog.title}</div>
                     <p className='text-md font-semibold'>

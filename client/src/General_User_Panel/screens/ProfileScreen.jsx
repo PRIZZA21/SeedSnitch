@@ -6,6 +6,7 @@ import Infobar from '../../Common_Components/Infobar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { getUserDetails, updateUserProfile } from '../../redux/actions/userActions'
+import { SERVER_URL } from '../../link'
 
 const ProfileScreen = () => {
 
@@ -114,7 +115,7 @@ const ProfileScreen = () => {
               
       
               {image!=='' ? <div className='rounded-lg w-28 h-28 mx-auto bg-gray-100 mb-4 flex items-center justify-center'>
-                <img src={`http://localhost:4000/${image}`} className='h-24 w-24 roundede-xl object-contain' alt=''/>
+                <img src={`${SERVER_URL}/${image}`} className='h-24 w-24 roundede-xl object-contain' alt=''/>
               </div> : 
                 <button className="rounded flex flex-row items-center mx-auto mb-4">
                   <div className='rounded-full border-gray-200 bg-[#0C6980] text-white border-1 w-24 flex flex-row justify-center h-24 items-center font-bold text-lg'> {name.split(" ")[0].charAt(0)}</div>
