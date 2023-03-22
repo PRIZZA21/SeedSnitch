@@ -45,7 +45,7 @@ router.get('/glogin/failed',(req,res)=>{
 
 router.get("/glogout", (req, res) => {
     req.logout();
-    res.redirect(process.env.SERVER_URL);
+    res.redirect('https://seed-snitch-server.onrender.com/');
 });
 
 
@@ -53,7 +53,7 @@ router.get("/auth/google", passport.authenticate("google", ["profile", "email"])
 
 router.get("/auth/google/callback",
 	passport.authenticate("google", {
-		successRedirect : process.env.CLIENT_URL,
+		successRedirect : 'https://seed-snitch-server.onrender.com/',
 		failureRedirect : '/api/users/glogin/failed'
 	}),
 );
