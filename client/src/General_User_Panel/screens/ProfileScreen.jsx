@@ -53,7 +53,6 @@ const ProfileScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    while(uploading){};
     if (!uploading){
       setError(null);
       setMessage(null);
@@ -87,16 +86,13 @@ const ProfileScreen = () => {
           "Content-Type": "multipart/form-data",
         },
       };
-
       var { data } = await axios.post(
         "/api/uploads",
         formData,
         config
       );
-
       data = data.substr(8);
       data = "/" + data;
-
       setImage(data);
       setUploading(false);
     } catch (error) {
@@ -215,11 +211,12 @@ const ProfileScreen = () => {
 
               <div className="w-full">
                 <div className="w-full flex flex-row items-center">
-                  <input
+                 {!uploading ? (<input
                     className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
                     type="submit"
                     value="Update"
-                  />
+                  />) : (
+                  <div className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center">Please wait till uploading</div>) }
                 </div>
               </div>
             </form>

@@ -57,7 +57,6 @@ const AddBlog = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        while(uploading){};
         axios.post('/api/blogs/create',{title,image,content},config)
         navigate(redirect);
     }
@@ -102,7 +101,10 @@ const AddBlog = () => {
 
                         <div className="w-full mx-auto mt-8">
                             <div className="w-full flex flex-row items-center">
-                                <input className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] cursor-pointer" type="submit" value="Post Now" />
+                                { !uploading ?
+                                (<input className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] cursor-pointer" type="submit" value="Post Now" />):
+                                (<div className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center">Please wait till uploading</div>)
+                                }
                             </div>
                         </div>
 

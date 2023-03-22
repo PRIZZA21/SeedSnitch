@@ -51,8 +51,7 @@ const UpdateEcell = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
-        while(uploading){};
-        if(!uploading) axios.put(`/api/ecells/details/${id}`,{name,college,email,image})
+        axios.put(`/api/ecells/details/${id}`,{name,college,email,image})
         navigate(redirect);
     }
 
@@ -117,7 +116,9 @@ const UpdateEcell = () => {
         
                             <div className="w-5/6 mx-auto">
                                 <div className="w-full flex flex-row items-center">
-                                    <input className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] cursor-pointer" type="submit" value="Update Now"/>
+                                    { !uploading ?
+                                        (<input className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] cursor-pointer" type="submit" value="Update Now"/>): (
+                                            <div className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center">Please wait till uploading</div>) }
                                 </div>
                             </div>
 
