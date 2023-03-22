@@ -61,7 +61,7 @@ exports.getBlogById = asyncHandler(async (req, res) => {
 exports.createBlog = asyncHandler(async (req, res) => {
   
     try {
-        console.log(req.user);
+
         const blog = new Blog_Model({
             title: req.body.title,
             banner: req.body.image,
@@ -84,7 +84,7 @@ exports.createBlog = asyncHandler(async (req, res) => {
 exports.getBlogdetails = asyncHandler(async(req,res)=>{
 
     try {
-        console.log(req.params.id);
+   
         const blog = await Blog_Model.findById(req.params.id)
 
         res.status(200).json({
@@ -93,6 +93,7 @@ exports.getBlogdetails = asyncHandler(async(req,res)=>{
             content: blog.content
         })
     } catch (error) {
+        console.log(error);
         res.status(400).json({error:"Blog Not Found"})
     }
     

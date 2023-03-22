@@ -25,10 +25,8 @@ exports.getAllEcells = asyncHandler(async(req,res) => {
     .limit(pageSize)
     .skip(pageSize*(page-1));
 
-    console.log(all_ecells);
 
-    console.log(page);
-    console.log(count);
+
     res.status(200).json({all_ecells,page,pages: Math.ceil(count/pageSize)});
     // res.status(200).json({all_Ecells,page,pages: Math.ceil(count/pageSize)});
     } catch (error) {

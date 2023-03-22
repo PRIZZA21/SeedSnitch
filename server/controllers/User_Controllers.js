@@ -121,34 +121,38 @@ function updateValidation(check) {
 
 exports.registerUser = asyncHandler(async(req,res) => {
 
-    const { error } = validateUser(req.body);
-    if (error) return res.status(400).json({error:error.details[0].message});
-
-    const {name,email,password} = req.body
+    try {
+        const { error } = validateUser(req.body);
+        if (error) return res.status(400).json({error:error.details[0].message});
     
-
-    const UserExists = await    User_Model.findOne({email:email})
-    if(UserExists) res.status(400).json({error: "User Already Registered. Please Login"});
-   
+        const {name,email,password} = req.body
+        
     
-    const user = await User_Model.create( {name,email,password});
+        const UserExists = await    User_Model.findOne({email:email})
+        if(UserExists) res.status(400).json({error: "User Already Registered. Please Login"});
+       
+        
+        const user = await User_Model.create( {name,email,password});
+        
+        if(user)
+        {
+            register_mailer(user);
+            res.status(200).json({
+                _id:user._id,
+                name:user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                isIncubator: user.isIncubator,
+                isAmbassador: user.isAmbassador,
+                token: generateToken(user)
+            })
+        }
     
-    if(user)
-    {
-        register_mailer(user);
-        res.status(200).json({
-            _id:user._id,
-            name:user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            isIncubator: user.isIncubator,
-            isAmbassador: user.isAmbassador,
-            token: generateToken(user)
-        })
-    }
-
-    else{
-        res.status(400).json({error:"Error in creating user"});
+        else{
+            res.status(400).json({error:"Error in creating user"});
+        }
+    } catch (error) {
+        console.log(error);
     }
 })
 
@@ -163,33 +167,38 @@ exports.registerUser = asyncHandler(async(req,res) => {
 
 exports.authenticateUser = asyncHandler(async(req,res) => {
     
-    const { error } = validates(req.body);
-    if (error) return res.status(400).json({error:error.details[0].message});
+    try {
+        const { error } = validates(req.body);
+        if (error) return res.status(400).json({error:error.details[0].message});
+        
+        if (req.user) return res.status(400).json({error: "User already logged in!"});
     
-    if (req.user) return res.status(400).json({error: "User already logged in!"});
-
-    const user = await User_Model.findOne({email:req.body.email})
-    if (!user) return res.status(400).json({error: "Invalid email or password"});
-
-    const b = await user.authenticate(req.body.password)
-    if (!b) return res.status(400).json({error: "Invalid email or password"});
-
-    if( user && b){
-        res.status(200).json({
-            _id:user._id,
-            name:user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            isIncubator: user.isIncubator,
-            
-            token: generateToken(user._id),
-            profile_pic : user.profile_pic
-        })
+        const user = await User_Model.findOne({email:req.body.email})
+        if (!user) return res.status(400).json({error: "Invalid email or password"});
+    
+        const b = await user.authenticate(req.body.password)
+        if (!b) return res.status(400).json({error: "Invalid email or password"});
+    
+        if( user && b){
+            res.status(200).json({
+                _id:user._id,
+                name:user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                isIncubator: user.isIncubator,
+                
+                token: generateToken(user._id),
+                profile_pic : user.profile_pic
+            })
+        }
+    
+        else{
+            return res.status(400).json({error:"Invalid email or password"})
+        }
+    } catch (error) {
+        console.log(error);
     }
-
-    else{
-        return res.status(400).json({error:"Invalid email or password"})
-    }
+   
 })
 
 
@@ -253,7 +262,6 @@ exports.updateUserProfile = asyncHandler(async(req,res) => {
         res.status(200).json({message: "Updated Succesfully"})
     }
     else{
-        console.log(req.body);
         res.status(400).json({error:"Retry Again"})
     }
 })

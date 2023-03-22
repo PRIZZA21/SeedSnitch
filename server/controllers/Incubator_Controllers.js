@@ -15,7 +15,6 @@ exports.getAllIncubators = expressAsyncHandler(async(req,res) => {
         
         const pageSize = 4
         const page = Number(req.query.pageNumber) || 1 
-        console.log(page);
         const count = await Incubator_Model.count()
   
         let incubators = await Incubator_Model

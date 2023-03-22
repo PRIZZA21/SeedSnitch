@@ -24,7 +24,7 @@ function validateReply(reply) {
 exports.createReply = asyncHandler(async(req,res) => {
     try{
 
-        console.log(req.params.id);
+        // console.log(req.params.id);
         const post_try = await Post.findById(req.params.id);
 
         if (!post_try) return res.status(400).json({ error: "This post does not exist" });

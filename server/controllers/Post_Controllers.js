@@ -43,7 +43,7 @@ exports.getAllPosts = asyncHandler(async(req,res) => {
 
 exports.getPostById = asyncHandler(async (req, res) => {
     try {
-        console.log('aaya');
+        // console.log('aaya');
         const post = await Post_Model.find({ _id: req.params.id }).populate("author","name");
         res.status(200).send(post[0]);
     } 
