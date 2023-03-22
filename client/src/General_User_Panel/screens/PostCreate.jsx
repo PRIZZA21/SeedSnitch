@@ -12,7 +12,7 @@ const PostCreate = () => {
   const [title,setTitle] = useState('')
   const [description,setDescription] = useState('')
 
-  const redirect = window.location.search ? window.location.search.split('=')[1] : '/tech-support'
+  const redirect = window.location.search ? window.location.search.split('=')[1] : '/discussion-forum'
   
   const userLogin = useSelector((state) => state.userLogin)
   const {  userInfo } = userLogin  

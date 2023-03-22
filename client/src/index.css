@@ -258,7 +258,7 @@ h2 {
 }
 
 .container {
-  max-width: 970px!important;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -585,8 +585,10 @@ input[type="number"] {
 }
 .course-col {
   flex-basis: 31%;
-  background-color: #befcf35e;
-  box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+  background-color: #fff;
+  /* box-shadow: 10px 30px 40px -20px var(--grayishBlue); */
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 10px;
   margin-bottom: 5%;
   padding: 15px 12px;
@@ -615,10 +617,6 @@ input[type="number"] {
   border-top: 3px solid var(--orange);
 }
 
-
-
-
-
 .pagination {
   margin: 0;
   padding: 0;
@@ -627,39 +625,35 @@ input[type="number"] {
 }
 
 .pagination li {
-  display: inline
+  display: inline;
 }
-.pagination li{
+.pagination li {
   display: inline-block;
   text-decoration: none;
   padding: 5px 10px;
   color: #000;
   border-radius: 5px;
   -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s
+  transition: background-color 0.3s;
 }
 
 .pagination li.active {
-  background-color: #0C6980;
-  color: #fff
+  background-color: #0c6980;
+  color: #fff;
 }
 
 .pagination li.disabled {
-  color: rgb(121, 121, 121)
+  color: rgb(121, 121, 121);
 }
 
 .pagination li.disabled :hover {
   background-color: rgb(255, 255, 255);
-  border:0px solid white;
+  border: 0px solid white;
 }
-
-
 
 .pagination li:hover:not(.active) {
   background-color: rgb(230, 232, 229);
-} 
-
-
+}
 
 .reply-card {
   border: 1px solid #dce0e8;
@@ -673,24 +667,22 @@ input[type="number"] {
   margin-right: auto;
 }
 
-
-.reply-card-title{
+.reply-card-title {
   color: #0b0c0b;
   font-weight: 500;
   padding-bottom: 3px;
 }
 
-.reply-card-author{
+.reply-card-author {
   color: #8b8b9a;
   font-weight: 300;
   padding-bottom: 3px;
 }
 
-details[open] .reply-card-title{
+details[open] .reply-card-title {
   color: #0fad98;
   font-weight: 500;
 }
-
 
 .post-card {
   border: 1px solid #dce0e8;
@@ -710,66 +702,54 @@ details[open] .reply-card-title{
   font-weight: 700;
 }
 
-
-
 details[open] .post-open-icon {
   top: 18px;
   right: 24px;
 }
 
-
-.post-card-description{
+.post-card-description {
   list-style: none;
   padding-right: 5%;
+  font-size: 1.1rem;
+  color: gray;
+  font-weight: 500;
 }
 
 .post-card-description::-webkit-details-marker {
   display: none;
 }
 
-.post-card-description{
-  color: #818181;
-  font-weight: 500;
-}
-
-.post-card-title{
+.post-card-title {
   color: #0b0c0b;
   font-weight: 500;
+  font-size: 1.5rem;
   padding-bottom: 3px;
 }
 
-.post-card-author{
+.post-card-author {
   color: #8b8b9a;
   font-weight: 300;
+  font-size: 1.2rem;
   padding-bottom: 3px;
 }
 
-details[open] .post-card-title{
+details[open] .post-card-title {
   color: #0fad98;
   font-weight: 500;
 }
 
-
-
-nav .active{
+nav .active {
   border-bottom: 2px solid #01c0c4;
   font-weight: 660;
 }
 
-
-.sidebar .active{
-  border-bottom: 2px solid #01c0c4;
-  font-weight: 660;
-}
 
 
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-
-
-#loader{
+#loader {
   width: 300px;
   height: 300px;
   -webkit-box-flex: 0;
@@ -796,7 +776,6 @@ nav .active{
   margin-bottom: 20vh;
 }
 
-
 .dbl-spinner {
   position: absolute;
   width: 75px;
@@ -818,8 +797,7 @@ nav .active{
   animation: 1s spin linear infinite;
 }
 
-
--webkit-@keyframes spin {
+@-webkit-keyframes spin {
   -webkit-from {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -852,4 +830,14 @@ nav .active{
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+
+.sidebar .active span{
+  font-weight: 700!important;
+  color:black;
+}
+
+.sidebar #sidebar a.active{
+  background-color: #f1f1f1;
 }

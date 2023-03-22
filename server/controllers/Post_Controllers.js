@@ -14,13 +14,13 @@ const User_Model = require('../models/User_Model');
 
 exports.getAllPosts = asyncHandler(async(req,res) => {
     try {
-        const pageSize = 8
+        const pageSize = 5
         const page = Number(req.query.pageNumber) || 1 
         const count = await Post_Model.count()
 
         let all_posts = await Post_Model
         .find()
-        .populate("author", "name _id")
+        .populate("author","name _id")
         .sort({createdAt: -1})
         .limit(pageSize)
         .skip(pageSize*(page-1));

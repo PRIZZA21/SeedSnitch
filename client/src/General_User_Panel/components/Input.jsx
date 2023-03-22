@@ -24,4 +24,4 @@ const Input = ({ label, type, name, placeholder, required, onChange,additonalCla
   );
 };
 
-export default Input;
+export default Input

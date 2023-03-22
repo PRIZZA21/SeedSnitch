@@ -11,25 +11,22 @@ const UserReplyScreen = () => {
     const [loading,setLoading] =useState(true)
     const [post,setPost] =useState({})
 
-    const [replies,setReplies] = useState(true)
+    const [replies,setReplies] = useState([])
 
     useEffect( 
       () => { 
         setLoading(true)
 
         axios.get(`/api/posts/post/${postid}`).then(res=>{
-
           setPost(res.data)
         })
         .catch(err=>{
-          setLoading(true)
         })
 
         axios.get(`/api/replies/${postid}`).then(res=>{
           setReplies(res.data)
         })
         .catch(err=>{
-          setLoading(true)
         })
 
         setLoading(false)
@@ -54,11 +51,18 @@ const UserReplyScreen = () => {
                     
     
         {replies && replies.map((reply)=>(
-                <div className='reply-card'>
+                <div className='reply-card' key={reply._id}>
                     <span className="reply-card-title block">{reply.author && reply.author.name}</span>
                     {reply.comment}
                 </div>
         ))}   
+
+        {
+          replies.length===0 && 
+          <div>
+            No replies to this post right now
+          </div>
+        }
 
       </div>
    

@@ -83,6 +83,10 @@ const IncubatorApplications = () => {
     
     if(loading) return <Loader />
 
+    if(applications.length===0){ 
+        return (
+    <div> No applications with you right now</div>)}
+
     return (
         <div className="sm:px-8 py-4 overflow-x-auto ">
             <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
@@ -100,7 +104,7 @@ const IncubatorApplications = () => {
 
                 <tbody>
                     { applications && applications.map((application)=>(
-                        <tr>
+                        <tr key={application._id}>
 
                             <TableData child={
                                 <div className="flex ml-3">

@@ -9,8 +9,8 @@ const ApplicationScreen = () => {
 
         <Sidebar />
 
-        <div className="w-5/6 bg-white relative">
-            <Infobar start_text={'Applications'} end_text={'with us'} />
+        <div className="w-full relative">
+            <Infobar start_text={'Applications'} end_text={'with us'} additonalClass={"mt-0 bg-white"}/>
             <section className="h-auto w-5/6 py-4 px-2 relative md:mt-0 mt-10 mx-auto">
                 <div className="h-full md:flex-row right-4">
                     <ApplicationTable />
@@ -21,4 +21,4 @@ const ApplicationScreen = () => {
   )
 }
 
-export default ApplicationScreen
+export default ApplicationScreen;

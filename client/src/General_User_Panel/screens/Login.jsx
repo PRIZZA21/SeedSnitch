@@ -27,8 +27,7 @@ const Login = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(login(email,password));
-   
-}
+  }
 
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const Login = () => {
 
             {error && <div className='text-red-400 mb-5 text-center'>{error}</div>}
 
-            <div className='rounded-lg py-2 text-xl mb-6 text-white font-semibold flex flex-row justify-center cursor-pointer bg-accent' onClick={googleAuth}>
+            <div className='rounded-lg py-2 text-xl mb-6 flex flex-row justify-center cursor-pointer bg-green-200' onClick={googleAuth}>
               Continue with Google &nbsp; <img src='../img/google-logo.png' className='w-6 h-6 mt-1' alt=''/>
             </div>
 
@@ -95,7 +94,7 @@ const Login = () => {
 
         <div className="md:hidden flex flex-col items-center">
           <img
-            src="../img/loginkey.png"
+            src="../img/4.jpg"
             className="hidden h-[450px] object-contain"
             alt=""
           />
@@ -104,7 +103,7 @@ const Login = () => {
 
         <div className="hidden w-1/2 h-full md:flex flex-col items-center justify-center">
           <img
-            src="../img/loginkey.png"
+            src="../img/4.jpg"
             className="h-[400px] object-contain"
             alt=""
           />

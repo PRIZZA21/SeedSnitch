@@ -83,15 +83,19 @@ const UserApplicationTable = () => {
     
     if(loading) return <Loader />
 
+    if(applicationsList.length===0){ 
+        return (
+        <div> You have submitted no applications till now</div>)}
+
     return (
         <div className="sm:px-8 py-4 overflow-x-auto ">
             <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
                 { loading ? <Loader /> :
                     <table className="min-w-full leading-normal">
-          
+                        
                         <thead>
                             {table_headers.map((theader)=>(
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                <th key={theader} className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                     {theader}
                                 </th>
                             ))}
@@ -100,7 +104,7 @@ const UserApplicationTable = () => {
 
                         <tbody>
                             { applicationsList && applicationsList.map((application)=>(
-                                <tr>
+                                <tr key={application._id}>
 
                                     <TableData child={
                                         <div className="flex ml-3">
@@ -179,4 +183,4 @@ const UserApplicationTable = () => {
     )
 }
 
-export default UserApplicationTable
+export default UserApplicationTable;

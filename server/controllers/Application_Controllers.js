@@ -318,7 +318,6 @@ exports.createApplication = asyncHandler(async (req, res) => {
         college_name: req.body.college_name,
         contact_number: req.body.contact_number,
         startup_stage: req.body.start_up_stage,
-        startup_description: req.body.start_up_description,
         startup_problem: req.body.start_up_problem,
         startup_differentiator: req.body.start_up_differentiator,
         creator: req.user._id,

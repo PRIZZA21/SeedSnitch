@@ -1,47 +1,57 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import Infobar from '../../Common_Components/Infobar'
-import Loader from '../../Common_Components/Loader'
-import { SERVER_URL } from '../../link'
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Loader from "../../Common_Components/Loader";
 
 const Community = () => {
-
-    
-  const [ecellsList,setEcellsList] = useState('')
-  const [loading,setLoading] = useState(true)
-
+  const [ecellsList, setEcellsList] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true)
-    axios.get('/api/ecells/all').then(res=> setEcellsList(res.data))
-    setLoading(false)
-  }, [])
+    setLoading(true);
+    axios
+      .get("/api/ecells/all")
+      .then((res) => setEcellsList(res.data));
+    setLoading(false);
+  }, []);
 
-  if(loading) return <Loader/>
+  if (loading) return <Loader />;
 
   return (
     <div>
-      <Infobar start_text={'E-cells'} end_text={'with us'} />
-       
-    <section>
-      <div className="py-4 min-h-[370px] text-center mx-auto flex flex-col items-center justify-start px-10">
-        <div className="w-full p-4 flex flex-row justify-start items-center my-4">
+      <section>
+        <div className="py-4 min-h-[370px] text-center mx-auto flex flex-col items-center justify-start">
+          <section className="mt-20 gap-x-8 h-[auto] md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
+            <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
+              <div className="w-full md:w-[900px] text-center my-4 p-4 md:p-2">
+                <h2 className="md:font-extrabold font-bold text-3xl md:text-5xl pb-2 text-black">
+                  Our Network of{" "}
+                  <span className="text-accent"> Entrepreneurial Cells</span>
+                </h2>
+              </div>
+            </div>
+          </section>
 
-        { ecellsList && ecellsList.map((ecell)=>(
-        <div className="bg-white rounded-lg shadow-lg mx-6">
-          <img src={`${SERVER_URL}/${ecell.logo}`} alt="" className="w-60 h-40 rounded-t-lg p-8 border-b-2"/>
-          <div class="px-6 py-2">
-            <h2 class="font-bold mb-2 text-2xl text-gray-800">{ecell.name}</h2>
+          <div className="w-full p-4 flex flex-col  justify-center items-center my-4 md:flex-row md:flex-wrap">
+            {ecellsList &&
+              ecellsList.map((ecell) => (
+                <div key={ecell._id} className="w-full h-100 bg-white rounded-lg border-2 md:shadow-md m-4 md:mx-6 md:my-10 md:w-1/5">
+                  <img
+                    src={`/${ecell.logo}`}
+                    alt=""
+                    className="w-full h-52 my-8 md:h-40 object-contain rounded-t-lg"
+                  />
+                  <div className="px-6 py-2">
+                    <h2 className="font-bold mb-2 text-2xl text-gray-800 my-4">
+                      {ecell.name}
+                    </h2>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
-        ))}
-        </div>
-      </div>
-    </section>
-
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default Community
+export default Community;

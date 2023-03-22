@@ -67,8 +67,8 @@ const AddBlog = () => {
 
         <Sidebar />
 
-        <div className="w-5/6 bg-white relative">
-            <Infobar start_text={'Post'} end_text={'New Blog'} />
+        <div className="w-5/6 relative">
+            <Infobar start_text={'Post'} end_text={'New Blog'} additonalClass={"mt-0 bg-white"}/>
             <section className="h-auto w-5/6 mx-auto py-10 px-2 relative md:mb-20 md:mt-0 mt-10">
   
                 <form className="w-full h-full px-4 py-6" name="addBlog" onSubmit={submitHandler}>
@@ -114,4 +114,4 @@ const AddBlog = () => {
   )
 }
 
-export default AddBlog
+export default AddBlog;

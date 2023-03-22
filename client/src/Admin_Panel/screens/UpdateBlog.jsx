@@ -58,11 +58,15 @@ const UpdateBlog = () => {
     }
 
     useEffect(() => {
-        axios.get(`/api/blogs/details/${id}`).then(res=>{
+        axios
+        .get(`/api/blogs/details/${id}`)
+        .then(res=>{
             let {title,banner,content}=res.data;
             setTitle(title);
             setImage(banner)
             setContent(content)
+        })
+        .catch(err=>{
         })
     }, [id])
     
@@ -74,7 +78,7 @@ const UpdateBlog = () => {
         <Sidebar />
 
         <div className="w-5/6 bg-white relative">
-            <Infobar start_text={'Update'} end_text={'Blog'} />
+            <Infobar start_text={'Update'} end_text={'Blog'} additonalClass={"mt-0 bg-white"}/>
        
             <section className="h-auto py-10 mx-auto relative md:mb-20 md:mt-0 mt-10">
                 <div className="h-full w-full mx-auto  gap-4 md:flex-row right-4">
@@ -122,4 +126,4 @@ const UpdateBlog = () => {
   )
 }
 
-export default UpdateBlog
+export default UpdateBlog;

@@ -3,6 +3,8 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const cloudinary = require('cloudinary').v2;
+
 
 const dotenv = require('dotenv');
 dotenv.config()
@@ -49,6 +51,11 @@ app.use(session({
 dotenv.config();
 connectDB();
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 app.use(passport.initialize())
 app.use(passport.session());
@@ -63,7 +70,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(
     {
-        origin: "https://seed-snitch-server.onrender.com/",
+        origin: process.env.CLIENT_URL,
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     }
@@ -89,11 +96,9 @@ app.use(express.static('uploads'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
-// console.log(p);
 app.use(express.static(path.join(__dirname,'../','/client/build')))
 app.get('*', (req,res) => res.sendFile(path.resolve(__dirname,'../', 'client', 'build','index.html')));
-  
+
 
 // Starting the server
 app.listen(port, () => {

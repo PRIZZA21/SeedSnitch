@@ -22,21 +22,47 @@ const User_Model = require("../models/User_Model");
 
 function validateUser(user) {
     const schema = Joi.object({
-        name: Joi.string().min(2).max(30).required(),
+        name: Joi.string().min(2).max(30).required().error(errors => {
+            errors.forEach(err => {
+              switch (err.code) {
+                case "any.empty":
+                  err.message = "Name cannot be empty!";
+                  break;
+                case "string.min":
+                  err.message = `Name should have at least ${err.local.limit} characters!`;
+                  break;
+                case "string.max":
+                  err.message = `Name should have at most ${err.local.limit} characters!`;
+                  break;
+                default:
+                  break;
+              }
+            });
+            return errors;
+        }),
         email: Joi.string()
         .email({
           minDomainSegments: 2,
-          tlds: { allow: ["com", "net","in"] },
+          tlds: { allow: ["com","net","in"] },
         })
         .required(),
         password: joiPassword
             .string()
-            .minOfSpecialCharacters(1)
-            .minOfLowercase(1)
+            .min(6)
             .minOfUppercase(1)
+            .minOfLowercase(1)
+            .minOfSpecialCharacters(1)
             .minOfNumeric(1)
             .noWhiteSpaces()
-            .required(),
+            .required()
+            .messages({
+                'string.min':'Password should contain at least 6 characters',
+                'password.minOfUppercase': 'Password should contain at least 1 uppercase character',
+                'password.minOfLowercase': 'Password should contain at least 1 lowercase character',
+                'password.minOfSpecialCharacters':'Password should contain at least 1 special character',
+                'password.minOfNumeric': 'Password should contain at least 1 numeric character',
+                'password.noWhiteSpaces': 'Password should not contain white spaces',
+          }),
     });
 
     return schema.validate(user);
@@ -55,27 +81,29 @@ function validates(user) {
 }
 
 
-function updateValidation(user) {
+function updateValidation(check) {
     const schema = Joi.object({
-        image: Joi.string(),
-        name: Joi.string().min(2).max(30).required(),
-        email: Joi.string()
-        .email({
-          minDomainSegments: 2,
-          tlds: { allow: ["com", "net","in"] },
-        })
-        .required(),
         password: joiPassword
             .string()
-            .minOfSpecialCharacters(1)
-            .minOfLowercase(1)
+            .min(6)
             .minOfUppercase(1)
+            .minOfLowercase(1)
+            .minOfSpecialCharacters(1)
             .minOfNumeric(1)
             .noWhiteSpaces()
-            .required(),
+            .required()
+            .messages({
+                'string.min':'Password should contain at least 6 characters',
+                'password.minOfUppercase': 'Password should contain at least 1 uppercase character',
+                'password.minOfLowercase': 'Password should contain at least 1 lowercase character',
+                'password.minOfSpecialCharacters':'Password should contain at least 1 special character',
+                'password.minOfNumeric': 'Password should contain at least 1 numeric character',
+                'password.noWhiteSpaces': 'Password should not contain white spaces',
+          }),
+
     });
 
-    return schema.validate(user);
+    return schema.validate(check);
 }
 
 
@@ -94,7 +122,7 @@ function updateValidation(user) {
 exports.registerUser = asyncHandler(async(req,res) => {
 
     const { error } = validateUser(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error) return res.status(400).json({error:error.details[0].message});
 
     const {name,email,password} = req.body
     
@@ -210,21 +238,24 @@ exports.getUserProfile = asyncHandler(async(req,res) => {
 exports.updateUserProfile = asyncHandler(async(req,res) => {
   
     const user = await User_Model.findById(req.user._id)
-    console.log(req.body.password);
     if(user){
         user.name = req.body.name || user.name
         user.email= req.body.email || user.email
 
-        const { error } = updateValidation(req.body);
-        if (error) return res.status(400).json({error:error.details[0].message});
+        if(req.body.password){
+            const check ={}
+            check.password= req.body.password
+            const { error } = updateValidation(check);
+            if (error) return res.status(400).json({error:error.details[0].message});
+        }
         
-        if(req.body.password) user.password = req.body.password
         if(req.body.image) user.profile_pic= req.body.image;
         await user.save()
         res.status(200).json({message: "Updated Succesfully"})
     }
     else{
-        res.status(400).json({error:"User Not Found"})
+        console.log(req.body);
+        res.status(400).json({error:"Retry Again"})
     }
 })
 

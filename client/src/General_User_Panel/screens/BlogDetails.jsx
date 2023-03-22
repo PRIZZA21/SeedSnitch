@@ -1,47 +1,52 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import Loader from '../../Common_Components/Loader'
-import { SERVER_URL } from '../../link'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Loader from "../../Common_Components/Loader";
 
 const BlogDetails = () => {
+  const { id } = useParams();
+  const [blog, setBlog] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    const {id} = useParams()
-    const [blog,setBlog] = useState('');
-    const [loading,setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`/api/blogs/${id}`).then((res) => {
+      setBlog(res.data);
+    });
+    setLoading(false);
+  }, [id]);
 
-    useEffect(() => {
-        setLoading(true)
-        axios.get(`/api/blogs/${id}`).then(res=> {
-            setBlog(res.data); 
-        })
-        setLoading(false)
-      }, [id])
-
-    if(loading) return (<Loader />)
-
+  if (loading) return <Loader />;
 
   return (
     <div>
-        <div className='px-20 mt-20 py-10'>
-            
-
-            <div className="flex flex-row mb-5">
-                <img src={`${SERVER_URL}/${blog.banner}`} className="h-40 w-40 rounded-lg"  alt=''/>
-                <div className="flex flex-col ml-5 justify-center">
-                    <div className='text-3xl font-bold mb-2'>{blog.title}</div>
-                    <p className='text-md font-semibold'>
-                        Posted By: <span className="text-accent">{blog.author && blog.author.name}</span> 
-                    </p>
-                </div>
+      <div className="p-8 md:px-20 mt-20 md:py-20">
+        <div className="flex flex-col items-center gap-20 md:gap-8 justify-center mb-5">
+          <img
+            src={`/${blog.banner}`}
+            className="h-96 w-full md:w-1/2 object-cover rounded-lg"
+            alt=""
+          />
+          <div className="flex flex-col w-full md:w-1/2 justify-center border-b-2">
+            <div className="text-4xl text-left font-bold mb-2">
+              {blog.title}
             </div>
-            
-
-            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-
+            <p className="text-xl  font-semibold text-left my-4">
+              Posted By:{" "}
+              <span className="text-accent">
+                {blog.author && blog.author.name}
+              </span>
+            </p>
+          </div>
         </div>
-    </div>
-  )
-}
 
-export default BlogDetails
+        <div
+          className="text-justify leading-10 text-[1.5rem] w-full md:w-1/2 md:mx-auto"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default BlogDetails;

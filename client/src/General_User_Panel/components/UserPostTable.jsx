@@ -44,7 +44,7 @@ const UserPostTable = () => {
     const {  userInfo } = userLogin
 
     const config = useMemo(() => {
-        if(userInfo) return {
+        return {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
             'Content-Type': 'application/json'
@@ -109,4 +109,4 @@ const UserPostTable = () => {
   )
 }
 
-export default UserPostTable
+export default UserPostTable;

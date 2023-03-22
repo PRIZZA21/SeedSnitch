@@ -9,7 +9,6 @@ const applicationSchema = new mongoose.Schema(
     college_name          : { type: String, required: true,  },
     contact_number        : { type: Number, required: true,   },
     startup_stage         : { type: String, required: true},
-    startup_description   : { type: String, required: true },
     startup_problem       : { type: String, required: true },
     startup_differentiator: { type: String, required: true },
     curr_status           : { type: String, default: "Applied"},
