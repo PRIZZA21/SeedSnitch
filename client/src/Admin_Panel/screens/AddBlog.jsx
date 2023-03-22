@@ -57,6 +57,7 @@ const AddBlog = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        if(uploading) windows.alert("Please wait for image to upload")
         if(uploading===false) axios.post('/api/blogs/create',{title,image,content},config)
         navigate(redirect);
     }
