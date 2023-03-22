@@ -50,7 +50,7 @@ const AddEcell = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if(uploading) window.alert("Please wait for image to upload")
+        while(uploading){};
         if(!uploading) axios.post('/api/ecells/create', ({name,college,email,image}))
         navigate(redirect)
     }

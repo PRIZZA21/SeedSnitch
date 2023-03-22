@@ -51,7 +51,7 @@ const UpdateEcell = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
-        if(uploading) window.alert("Please wait for image to upload")
+        while(uploading){};
         if(!uploading) axios.put(`/api/ecells/details/${id}`,{name,college,email,image})
         navigate(redirect);
     }

@@ -53,7 +53,7 @@ const ProfileScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
+    while(uploading){};
     if (!uploading){
       setError(null);
       setMessage(null);

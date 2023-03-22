@@ -53,7 +53,7 @@ const UpdateBlog = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
-        if(uploading) window.alert("Please wait for image to upload")
+        while(uploading){};
         if(!uploading) axios.put(`/api/blogs/details/${id}`,{title,content,image})
         navigate(redirect);
     }

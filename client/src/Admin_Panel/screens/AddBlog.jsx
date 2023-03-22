@@ -55,10 +55,10 @@ const AddBlog = () => {
     const redirect = window.location.search ? window.location.search.split('=')[1] : '/blogs/page/1'
     let navigate = useNavigate();
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        if(uploading) window.alert("Please wait for image to upload")
-        if(uploading===false) axios.post('/api/blogs/create',{title,image,content},config)
+        while(uploading){};
+        axios.post('/api/blogs/create',{title,image,content},config)
         navigate(redirect);
     }
   
