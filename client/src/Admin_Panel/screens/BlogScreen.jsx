@@ -1,7 +1,8 @@
 import React from "react";
-import BlogTable from "../components/BlogTable";
+
 import Infobar from "../../Common_Components/Infobar";
 import Sidebar from "../components/Sidebar";
+import BlogTable from "../components/BlogTable";
 
 const BlogScreen = () => {
   return (

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Pagination } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Infobar from "../../Common_Components/Infobar";
+import Loader from "../../Common_Components/Loader";
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   return (
@@ -25,6 +26,7 @@ const BlogPage = () => {
   const { pageNumber } = useParams() || 1;
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
+  const [loading,setLoading] =useState(true)
 
   const navigate = useNavigate();
   const blog_detailsHandler = (id) => {
@@ -32,14 +34,18 @@ const BlogPage = () => {
   };
 
   useEffect(() => {
+    setLoading(true)
     axios
       .get(`/api/blogs?pageNumber=${pageNumber}`)
       .then((res) => {
         setBlogList(res.data.all_blogs);
         setPage(res.data.page);
         setPages(res.data.pages);
+        setLoading(false)
       });
   }, [pageNumber]);
+  
+  if (loading) return <Loader />;
 
   return (
     <div className="bg-white relative">

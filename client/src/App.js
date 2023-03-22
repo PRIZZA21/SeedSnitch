@@ -16,8 +16,7 @@ import UpdateEcell from "./Admin_Panel/screens/UpdateEcell";
 import IncubatorApplicationsScreen from "./Incubator_Panel/screens/IncubatorApplicationsScreen";
 
 // General User Panel Components
-import Navbar from "./zcomponents/Navbar";
-import Footer from "./zcomponents/Footer";
+
 import Home from "./General_User_Panel/screens/Home";
 import FAQ from "./General_User_Panel/screens/FAQ";
 import Contact from "./General_User_Panel/screens/Contact";
@@ -49,38 +48,17 @@ const App = () => {
       
       <Routes>
          
-        {/* <Route
-          path="/admin/applications/page/:pageNumber"
-          element={<ApplicationScreen />}
-        />
-        <Route
-          path="/admin/incubators/page/:pageNumber"
-          element={<IncubatorScreen />}
-        />
-        <Route
-          path="/admin/ecells/page/:pageNumber"
-          element={<EcellScreen />}
-        />
-        <Route path="/admin/blogs/page/:pageNumber" element={<BlogScreen />} />
-        <Route path="/admin/add-blog" element={<AddBlog />} />
-        <Route path="/admin/add-ecell" element={<AddEcell />} />
-        <Route path="/admin/add-incubator" element={<AddIncubator />} />
-        <Route path="/admin/ecells/:id" element={<UpdateEcell />} />
-        <Route path="/admin/blogs/:id" element={<UpdateBlog />} />
-        <Route path="/incubator" element={<IncubatorApplicationsScreen />} />
-        <Route path="/" element={<Home />} />
-               <Route path="/company-reg" element={<ComingSoon />} /> */}
-
 
         <Route path='/' element={<GeneralUserLayout />}>
           <Route index element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="community" element={<Community />} />
           <Route path="blogs/page/:pageNumber" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogDetails />} />
           <Route path="login" element={<Login />} />
+          <Route path="incubator" element={<IncubatorApplicationsScreen />} />
           <Route path="register" element={<Register />} />
           <Route path="apply" element={<Apply />} />
           <Route path="ambassador" element={<Ambassador />} />
@@ -93,7 +71,7 @@ const App = () => {
           <Route path="create-post" element={<PostCreate />} />
           <Route path="application/:id" element={<ApplicationDetails />} />
           <Route path="pitch-deck" element={<ComingSoon />} />
-          <Route path="/company-reg" element={<ComingSoon />} />
+          <Route path="company-reg" element={<ComingSoon />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
 

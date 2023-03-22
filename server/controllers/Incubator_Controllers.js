@@ -80,3 +80,22 @@ exports.createIncubator = async(req,res) => {
 }
 
 
+exports.toggleIncubator = expressAsyncHandler(async(req,res) => {
+  
+    try {
+        console.log("ayaya");
+        const incubator = await Incubator_Model.findById(req.params.id)
+
+        if(incubator){
+            incubator.active = !incubator.active
+            await incubator.save()
+            res.status(200).json({message: "Updated Succesfully"})
+        }
+        else{
+            res.status(400).json({error:"Incubator Not Found"})
+        } 
+    } catch (error) {
+        console.log(error);
+    }
+   
+})

@@ -74,7 +74,7 @@ const Apply = () => {
         }
       })
       .catch((err) => {
-        setError(err);
+        setError(err)
       });
   };
 

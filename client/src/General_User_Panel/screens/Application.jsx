@@ -48,25 +48,26 @@ const ApplicationDetails = () => {
   const acceptHandler = () => {
     if (reason === "") {
       alert("Reason can't be empty");
-    }
-    axios.post(
+    }else
+    {axios.post(
       `/api/applications/accept/${params.id}`,
       { email: userInfo.email, reason: reason },
       config
     );
-    navigate("/incubator");
+    navigate("/incubator");}
   };
 
   const rejectHandler = () => {
     if (reason === "") {
       alert("Reason can't be empty");
+    }else{
+      axios.post(
+        `/api/applications/reject/${params.id}`,
+        { email: userInfo.email, reason: reason },
+        config
+      );
+      navigate("/incubator");
     }
-    axios.post(
-      `/api/applications/reject/${params.id}`,
-      { email: userInfo.email, reason: reason },
-      config
-    );
-    navigate("/incubator");
   };
 
   if (loading && err === "") {

@@ -4,6 +4,7 @@ const incubatorSchema = new mongoose.Schema(
     {
         name                  : { type: String, required: true, minlength: 5, maxlength: 50},
         email                 : { type: String, required: true, minlength: 5, maxlength: 255, trim: true,lowercase: true},
+        active                 : { type: Boolean, required: true, default: true},
         applications_submitted: 
         [{ 
             application_id: {type: mongoose.Schema.Types.ObjectId, ref: "Application",default:null},

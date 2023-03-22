@@ -133,7 +133,6 @@ exports.registerUser = asyncHandler(async(req,res) => {
     
     const user = await User_Model.create( {name,email,password});
     
-
     if(user)
     {
         register_mailer(user);

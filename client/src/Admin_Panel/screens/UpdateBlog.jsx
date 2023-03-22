@@ -77,7 +77,7 @@ const UpdateBlog = () => {
 
         <Sidebar />
 
-        <div className="w-5/6 bg-white relative">
+        <div className="w-full bg-white relative">
             <Infobar start_text={'Update'} end_text={'Blog'} additonalClass={"mt-0 bg-white"}/>
        
             <section className="h-auto py-10 mx-auto relative md:mb-20 md:mt-0 mt-10">

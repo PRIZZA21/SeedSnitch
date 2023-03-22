@@ -1,6 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Ambassador = () => {
+
+  const url = "https://script.google.com/macros/s/AKfycbxdM7XaEJ1Gq1Xy_IrSeUWDV5ARJUKkFv7DcCCIOunwsu1m5IHb85E4TBudYqCpbtEV/exec"
+  const ambassForm = document.forms["ambass"];
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const toggleHandler = () => {
+    setIsSubmitted(!isSubmitted);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    fetch(url, { method: "POST", body: new FormData(ambassForm) })
+      .then((response) => {
+        setIsSubmitted(true);
+      })
+      .catch((error) => console.error("Error!", error.message));
+  };
+
+  
+  if (isSubmitted) {
+    return (
+      <div className="flex h-[88vh] w-full">
+        <div className="my-auto w-1/2 mx-auto">
+          <div className="bg-white p-6 rounded-lg drop-shadow-2xl">
+            <button
+              className="block ml-auto hamburger lg:hidden focus:outline-none open"
+              onClick={toggleHandler}
+            >
+              <span className="hamburger-top"></span>
+              <span className="hamburger-middle"></span>
+              <span className="hamburger-bottom"></span>
+            </button>
+            <img
+              src="../img/thankyou.png"
+              className="h-52 w-52 mx-auto mb-4"
+              alt=""
+            />
+            <h2 className="text-2xl font-bold mb-2 text-gray-800 text-center">
+              Thanks for applying
+            </h2>
+            <p className="text-gray-700 text-center">
+              We will revert back to you soon
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <section className="mt-20 gap-x-8 h-[auto] md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
@@ -97,6 +146,7 @@ const Ambassador = () => {
               className="w-full h-full max-w-2xl px-4 py-6"
               id="ambass-form"
               name="ambass"
+              onSubmit={submitHandler}
             >
               <div className="flex flex-col md:flex-row md:gap-5">
                 <div className="flex flex-wrap w-full mb-6">

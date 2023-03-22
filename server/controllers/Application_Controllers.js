@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const { accept_mailer } = require('../mailers/Accept_Mailer');
 const Application_Model = require('../models/Application_Model');
 const Application = require('../models/Application_Model');
 const Incubator_Model = require('../models/Incubator_Model');
@@ -20,8 +21,9 @@ const applications24hrchecker = asyncHandler(async()=>{
         for(let j=0;j<applications_of_this.length;j++){
             let timestamp2= new Date()
             let timestamp1 = applications_of_this[j].timestamp
-            let diffInseonds = Math.round((timestamp2.getTime() - timestamp1.getTime()) / 1000);
-            if(diffInseonds>86400) shiftApplication(incubators[i]._id,applications_of_this[j].application_id)
+            if(timestamp2!==undefined && timestamp1!==undefined)
+            {let diffInseonds = Math.round((timestamp2.getTime() - timestamp1.getTime()) / 1000);
+            if(diffInseonds>86400) shiftApplication(incubators[i]._id,applications_of_this[j].application_id)}
       }
     }
 })
@@ -36,7 +38,7 @@ const shiftApplication = asyncHandler(async(inc_id,application_id) => {
 
     for(let i=0;i<incubators.length;i++){
         let appln_now = incubators[i].applications_submitted.length;
-        if(appln_now<currApplications && incubators[i]!==currentIncubatorassigned){ 
+        if(appln_now<currApplications && incubators[i]!==currentIncubatorassigned && incubators[i].active){ 
             currApplications = incubators[i].applications_submitted.length;
             currentIncubator = incubators[i];
         }
@@ -93,13 +95,13 @@ const reassignApplication = asyncHandler(async() => {
             for(let j=0;j<incubators.length;j++){
                 let check =  await not_have_appln(incubators[j]._id,applications[i]._id,incubators);
                 let appln_now = incubators[j].applications_submitted.length;
-                if(appln_now<=currApplications && check){ 
+                if(appln_now<=currApplications && check&& incubators[j].active){ 
                     currApplications = incubators[j].applications_submitted.length;
                     currentIncubator = incubators[j];
                 }
             }
 
-            if(not_have_appln(currentIncubator._id,applications[i]._id,incubators)){
+            if(not_have_appln(currentIncubator._id,applications[i]._id,incubators)|| !currentIncubator.active){
                 await Application.updateOne(
                     { _id: applications[i]._id },
                     { $set: { curr_status: "Rejected" } }
@@ -142,13 +144,13 @@ const assignApplication = asyncHandler(async() => {
             for(let j=0;j<incubators.length;j++){
                 let check =  await not_have_appln(incubators[j]._id,applications[i]._id,incubators);
                 let appln_now = incubators[j].applications_submitted.length;
-                if(appln_now<=currApplications && check){ 
+                if(appln_now<=currApplications && check &&  incubators[j].active){ 
                     currApplications = incubators[j].applications_submitted.length;
                     currentIncubator = incubators[j];
                 }
             }
 
-            if(!not_have_appln(currentIncubator._id,applications[i]._id,incubators)){
+            if(!not_have_appln(currentIncubator._id,applications[i]._id,incubators) || !currentIncubator.active){
                 await Application.updateOne(
                     { _id: applications[i]._id },
                     { $set: { curr_status: "Rejected" } }
@@ -185,28 +187,33 @@ const assignApplication = asyncHandler(async() => {
 */
 
 exports.getAllApplications = asyncHandler(async(req,res) => {
-    applications24hrchecker();
-    const pageSize = 4
-
-    const page = Number(req.query.pageNumber) || 1 
-    const keyword = req.query.keyword?{
-        name:{
-            $regex: req.query.keyword,
-            $options: 'i'
-        }
-    }: {}
-    const count = await Application_Model.count({...keyword})
-
-    let all_applications = await Application_Model
-    .find({...keyword})
-    .populate("creator", "name -_id")
-    .populate("assigned_incubator","name email")
-    .sort({createdAt: -1})
-    .limit(pageSize)
-    .skip(pageSize*(page-1));
-
-    res.status(200).json({all_applications,page,pages: Math.ceil(count/pageSize)});
-})
+    try {
+        applications24hrchecker();
+        const pageSize = 4
+    
+        const page = Number(req.query.pageNumber) || 1 
+        const keyword = req.query.keyword?{
+            name:{
+                $regex: req.query.keyword,
+                $options: 'i'
+            }
+        }: {}
+        const count = await Application_Model.count({...keyword})
+    
+        let all_applications = await Application_Model
+        .find({...keyword})
+        .populate("creator", "name -_id")
+        .populate("assigned_incubator","name email")
+        .sort({createdAt: -1})
+        .limit(pageSize)
+        .skip(pageSize*(page-1));
+    
+        res.status(200).json({all_applications,page,pages: Math.ceil(count/pageSize)});
+    
+    } catch (error) {
+        
+    }
+   })
 
 
 
@@ -220,7 +227,6 @@ exports.getAllApplications = asyncHandler(async(req,res) => {
 exports.getApplicationsByCreatorId = asyncHandler(async (req, res) => {
     try {
       applications24hrchecker();
-      console.log(req.params.id);
       const user = await User_Model.findById(req.params.id);
       if (!user) {res.status(400).json({error:"User for which applications are requested does not exist"}); return;}
 
@@ -310,20 +316,19 @@ exports.getApplicationDetailsById = asyncHandler(async(req,res)=>{
 
 exports.createApplication = asyncHandler(async (req, res) => {
 
-    const application = new Application_Model({
-        name: req.body.name,
-        email: req.body.email,
-        startup_name: req.body.startup_name,
-        linkedin_profile: req.body.linkedin_profile,
-        college_name: req.body.college_name,
-        contact_number: req.body.contact_number,
-        startup_stage: req.body.start_up_stage,
-        startup_problem: req.body.start_up_problem,
-        startup_differentiator: req.body.start_up_differentiator,
-        creator: req.user._id,
-    });
-  
     try {
+        const application = new Application_Model({
+            name: req.body.name,
+            email: req.body.email,
+            startup_name: req.body.startup_name,
+            linkedin_profile: req.body.linkedin_profile,
+            college_name: req.body.college_name,
+            contact_number: req.body.contact_number,
+            startup_stage: req.body.start_up_stage,
+            startup_problem: req.body.start_up_problem,
+            startup_differentiator: req.body.start_up_differentiator,
+            creator: req.user._id,
+        });
         await application.save();
         applications24hrchecker()
         res.status(200).json({message: "Application succesfully created"});
@@ -418,133 +423,147 @@ exports.createApplication = asyncHandler(async (req, res) => {
 
 
 exports.acceptApplication = asyncHandler(async(req,res)=>{
-    console.log('this is running');
+
+    try {
+        await Application_Model.updateOne({ _id: req.params.id },
+            { $set: { curr_status: "Accepted" } }
+          );
+        
+          let appln_id = req.params.id;
+      
+          await Incubator_Model.updateOne(
+              { email: req.body.email },
+              { $push: { 
+                applications_accepted: 
+                {
+                  application_id: appln_id,
+                  reason: req.body.reason
+                }
+              }
+            }
+            )
+
+   
+        
+      
+          await Incubator_Model.updateOne({email: req.body.email},
+            { $pull: {
+              "applications_submitted":  { 
+                "application_id": appln_id
+              }
+            } 
+          });
+
+          const founder_details = await Application_Model.findOne({ _id: req.params.id }).populate("creator")
+          const incubator_details = await  Incubator_Model.findOne({email: req.body.email})
+           
+            const data={
+                accept_Reason:req.body.reason,
+                founder: founder_details,
+                incubator: incubator_details
+            }
     
-    await Application_Model.updateOne({ _id: req.params.id },
-      { $set: { curr_status: "Accepted" } }
-    );
-  
-    let appln_id = req.params.id;
+          
+          accept_mailer(data)
+          res.send("Application accepted")
+    } catch (error) {
+        
+    }
 
-    await Incubator_Model.updateOne(
-        { email: req.body.email },
-        { $push: { 
-          applications_accepted: 
-          {
-            application_id: appln_id,
-            reason: req.body.reason
-          }
-        }
-      }
-      )
-  
-  
-
-    await Incubator_Model.updateOne({email: req.body.email},
-      { $pull: {
-        "applications_submitted":  { 
-          "application_id": appln_id,
-        }
-      } 
-    });
     
-
-    res.send("Application accepted")
 })
   
   
   
 exports.rejectApplication = asyncHandler(async(req,res)=>{
 
-    await Application_Model
-    .updateOne(
-        { _id: req.params.id }, 
-        { $set: { assigned_incubator: null } }
-    );
-
+    try {
+        await Application_Model
+        .updateOne(
+            { _id: req.params.id }, 
+            { $set: { assigned_incubator: null } }
+        );
     
-    let appln_id = req.params.id;
-   
-    await Incubator_Model.updateOne(
-        { email: req.body.email },
-        { $push: { applications_rejected: { application_id: appln_id, reason: req.body.reason}}}
-    )
-
-    console.log(req.body.email)
-
-
-    // Incubator_Model.findOne({email:req.body.email}).then((res)=>console.log(res))
-
-
-      await Incubator_Model.updateOne({email: req.body.email},
-        { $pull: {
-          "applications_submitted": { 
-            "application_id": appln_id,
-          }
-        } 
-      });
-
-     
-    // const i = await Incubator_Model.findOne({email:req.body.email})
-    // console.log(i);
-  
-    const applications = await Application_Model.find();
-    const incubators = await Incubator_Model.find();
         
-    for (let i = 0; i < applications.length; i++) 
-        if (applications[i].assigned_incubator === null ) {
-            console.log(applications[i]);
-            let currentIncubator = incubators[0];
-            let currApplications =1000;
+        let appln_id = req.params.id;
+       
+        await Incubator_Model.updateOne(
+            { email: req.body.email },
+            { $push: { applications_rejected: { application_id: appln_id, reason: req.body.reason}}}
+        )
+    
+       
+    
+    
+        // Incubator_Model.findOne({email:req.body.email}).then((res)=>console.log(res))
+    
+    
+          await Incubator_Model.updateOne({email: req.body.email},
+            { $pull: {
+              "applications_submitted": { 
+                "application_id": appln_id,
+              }
+            } 
+          });
+    
+         
+        // const i = await Incubator_Model.findOne({email:req.body.email})
+        // console.log(i);
+      
+        const applications = await Application_Model.find();
+        const incubators = await Incubator_Model.find();
+            
+        for (let i = 0; i < applications.length; i++) 
+            if (applications[i].assigned_incubator === null ) {
 
-            for(let j=0;j<incubators.length;j++){
-                let check =  await not_have_appln(incubators[j]._id,applications[i]._id,incubators);
-                console.log(incubators[j].name," ke paas check hai ",check);
-                let appln_now = incubators[j].applications_submitted.length;
-                if(appln_now<=currApplications && check){ 
-                    currApplications = incubators[j].applications_submitted.length;
-                    currentIncubator = incubators[j];
+                let currentIncubator = incubators[0];
+                let currApplications =1000;
+    
+                for(let j=0;j<incubators.length;j++){
+                    let check =  await not_have_appln(incubators[j]._id,applications[i]._id,incubators);
+                    let appln_now = incubators[j].applications_submitted.length;
+                    if(appln_now<=currApplications && check && incubators[j].active){ 
+                        currApplications = incubators[j].applications_submitted.length;
+                        currentIncubator = incubators[j];
+                    }
                 }
-            }
-
-            const b= await not_have_appln(currentIncubator._id,applications[i]._id,incubators);
-
-
-            console.log("Finally", b)
-  
-            if(!b){
-                await Application_Model.updateOne(
-                    { _id: applications[i]._id },
-                    { $set: { curr_status: "Rejected" } }
-                );
-                return;
-            }
-
-            else{
-                await Application_Model.updateOne({ _id: applications[i]._id },
-                    { $set: { assigned_incubator: currentIncubator._id } }
-                );
+    
+                const b= await not_have_appln(currentIncubator._id,applications[i]._id,incubators);
+    
+    
+      
+                if(!b || !currentIncubator.active){
+                    await Application_Model.updateOne(
+                        { _id: applications[i]._id },
+                        { $set: { curr_status: "Rejected" } }
+                    );
+                    return;
+                }
+    
+                else{
+                    await Application_Model.updateOne({ _id: applications[i]._id },
+                        { $set: { assigned_incubator: currentIncubator._id } }
+                    );
+            
+                    
+                    await Incubator_Model.updateOne(
+                        {_id:currentIncubator._id},
+                        { $push: { applications_submitted:  {  application_id: applications[i]._id,  timestamp: new Date() }}}
+                    );
+    
+                    const ity = await Incubator_Model.findOne({_id:currentIncubator._id});
+                    
+                    
+                }
+      
+              }
+              
+      
+        res.send("Application rejected")
+    } catch (error) {
         
-                
-                await Incubator_Model.updateOne(
-                    {_id:currentIncubator._id},
-                    { $push: { applications_submitted:  {  application_id: applications[i]._id,  timestamp: new Date() }}}
-                );
-
-                const ity = await Incubator_Model.findOne({_id:currentIncubator._id});
-                console.log(ity);
-                
-            }
-  
-          }
-      
-      
- 
-
-
-
-  
-    res.send("Application rejected")
+    }
+   
   })
   
   

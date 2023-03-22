@@ -32,18 +32,40 @@ const TableDataText = ({ text }) => {
   return <p className="text-gray-900 whitespace-no-wrap">{text}</p>;
 };
 
+export const Toggle = ({ label, toggled, onClick }) => {
+  const [isToggled, toggle] = useState(toggled)
+
+  const callback = () => {
+      toggle(!isToggled)
+      onClick(!isToggled)
+  }
+
+  return (
+      <label>
+          <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
+          <span />
+          <strong>{label}</strong>
+      </label>
+  )
+}
+
 const IncubatorTable = () => {
   const table_headers = [
     "Incubator Name",
     "Incubator Email",
     "Applications Submitted",
     "Applications Accepted",
+    "Recieve Applications"
   ];
   const { pageNumber } = useParams() || 1;
   const [loading, setLoading] = useState("true");
   const [incubatorList, setIncubatorList] = useState([]);
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
+
+  const logState = (id) => {
+    axios.put(`/api/incubators/toggleincubator/${id}`)
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -88,6 +110,15 @@ const IncubatorTable = () => {
                     child={
                       <TableDataText
                         text={incubator.applications_accepted.length}
+                      />
+                    }
+                  />
+                  <TableData
+                    child={
+                      <Toggle
+                          label=""
+                          toggled={incubator.active}
+                          onClick={()=> logState(incubator._id)}
                       />
                     }
                   />

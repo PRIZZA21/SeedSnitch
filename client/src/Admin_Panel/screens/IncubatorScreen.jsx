@@ -7,7 +7,7 @@ const IncubatorScreen = () => {
   return (
     <div className="flex flex-row">
       <Sidebar />
-      <div className="w-5/6 bg-white relative">
+      <div className="w-full bg-white relative">
         <Infobar
           start_text={"Incubators"}
           end_text={"associated with us"}
