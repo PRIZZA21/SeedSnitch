@@ -70,8 +70,12 @@ const UserPostTable = () => {
     if(!userInfo) redirect(userInfo)
     
 
-    if(loading) return <Loader />
 
+
+    if(postsList && postsList.length===0) return (<div className='text-2xl text-center mt-12 font-semibold font-serif'>You have not posted any post till now</div>)
+
+    if(loading) return <Loader />
+    
     return (
         <div className="sm:px-8 py-4 overflow-x-auto ">
             <div className="inline-block min-w-full overflow-hidden">

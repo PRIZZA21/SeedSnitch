@@ -22,17 +22,21 @@ const Paginate = ({ pages, page }) => {
   );
 };
 
-const TableData = ({ child }) => {
-  return (
-    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-      {child}
-    </td>
-  );
-};
+const TableData = ({child}) => {
+  return(
+      <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
+  )
+}
 
-const TableDataText = ({ text }) => {
-  return <p className="text-gray-900 whitespace-no-wrap">{text}</p>;
-};
+const TableDataText = ({text}) => {
+  return (
+      <p className="text-center text-gray-900 whitespace-no-wrap">
+          {text}
+      </p>
+  )
+}
+
+
 
 const IncubatorTable = () => {
   const table_headers = [
@@ -73,7 +77,7 @@ const IncubatorTable = () => {
         <table className="min-w-full leading-normal text-center">
           <thead>
             {table_headers.map((theader) => (
-              <th key={theader} className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-black uppercase tracking-wider">
+              <th key={theader} className="px-5 py-3 text-center border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-black uppercase tracking-wider">
                 {theader}
               </th>
             ))}

@@ -94,7 +94,7 @@ const Login = () => {
 
         <div className="md:hidden flex flex-col items-center">
           <img
-            src="../img/4.jpg"
+            src="../img/5.png"
             className="hidden h-[450px] object-contain"
             alt=""
           />
@@ -103,7 +103,7 @@ const Login = () => {
 
         <div className="hidden w-1/2 h-full md:flex flex-col items-center justify-center">
           <img
-            src="../img/4.jpg"
+            src="../img/5.png"
             className="h-[400px] object-contain"
             alt=""
           />

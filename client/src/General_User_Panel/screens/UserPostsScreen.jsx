@@ -8,8 +8,8 @@ const UserPostsScreen = () => {
     <div className='flex flex-row'>
 
         <div className="w-full bg-white relative">
-            <Infobar start_text={'Your'} end_text={'posts'} />
-            <section className="h-auto w-5/6 py-4 px-2 relative md:mt-0 mt-10 mx-auto">
+            <Infobar start_text={''} end_text={'Your Posts'} invert_text_color={true}/>
+            <section className="h-auto min-h-[60vh] w-5/6 py-4 px-2 relative md:mt-0 mt-10 mx-auto">
                 <div className="h-full md:flex-row right-4">
                     <UserPostTable />
                 </div>

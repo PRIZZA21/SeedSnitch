@@ -27,13 +27,13 @@ const Paginate = ({pages,page}) => {
 
 const TableData = ({child}) => {
     return(
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
+        <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
     )
 }
 
 const TableDataText = ({text}) => {
     return (
-        <p className="text-gray-900 whitespace-no-wrap">
+        <p className="text-center text-gray-900 whitespace-no-wrap">
             {text}
         </p>
     )
@@ -75,7 +75,7 @@ const IncubatorTable = () => {
             
                 <thead>
                     {table_headers.map((theader)=>(
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className="px-5 py-3 text-center border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             {theader}
                         </th>
                     ))}

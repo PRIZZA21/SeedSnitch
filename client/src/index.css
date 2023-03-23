@@ -538,7 +538,6 @@ main p:last-child {
 @media (min-width: 768px) {
   #about-container {
     padding: 10px 0;
-    background-image: url("https://i.ibb.co/mSXzW7J/pou.jpg");
     background-size: 100% 100%;
     object-fit: fill;
   }

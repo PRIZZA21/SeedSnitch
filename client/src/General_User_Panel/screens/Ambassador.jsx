@@ -3,8 +3,7 @@ import React, { useState } from "react";
 const Ambassador = () => {
 
   const url = "https://script.google.com/macros/s/AKfycbxdM7XaEJ1Gq1Xy_IrSeUWDV5ARJUKkFv7DcCCIOunwsu1m5IHb85E4TBudYqCpbtEV/exec"
-  const ambassForm = document.forms["ambass"];
-
+ 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const toggleHandler = () => {
     setIsSubmitted(!isSubmitted);
@@ -12,7 +11,7 @@ const Ambassador = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch(url, { method: "POST", body: new FormData(ambassForm) })
+    fetch(url, { method: "POST", body: new FormData(e.target) })
       .then((response) => {
         setIsSubmitted(true);
       })
@@ -38,10 +37,10 @@ const Ambassador = () => {
               className="h-52 w-52 mx-auto mb-4"
               alt=""
             />
-            <h2 className="text-2xl font-bold mb-2 text-gray-800 text-center">
+            <h2 className="font-serif text-2xl font-bold mb-2 text-gray-800 text-center">
               Thanks for applying
             </h2>
-            <p className="text-gray-700 text-center">
+            <p className="font-serif text-gray-700 text-center">
               We will revert back to you soon
             </p>
           </div>
@@ -158,7 +157,7 @@ const Ambassador = () => {
                       First Name
                     </label>
                     <input
-                      name="FirstName"
+                      name="Name"
                       className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-name"
                       type="text"

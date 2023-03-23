@@ -50,8 +50,17 @@ const Apply = () => {
     },
   };
 
+  const url =
+  "https://script.google.com/macros/s/AKfycbyOIhdFjRk-y8fRCYBcqdgiGdk9eaB6rkLjq8_aI1iC_GeHIzLk4vNFPT24UhI5yxX4mw/exec";
+
+
   const submitHandler = (e) => {
     e.preventDefault();
+    fetch(url, { method: "POST", body: new FormData(e.target) })
+          .then((response) => {
+            
+          })
+          .catch((error) => console.error("Error!", error.message));
     axios
       .post(
         `/api/applications/create`,
@@ -96,11 +105,11 @@ const Apply = () => {
               className="h-52 w-52 mx-auto mb-4"
               alt=""
             />
-            <h2 className="text-2xl font-bold mb-2 text-gray-800 text-center">
+            <h2 className="font-serif text-2xl font-bold mb-2 text-gray-800 text-center">
               Thanks for applying
             </h2>
-            <p className="text-gray-700 text-center">
-              Your Submission has been recieved
+            <p className="font-serif text-gray-700 text-center">
+              Your application has been recieved
             </p>
           </div>
         </div>
@@ -139,7 +148,7 @@ const Apply = () => {
             <div className="h-full w-full flex flex-col gap-4 justify-between items-center space-y-8 p-4 md:pt-10">
               <div className="w-full md:w-[800px] h-auto rounded-md mx-auto border-t px-2 bg-white">
                 <form
-                  className="w-full h-full md:px-8 pt-6 pb-3 "
+                  className="w-full h-full md:px-8 pt-6 pb-3 box-shadow-xl"
                   name="apply"
                   id="apply-form"
                   onSubmit={submitHandler}
@@ -221,7 +230,7 @@ const Apply = () => {
                             id="grid-name"
                             name="Linkedin"
                             type="url"
-                            placeholder="Your linkedin profile"
+                            placeholder="Your LinkedIn profile"
                             onChange={(e) =>
                               setLinkedin_profile(e.target.value)
                             }
@@ -361,7 +370,7 @@ const Apply = () => {
                             className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-number"
                             required
-                            name="apply"
+                            name="Contact"
                             placeholder="Enter your contact number "
                             type="number"
                             onChange={(e) => setContact_number(e.target.value)}
@@ -386,7 +395,7 @@ const Apply = () => {
                         type="text"
                         required
                         name="Startup Stage"
-                        placeholder="Current status of startup"
+                        placeholder="Current status of your Startup"
                         onChange={(e) => setStart_up_stage(e.target.value)}
                       />
                     </div>
@@ -409,7 +418,7 @@ const Apply = () => {
                       <textarea
                         className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-prob"
-                        placeholder="Problem statement"
+                        placeholder="A brief description of your Idea"
                         rows="7"
                         required
                         name="Problem Statement"
@@ -430,7 +439,7 @@ const Apply = () => {
                       <textarea
                         className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-diff"
-                        placeholder="What stands you apart?"
+                        placeholder="What makes you stand apart?"
                         rows="7"
                         name="USP"
                         required

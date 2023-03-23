@@ -134,25 +134,8 @@ const Home = () => {
 
       <section>
         <div className="w-full mx-auto h-auto flex flex-col items-center justify-center px-10 md:px-6 md:mb-0 md:pb-10 mb-6 mt-18 pt-4">
-          <div className="index-row gap-5 flex flex-col justify-between w-5/6 md:w-3/4 md:flex-row ">
+          <div className="index-row gap-5 flex flex-col justify-between w-5/6 md:w-5/6 md:flex-row ">
             
-            <div className="course-col flex flex-col gap-3 p-2 pt-0">
-              <img
-                className="mt-6 p-2"
-                src="img/Incubators_.png"
-                alt="incubators"
-              />
-              <div>
-                <h3>Incubators</h3>
-                <p className="pb-2 pt-1 px-2">
-                  Being a part of a large community gives you the advantage of
-                  connecting with a diverse group of entrepreneurs, which
-                  translates into potentially high-yielding investment
-                  opportunities.
-                </p>
-              </div>
-            </div>
-
 
             <div className="course-col flex flex-col gap-3 p-2 pt-0">
               <img src="img/Student_Founders.png" alt="incubators" className="p-2"/>
@@ -168,6 +151,24 @@ const Home = () => {
             </div>
 
 
+            <div className="course-col flex flex-col gap-3 p-2 pt-0">
+              <img
+                className="mt-6 p-2"
+                src="img/Incubators_.png"
+                alt="incubators"
+              />
+              <div>
+                <h3>Investors</h3>
+                <p className="pb-2 pt-1 px-2">
+                  Being a part of a large community gives you the advantage of
+                  connecting with a diverse group of entrepreneurs, which
+                  translates into potentially high-yielding investment
+                  opportunities.
+                </p>
+              </div>
+            </div>
+
+
             <div className="course-col flex flex-col gap-3 px-2 pt-0">
               <img src="img/College_Students.png" alt="incubators" className="p-2" />
 
@@ -176,7 +177,7 @@ const Home = () => {
                 <p className="pb-2 pt-1 px-2">
                 Our Ambassador Program is designed to incentivise and promote 
                 the spirit of entrepreneurship among college students and 
-                help them earn by referring startups to our platform
+                help them earn by referring startups to our platform.
                 </p>
               </div>
             </div>

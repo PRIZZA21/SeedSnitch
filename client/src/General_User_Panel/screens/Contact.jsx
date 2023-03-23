@@ -7,7 +7,6 @@ const Contact = () => {
 
   const url =
     "https://script.google.com/macros/s/AKfycbyj7EL2tV1oxo9fK9fefAu0EuckxFwwb288r7g_Vy4pO76FB3eysSE7DhivQeh7FkkELA/exec";
-  const contactForm = document.forms["contact"];
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const toggleHandler = () => {
@@ -16,7 +15,7 @@ const Contact = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch(url, { method: "POST", body: new FormData(contactForm) })
+    fetch(url, { method: "POST", body: new FormData(e.target) })
       .then((response) => {
         setIsSubmitted(true);
       })
@@ -41,10 +40,10 @@ const Contact = () => {
               className="h-52 w-52 mx-auto mb-4"
               alt=""
             />
-            <h2 className="text-2xl font-bold mb-2 text-gray-800 text-center">
+            <h2 className="text-2xl font-serif font-bold mb-2 text-gray-800 text-center">
               Thanks for contacting
             </h2>
-            <p className="text-gray-700 text-center">
+            <p className="text-gray-700 font-serif text-center">
               We will revert back to you soon
             </p>
           </div>

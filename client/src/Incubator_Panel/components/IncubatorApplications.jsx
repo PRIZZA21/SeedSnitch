@@ -27,17 +27,18 @@ const Paginate = ({pages,page}) => {
 
 const TableData = ({child}) => {
     return(
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
+        <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
     )
 }
 
 const TableDataText = ({text}) => {
     return (
-        <p className="text-gray-900 whitespace-no-wrap">
+        <p className="text-center text-gray-900 whitespace-no-wrap">
             {text}
         </p>
     )
 }
+
 
 
 const IncubatorApplications = () => {
@@ -81,11 +82,13 @@ const IncubatorApplications = () => {
         navigate(`/application/${id}`)
     }
     
-    if(loading) return <Loader />
+ 
 
     if(applications.length===0){ 
         return (
     <div> No applications with you right now</div>)}
+
+    if(loading) return <Loader />
 
     return (
         <div className="sm:px-8 py-4 overflow-x-auto ">
@@ -95,7 +98,7 @@ const IncubatorApplications = () => {
         
                 <thead>
                     {table_headers.map((theader)=>(
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <th className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                             {theader}
                         </th>
                     ))}
@@ -107,9 +110,7 @@ const IncubatorApplications = () => {
                         <tr key={application._id}>
 
                             <TableData child={
-                                <div className="flex ml-3">
-                                    <TableDataText text={application.startup_name} />
-                                </div>
+                                <TableDataText text={application.startup_name} />
                             }/>
 
                             <TableData child={
@@ -128,42 +129,37 @@ const IncubatorApplications = () => {
                             } />
 
                             <TableData child={
-                                <Link as={'p'} to={application.linkedin_profile} className="text-gray-900 whitespace-no-wrap">Visit</Link>
+                                <Link as={'p'} to={application.linkedin_profile} target="_blank" className="text-gray-900 whitespace-no-wrap">Visit</Link>
                             } />
 
 
-                            {application.curr_status==='Accepted'?
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span
-                                    className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                                    >
-                                    <span
-                                        aria-hidden
-                                        className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                    ></span>
-                                    <span className="relative">{application.curr_status}</span>
-                                    </span>
-                                </td>: 
+                                    {application.curr_status==='Accepted'?
+                                        <td className="px-5 py-5 text-center border-b border-gray-200 bg-white text-sm">
+                                            <span className="text-center relative inline-block py-1 font-semibold text-green-900  ml-5 -mr-6">
+                                            <span
+                                                aria-hidden
+                                                className="mx-auto bg-green-200 opacity-50 rounded-full"
+                                            ></span>
+                                            <span className="relative text-center mx-auto">{application.curr_status}</span>
+                                            </span>
+                                        </td>: 
 
-                                application.curr_status==='Applied'?
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                        <span
-                                            aria-hidden
-                                            className="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
-                                        />
-                                        <span className="relative">{application.curr_status}</span>
-                                    </span>
-                                </td>:
+                                        application.curr_status==='Applied'?
+                                        <td className="px-4 mx-auto py-5 border-b border-gray-200 bg-white text-sm">
+                                            <span className="text-center relative inline-block px-3 py-1 font-semibold text-yellow-900 ml-5 -mr-6">
+                                                <span aria-hidden className="absolute inset-0 bg-yellow-200 opacity-50 rounded-full" />
+                                                <span className="relative text-center max-auto">{application.curr_status}</span>
+                                            </span>
+                                        </td>:
 
 
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                        <span aria-hidden className="absolute inset-0 bg-red-200 opacity-50 rounded-full" />
-                                        <span className="relative">{application.curr_status}</span>
-                                    </span>
-                                </td>
-                            }
+                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <span className="text-center  relative inline-block px-3 py-1 font-semibold text-red-900  ml-5 -mr-6">
+                                                <span aria-hidden className="absolute inset-0 bg-red-200 opacity-50 rounded-full" />
+                                                <span className="relative text-center mx-auto">{application.curr_status}</span>
+                                            </span>
+                                        </td>
+                                    }
         
         
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">

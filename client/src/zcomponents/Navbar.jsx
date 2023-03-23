@@ -16,6 +16,8 @@ const Navbar = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // console.log(userInfo);
+
   const changeNavbarColor = () => {
     if (window.scrollY >= 20) {
       // x.classList.add("navbarColor");
@@ -65,6 +67,18 @@ const Navbar = () => {
         <NavLink to="/community" className="link">
           Community
         </NavLink>
+       
+        {/* <NavLink to="/contact" className="link">
+          Contact
+        </NavLink> */}
+        <NavLink to="/discussion-forum" className="link">
+          {" "}
+          Discussion Forum{" "}
+        </NavLink>
+        <NavLink to="/blogs/page/1" className="link">
+          {" "}
+          Blogs{" "}
+        </NavLink>
         <div className="relative group">
           <button className="flex flex-row items-center w-full link bg-transparent md:w-auto md:inline focus:outline-none">
             <span className="mr-2">Services</span>
@@ -72,8 +86,8 @@ const Navbar = () => {
               <FontAwesomeIcon icon={faAngleDown} />
             </span>
           </button>
-          <div className="absolute z-10 hidden bg-grey-200 group-hover:block">
-            <div className="px-2 py-3 bg-white bg-gray-200 shadow-lg w-48">
+          <div className="absolute z-10 hidden bg-grey-200 group-hover:block rouded-lg">
+            <div className="px-4 py-3 bg-white bg-gray-200 shadow-lg w-52 rounded-lg">
               <div className="my-2">
                 <NavLink to="/pitch-deck" className="link">
                   Pitch Deck
@@ -88,17 +102,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* <NavLink to="/contact" className="link">
-          Contact
-        </NavLink> */}
-        <NavLink to="/discussion-forum" className="link">
-          {" "}
-          Discussion Forum{" "}
-        </NavLink>
-        <NavLink to="/blogs/page/1" className="link">
-          {" "}
-          Blogs{" "}
-        </NavLink>
         {/* <NavLink to="/faq" className="link">
           FAQ
         </NavLink> */}
@@ -144,10 +147,10 @@ const Navbar = () => {
               
               {
               userInfo.profile_pic===""?
-              <div className="rounded-full border-gray-200 bg-[#0C6980] text-white border-1 w-8 flex flex-row justify-center h-8 items-center font-bold text-lg">
+             ( <div className="rounded-full border-gray-200 bg-[#0C6980] text-white border-1 w-8 flex flex-row justify-center h-8 items-center font-bold text-lg">
                 {" "}
                 {userInfo.name.split(" ")[0].charAt(0)}
-              </div>:
+              </div>):
               <div className="rounded-full w-10 h-10 mx-auto bg-gray-100 flex items-center justify-center">
                 <img
                   src={`/${userInfo.profile_pic}`}
@@ -194,7 +197,7 @@ const Navbar = () => {
           <span className="hamburger-bottom"></span>
         </button>
       </div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <div
           className={
             openMenu
@@ -202,6 +205,11 @@ const Navbar = () => {
               : "absolute flex-col items-center self-end py-4 mt-10 space-y-4 font-bold sm:w-min-3xl sm:self-center px-2 right-6 drop-shadow-md text-black bg-slate-50 flex"
           }
         >
+           {userInfo && userInfo.isIncubator && (
+              <Link to="/incubator" className="font-normal px-3">
+                Applications
+              </Link>
+            )}
           <Link to="/about" className="font-normal px-3">
             About
           </Link>
@@ -212,7 +220,7 @@ const Navbar = () => {
             Contact
           </Link>
           <Link to="/discussion-forum" className="font-normal px-3">
-            Support
+            Discussion Forum
           </Link>
           <Link to="/blogs/page/1" className="font-normal px-3">
             Blogs
@@ -220,19 +228,47 @@ const Navbar = () => {
           <Link to="/faq" className="font-normal px-3">
             FAQ
           </Link>
+          <Link to="/pitch-deck" className="font-normal px-3">
+          Pitch Deck
+          </Link>
+          <Link to="/company-reg" className="font-normal px-3">
+          Company Registration
+          </Link>
 
           {userInfo && userInfo.isAdmin && (
-            <Link to="/admin/applications/page/1" className="link">
+            <Link to="/admin/applications/page/1" className="font-normal px-3">
               Admin Options
             </Link>
           )}
+
+        {!userInfo && (
+          <Link
+            to="/login"
+            className="font-normal px-3"
+          >
+            Login
+          </Link>
+        )}
+
+        {userInfo && (
+            <>
+            <Link to="/" className="font-normal px-3" onClick={logoutHandler}>
+              Logout
+            </Link>
+            <Link to="/user/profile" className="font-normal px-3">
+              Profile
+            </Link>
+            </>
+        )}
+
+
 
           <Link to="/apply" className="font-bold text-darkBlue px-3">
             Apply
           </Link>
 
           <Link to="/ambassador" className="font-bold text-darkBlue px-3">
-            Become an ambassador
+            Ambassador Program
           </Link>
         </div>
       </div>
