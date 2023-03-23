@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Infobar from "../../Common_Components/Infobar";
 
 const About = () => {
   useEffect(() => {
@@ -6,19 +7,8 @@ const About = () => {
   }, []);
   return (
     <div>
-      <section className="mt-20 gap-x-8 h-[auto] md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
-        <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
-          <div className="w-full md:w-[800px] text-center my-4 p-4 md:p-2">
-            <h2 className="md:font-extrabold font-bold text-3xl md:text-5xl pb-2 text-black">
-              Get to know <span className="text-accent"> about us</span>
-            </h2>
-            <h2 className="font-light text-2xl hidden md:block md:font-normal text-[#242424]">
-              Discover the passion and purpose behind our mission.
-            </h2>
-          </div>
-        </div>
-      </section>
-
+      
+      <Infobar start_text={'Get to know'} end_text={'about us'} invert_text_color={true}/>
       <section>
         <div className="py-4 text-center mx-auto flex flex-col items-center justify-start">
           <div className="w-full md:p-4 flex flex-row justify-between items-center md:my-4">
@@ -40,15 +30,16 @@ const About = () => {
               </h1>
 
               <p className="text-center text-[20px] font-normal w-full">
-                Seedsnitch is a platform dedicated to helping college students
-                transform their ideas into successful ventures.{" "}
+              Seedsnitch is a platform dedicated to helping college students 
+              transform their ideas into successful ventures{" "}
                 <span className="hidden md:inline">
-                  Being aware of the unique challenges that a student might come
-                  across while starting up, we are here to bridge the gap
-                  through guidance and resources essential to overcoming them.
-                  We are a community with a stern belief that when entrepreneurs
-                  come together to share their experiences and get support,
-                  great things happen.
+                Being aware of the unique challenges that a student
+                might come across while starting up, we are here to bridge 
+                the gap through guidance and resources essential for 
+                overcoming them. We are a community with a stern 
+                belief that when entrepreneurs come together
+                 to share their experiences and get support, great things
+                    happen.
                 </span>
               </p>
             </div>

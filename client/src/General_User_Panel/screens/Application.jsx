@@ -46,15 +46,12 @@ const ApplicationDetails = () => {
   let navigate = useNavigate();
 
   const acceptHandler = () => {
-    if (reason === "") {
-      alert("Reason can't be empty");
-    }else
-    {axios.post(
+    axios.post(
       `/api/applications/accept/${params.id}`,
       { email: userInfo.email, reason: reason },
       config
     );
-    navigate("/incubator");}
+    navigate("/incubator");
   };
 
   const rejectHandler = () => {

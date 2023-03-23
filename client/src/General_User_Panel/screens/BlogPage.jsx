@@ -49,8 +49,9 @@ const BlogPage = () => {
 
   return (
     <div className="bg-white relative">
-      <Infobar start_text={"Blogs"} end_text={''}/>
 
+      <Infobar start_text={''} end_text={'Blogs'} invert_text_color={true}/>
+  
       <div className="py-10 flex flex-col md:flex-row md:justify-center md:flex-wrap gap-2 mx-3 md:mx-auto">
         {blogList &&
           blogList.map((blog) => (

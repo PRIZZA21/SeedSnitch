@@ -110,7 +110,7 @@ exports.createEcell = async(req,res) => {
 
 
 exports.getEcelldetails = asyncHandler(async(req,res) => {
-    console.log(req.params.id);
+
     const ecell = await Ecell_Model.findById(req.params.id)
 
     if(ecell){

@@ -82,7 +82,7 @@ exports.createIncubator = async(req,res) => {
 exports.toggleIncubator = expressAsyncHandler(async(req,res) => {
   
     try {
-        console.log("ayaya");
+
         const incubator = await Incubator_Model.findById(req.params.id)
 
         if(incubator){

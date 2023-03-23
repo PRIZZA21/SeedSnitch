@@ -22,7 +22,6 @@ exports.getAllBlogs = asyncHandler(async(req,res) => {
         .limit(pageSize)
         .skip(pageSize*(page-1));
 
-        console.log(page);
         
         res.status(200).json({all_blogs,page,pages: Math.ceil(count/pageSize)});
     } catch (error) {

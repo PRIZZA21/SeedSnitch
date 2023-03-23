@@ -576,7 +576,6 @@ input[type="number"] {
   font-weight: 400;
   line-height: 22px;
   text-align: center;
-  padding: 5px;
 }
 .index-row {
   margin-top: 3%;
@@ -591,7 +590,6 @@ input[type="number"] {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 10px;
   margin-bottom: 5%;
-  padding: 15px 12px;
   box-sizing: border-box;
   transition: 0.5s;
 }
@@ -599,7 +597,6 @@ input[type="number"] {
   font-size: 18px;
   text-align: center;
   font-weight: 600;
-  margin: 10px 0;
 }
 .course-col:hover {
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
@@ -682,55 +679,6 @@ input[type="number"] {
 details[open] .reply-card-title {
   color: #0fad98;
   font-weight: 500;
-}
-
-.post-card {
-  border: 1px solid #dce0e8;
-  border-radius: 6px;
-  padding: 24px 20px;
-  margin-bottom: 12px;
-  list-style: none;
-  position: relative;
-}
-
-.post-open-icon {
-  font-size: 22px;
-  position: absolute;
-  margin-left: 10px;
-  top: 18px;
-  right: 24px;
-  font-weight: 700;
-}
-
-details[open] .post-open-icon {
-  top: 18px;
-  right: 24px;
-}
-
-.post-card-description {
-  list-style: none;
-  padding-right: 5%;
-  font-size: 1.1rem;
-  color: gray;
-  font-weight: 500;
-}
-
-.post-card-description::-webkit-details-marker {
-  display: none;
-}
-
-.post-card-title {
-  color: #0b0c0b;
-  font-weight: 500;
-  font-size: 1.5rem;
-  padding-bottom: 3px;
-}
-
-.post-card-author {
-  color: #8b8b9a;
-  font-weight: 300;
-  font-size: 1.2rem;
-  padding-bottom: 3px;
 }
 
 details[open] .post-card-title {
@@ -840,4 +788,56 @@ nav .active {
 
 .sidebar #sidebar a.active{
   background-color: #f1f1f1;
+}
+
+
+
+.post-card {
+  border: 1px solid #dce0e8;
+  border-radius: 6px;
+  padding: 15px 22px;
+  margin-bottom: 12px;
+  list-style: none;
+  position: relative;
+}
+
+.post-open-icon {
+  font-size: 22px;
+  position: absolute;
+  margin-left: 10px;
+  top: 18px;
+  right: 24px;
+  font-weight: 700;
+}
+
+details[open] .post-open-icon {
+  top: 18px;
+  right: 24px;
+}
+
+.post-card-description {
+  list-style: none;
+  padding-right: 5%;
+  font-size: 1.1rem;
+  color: gray;
+  font-weight: 400;
+}
+
+.post-card-description::-webkit-details-marker {
+  display: none;
+}
+
+.post-card-title {
+  color: #0b0c0b;
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding-bottom: 0px;
+}
+
+.post-card-author {
+  color: #8b8b9a;
+  font-weight: 300;
+  font-size: 1rem;
+  padding-bottom: 3px;
+  margin-top: 0px;
 }

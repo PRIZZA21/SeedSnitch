@@ -61,8 +61,8 @@ const Home = () => {
           </div>
           <div className="max-w-lg text-medBlue font-semibold text-[20px] text-left">
             <p>
-              Supporting college entrepreneurs through mentorship, a cohort
-              program and campus representation.
+            Supporting college entrepreneurs through funding prospects, mentorship, and
+              campus representation.
             </p>
           </div>
           <div className="flex gap-4">
@@ -118,28 +118,33 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="mt-2 md:mt-28 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
+      <section className="mt-2 md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
         <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
           <div className="w-full md:w-[800px] text-center p-4 md:p-2">
             <h2 className="md:font-extrabold font-bold text-[1.8rem] md:text-5xl pb-2 text-accent">
               A Guide <span className="text-[#242424]">for Participants</span>
             </h2>
+            <h2 class="font-light text-2xl pt-1 md:font-normal text-[#242424]">
+            A comprehensive overview of the benefits and opportunities available
+            to participants in our program.
+          </h2>
           </div>
         </div>
       </section>
 
       <section>
         <div className="w-full mx-auto h-auto flex flex-col items-center justify-center px-10 md:px-6 md:mb-0 md:pb-10 mb-6 mt-18 pt-4">
-          <div className="index-row gap-5 flex flex-col justify-between w-full md:w-3/4 md:flex-row ">
-            <div className="course-col flex flex-col gap-3">
+          <div className="index-row gap-5 flex flex-col justify-between w-5/6 md:w-3/4 md:flex-row ">
+            
+            <div className="course-col flex flex-col gap-3 p-2 pt-0">
               <img
-                className="mt-6"
+                className="mt-6 p-2"
                 src="img/Incubators_.png"
                 alt="incubators"
               />
               <div>
                 <h3>Incubators</h3>
-                <p>
+                <p className="pb-2 pt-1 px-2">
                   Being a part of a large community gives you the advantage of
                   connecting with a diverse group of entrepreneurs, which
                   translates into potentially high-yielding investment
@@ -147,31 +152,37 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="course-col flex flex-col gap-3">
-              <img src="img/Student_Founders.png" alt="incubators" />
+
+
+            <div className="course-col flex flex-col gap-3 p-2 pt-0">
+              <img src="img/Student_Founders.png" alt="incubators" className="p-2"/>
 
               <div>
                 <h3>Student Founders</h3>
-                <p>
-                  Our platform is designed in a manner that ensures the maximum
-                  number of applications get funded and that those who don't get
-                  a thorough examination of their idea.
+                <p className="pb-2 pt-1 px-2">
+                Our platform is designed in a manner that ensures maximum
+                number of applications bag funding whereas the ones that 
+                do not, receive a thorough examination of their idea.
                 </p>
               </div>
             </div>
-            <div className="course-col flex flex-col gap-3">
-              <img src="img/College_Students.png" alt="incubators" />
+
+
+            <div className="course-col flex flex-col gap-3 px-2 pt-0">
+              <img src="img/College_Students.png" alt="incubators" className="p-2" />
 
               <div>
                 <h3>College Students</h3>
-                <p>
-                  Our Ambassador Program is designed to incentivise and promote
-                  the spirit of entrepreneurship among college students and earn
-                  money by referring startups to our platform.
+                <p className="pb-2 pt-1 px-2">
+                Our Ambassador Program is designed to incentivise and promote 
+                the spirit of entrepreneurship among college students and 
+                help them earn by referring startups to our platform
                 </p>
               </div>
             </div>
           </div>
+
+
         </div>
       </section>
     </div>

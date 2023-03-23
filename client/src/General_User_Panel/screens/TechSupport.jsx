@@ -90,13 +90,13 @@ const TechSupport = () => {
         <div>
           {userInfo ? (
             <Link
-              className="cursor-pointer flex justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs mx-auto py-2 px-3 mb-6 w-1/2 md:w-1/4  md:py-2 md:px-6 md:text-sm"
+              className="cursor-pointer flex mb-2 justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs mx-auto py-2 px-3 mb-10 w-1/2 md:w-1/4  md:py-2 md:px-6 md:text-sm"
               to="/create-post"
             >
               Ask a question
             </Link>
           ) : (
-            <span className="font-medium text-xl flex justify-center mb-6">
+            <span className="font-medium text-xl flex justify-center mb-10">
               <Link to="/login" className="font-bold text-accent">
                 Login Now
               </Link>{" "}
@@ -107,7 +107,7 @@ const TechSupport = () => {
           {postsList &&
             postsList.map((post) => (
               <div key={post._id}>
-                <div className="post-card my-8" key={post._id}>
+                <div className="post-card my-6" key={post._id}>
                   <div>
                     <div className="post-card-title">
                       {" "}
