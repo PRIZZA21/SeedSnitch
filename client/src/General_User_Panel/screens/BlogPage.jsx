@@ -52,7 +52,7 @@ const BlogPage = () => {
 
       <Infobar start_text={''} end_text={'Blogs'} invert_text_color={true}/>
   
-      <div className="py-10 flex flex-col md:flex-row md:justify-center md:flex-wrap gap-2 mx-3 md:mx-auto">
+      <div className="py-10 min-h-[60vh] flex flex-col md:flex-row md:justify-center md:flex-wrap gap-2 mx-3 md:mx-auto">
         {blogList &&
           blogList.map((blog) => (
             <div key={blog._id} className="flex flex-col items-center justify-around gap-y-8 w-full md:w-1/4 mx-2 pb-8 border-[1px] hover:shadow-2xl ease-in duration-200 mb-5 rounded-2xl">
