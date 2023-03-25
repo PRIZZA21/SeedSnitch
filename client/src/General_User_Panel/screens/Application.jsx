@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../Common_Components/Loader";
 
@@ -92,83 +93,186 @@ const ApplicationDetails = () => {
           {err}
         </div>
       ) : (
-        <section>
-          <div className="min-h-[300px] my-8 w-full md:w-4/6 rounded-lg bg-[#f8f8f8] md:mx-auto shadow-lg flex flex-col">
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Founder
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 text-sm pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.name}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Startup
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.startup_name}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Problem
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 text-sm pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.startup_problem}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                USP
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 text-sm pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.startup_differentiator}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Current Stage
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 text-sm pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.startup_stage}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                College
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 text-sm pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.college_name}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Contact
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.contact_number}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Email
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.email}
-              </span>
-            </div>
-            <div className="flex-1 border-b-2 px-6 flex flex-row">
-              <span className="w-1/4 md:w-1/6 border-r-2 text-sm pt-1 pb-1 md:text-lg">
-                Linkedin
-              </span>
-              <span className="w-3/4 md:w-5/6 border-l-2 text-sm pt-1 pb-1 pl-3 md:pl-8 md:text-lg">
-                {appln.linkedin_profile}
-              </span>
-            </div>
-          </div>
+       
 
-          {userInfo &&
+
+        <section
+        id="about-container"
+        className="mt-10 md:mt-10 md:mb-20 h-auto"
+      >
+        <div className="h-full w-full flex flex-col gap-4 justify-between items-center space-y-8 p-4 md:pt-10">
+          <div className="w-full md:w-[800px] h-auto rounded-md mx-auto border-t px-2 bg-white">
+            <form
+              className="w-full h-full md:px-8 pt-6 pb-3 box-shadow-xl"
+              name="apply"
+              id="apply-form"
+            >
+
+              
+              <div className="md:flex md:items-start md:justify-between bg-white justify-center">
+                <div className="w-full md:w-1/2 flex flex-col md:items-start md:justify-start items-center">
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      >
+                        First Name
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="text"
+                        readOnly
+                        value={appln.name}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      >
+                        E-Mail
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-email"
+                        type="email"
+                        value={appln.email}
+                      />
+                    </div>
+                  </div>
+
+             
+
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      >
+                        Linkedin Profile Link
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="url" 
+                        value={appln.linkedin_profile}
+                      />
+                    </div>
+                  </div>
+                 
+                </div>
+             
+                <div className="w-full md:w-1/2 flex flex-col md:items-start md:justify-start items-center">
+                
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full md:w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      >
+                        Startup Name
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="text"
+                        value={appln.startup_name}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      >
+                        College
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="text"
+                        value={appln.college_name}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      >
+                        Contact Number
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="number"
+                        value={appln.contact_number}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* <div className="px-4"> */}
+              <div className="flex flex-wrap mb-6 w-full">
+                <div className="w-full md:w-full px-3">
+                  <label
+                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                  >
+                    What is the current status of your startup (Ideation,
+                    Early-stage)?
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    type="text"
+                    value={appln.startup_stage}
+                  />
+                </div>
+              </div>
+              <div className="w-full flex flex-wrap mb-2">
+                <div className="w-full mb-6 md:mb-0 px-3">
+                  <label
+                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                  >
+                    Describe your startup?
+                  </label>
+                  <textarea
+                    className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    rows="7"
+                    value={appln.startup_problem}
+                  ></textarea>
+                </div>
+              </div>
+
+              <div className="w-full flex flex-wrap">
+                <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                  <label
+                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                  >
+                    How does your startup differentiate itself from similar
+                    products (if any)?
+                  </label>
+                  <textarea
+                    className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    rows="7"
+                    value={appln.startup_differentiator}
+                  ></textarea>
+                </div>
+              </div>
+              
+              
+              {appln.pitch_deck && appln.pitch_deck!=="" && <div className="w-full flex flex-wrap">
+                <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                  <div className="block tracking-wide text-darkBlue text-xs font-bold mb-2">
+
+                    PitchDeck - <Link target="_blank" to={appln.pitch_deck} className="text-blue-400 text-md font-semibold">Check Now</Link>
+
+                  </div>
+                </div>
+              </div>}
+              
+              
+              
+            </form>
+          </div>
+        </div>
+
+        {userInfo &&
             userInfo.isIncubator &&
             appln.curr_status === "Applied" && (
               <div className="mx-auto">
@@ -202,7 +306,12 @@ const ApplicationDetails = () => {
                 </div>
               </div>
             )}
-        </section>
+
+      </section>
+      
+      
+    
+
       )}
     </div>
   );

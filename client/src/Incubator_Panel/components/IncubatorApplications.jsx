@@ -14,7 +14,7 @@ const Paginate = ({pages,page}) => {
               [...Array(pages).keys()].map(x=>(
                   
                       <Pagination.Item >
-                          <Link key={x+1} to={`/admin/applications/page/${x+1}`}>
+                          <Link key={x+1} to={`/incubator/page/${x+1}`}>
                               {x+1} 
                           </Link>
                       </Pagination.Item>
@@ -68,7 +68,6 @@ const IncubatorApplications = () => {
         setLoading(true)
         axios.get(`/api/applications/incubator?pageNumber=${pageNumber}`,config)
         .then(res=> {
-
             setApplications(res.data.applications)
             setPage(res.data.page)
             setPages(res.data.pages)
@@ -134,15 +133,12 @@ const IncubatorApplications = () => {
 
 
                                     {application.curr_status==='Accepted'?
-                                        <td className="px-5 py-5 text-center border-b border-gray-200 bg-white text-sm">
-                                            <span className="text-center relative inline-block py-1 font-semibold text-green-900  ml-5 -mr-6">
-                                            <span
-                                                aria-hidden
-                                                className="mx-auto bg-green-200 opacity-50 rounded-full"
-                                            ></span>
-                                            <span className="relative text-center mx-auto">{application.curr_status}</span>
-                                            </span>
-                                        </td>: 
+                                        <td className="px-4 mx-auto py-5 border-b border-gray-200 bg-white text-sm">
+                                        <span className="text-center relative inline-block px-3 py-1 font-semibold text-green-900 ml-5 -mr-6">
+                                            <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full" />
+                                            <span className="relative text-center max-auto">{application.curr_status}</span>
+                                        </span>
+                                            </td>:
 
                                         application.curr_status==='Applied'?
                                         <td className="px-4 mx-auto py-5 border-b border-gray-200 bg-white text-sm">

@@ -1,21 +1,27 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Ambassador = () => {
 
   const url = "https://script.google.com/macros/s/AKfycbxdM7XaEJ1Gq1Xy_IrSeUWDV5ARJUKkFv7DcCCIOunwsu1m5IHb85E4TBudYqCpbtEV/exec"
  
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [fname, setFname] = useState('');
+  const [email, setEmail] = useState('');
   const toggleHandler = () => {
     setIsSubmitted(!isSubmitted);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    
     fetch(url, { method: "POST", body: new FormData(e.target) })
       .then((response) => {
         setIsSubmitted(true);
       })
       .catch((error) => console.error("Error!", error.message));
+
+      axios.post(`/api/ambassador/amb-mail`,{fname,email})
   };
 
   
@@ -163,6 +169,7 @@ const Ambassador = () => {
                       type="text"
                       required
                       placeholder="First Name"
+                      onChange={(e) => setFname(e.target.value)}
                     />
                   </div>
                 </div>
@@ -181,6 +188,7 @@ const Ambassador = () => {
                       type="text"
                       required
                       placeholder="Last Name"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>

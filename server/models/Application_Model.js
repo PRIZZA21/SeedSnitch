@@ -14,6 +14,7 @@ const applicationSchema = new mongoose.Schema(
     curr_status           : { type: String, default: "Applied"},
     assigned_incubator    : { type: mongoose.Schema.Types.ObjectId, ref: "Incubator", default: null },
     creator               : { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, },
+    pitch_deck            : { type: String, default: ""}
   },
   { 
     timestamps: true

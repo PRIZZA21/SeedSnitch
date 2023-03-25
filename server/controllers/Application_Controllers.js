@@ -30,6 +30,9 @@ const applications24hrchecker = asyncHandler(async()=>{
 
 
 const shiftApplication = asyncHandler(async(inc_id,application_id) => {
+    
+    console.log(inc_id,application_id);
+
     const currentIncubatorassigned = await Incubator_Model.findById(inc_id);
     const incubators = await Incubator_Model.find();
     let currentIncubator = incubators[0];
@@ -48,6 +51,7 @@ const shiftApplication = asyncHandler(async(inc_id,application_id) => {
         { $set: { assigned_incubator: currentIncubator._id } }
     );
 
+    
     await Incubator_Model.updateOne({_id:inc_id},
         { $pull: 
             { applications_submitted:  { application_id: application_id }} 
@@ -77,55 +81,6 @@ const not_have_appln =  asyncHandler((id,appln_id,incubators)=> {
 })
   
 
-
-const reassignApplication = asyncHandler(async() => {
-
-    try {
-  
-      const applications = await Application_Model.find();
-      const incubators = await Incubator_Model.find();
-      
-      for (let i = 0; i < applications.length; i++) 
-        if (applications[i].assigned_incubator === null ) {
-
-            let currentIncubator = incubators[i % incubators.length];
-            let currApplications =1000;
-
-            for(let j=0;j<incubators.length;j++){
-                let check =  await not_have_appln(incubators[j]._id,applications[i]._id,incubators);
-                let appln_now = incubators[j].applications_submitted.length;
-                if(appln_now<=currApplications && check&& incubators[j].active){ 
-                    currApplications = incubators[j].applications_submitted.length;
-                    currentIncubator = incubators[j];
-                }
-            }
-
-            if(not_have_appln(currentIncubator._id,applications[i]._id,incubators)|| !currentIncubator.active){
-                await Application.updateOne(
-                    { _id: applications[i]._id },
-                    { $set: { curr_status: "Rejected" } }
-                );
-                return ;
-            }
-  
-            await Application_Model.updateOne({ _id: applications[i]._id },
-                { $set: { assigned_incubator: currentIncubator._id } }
-            );
-    
-            await Incubator_Model.updateOne(
-                {_id:currentIncubator._id},
-                { $push: { applications_submitted:  {  application_id: applications[i]._id,  timestamp: new Date() }}}
-            );
-
-        }
-    } 
-    
-    catch (err) {
-      console.log(err);
-    }
-
-  })
-
   
 const assignApplication = asyncHandler(async() => {
 
@@ -142,15 +97,17 @@ const assignApplication = asyncHandler(async() => {
 
             for(let j=0;j<incubators.length;j++){
                 let check =  await not_have_appln(incubators[j]._id,applications[i]._id,incubators);
-                // console.log("\n\n Checlk hai ",incubators[j].name," ke pass ",applications[i]._id," ",check,"\n");
+                console.log("\n\n Checlk hai ",incubators[j].name," ke pass ",applications[i]._id," ",check,"\n");
                 let appln_now = incubators[j].applications_submitted.length;
-                if(appln_now<=currApplications && check &&  incubators[j].active){ 
+                if(appln_now<=currApplications && !check &&  incubators[j].active){ 
                     currApplications = incubators[j].applications_submitted.length;
                     currentIncubator = incubators[j];
                 }
             }
 
-            if(!not_have_appln(currentIncubator._id,applications[i]._id,incubators) && currentIncubator.active){
+      
+    
+            if(!not_have_appln(currentIncubator._id,applications[i]._id,incubators) || !currentIncubator.active){
                 await Application.updateOne(
                     { _id: applications[i]._id },
                     { $set: { curr_status: "Rejected" } }
@@ -259,21 +216,40 @@ exports.getApplicationsByCreatorId = asyncHandler(async (req, res) => {
 
 exports.getApplicationsByIncubatorId = asyncHandler(async(req,res)=>{
     try{
+
         applications24hrchecker();
+        const incubator = await Incubator_Model.findOne({"email": req.user.email})
+        const pageSize = 4
+        const page = Number(req.query.pageNumber) || 1 
+        
+        const count = await Application_Model.count(
+            { $or: [
+                {_id: { $in: incubator.applications_submitted.map(application => application.application_id) }},
+                {_id: { $in: incubator.applications_rejected.map(application => application.application_id) }},
+                {_id: { $in: incubator.applications_accepted.map(application => application.application_id) }},
+            ]
+            }
+        )
 
-        const incubator = await Incubator_Model
-        .findOne({"email": req.user.email})
+            // const count = await Application_Model.count({assigned_incubator: incubator})
+            // const applications = await Application_Model
+            // .find({assigned_incubator: incubator})
+            // .populate('assigned_incubator')
+            // .sort({createdAt: -1})
+            // .limit(pageSize)
+            // .skip(pageSize*(page-1));
 
-
-            const pageSize = 4
-            const page = Number(req.query.pageNumber) || 1 
-            const count = await Incubator_Model.count({assigned_incubator: incubator})
             const applications = await Application_Model
-            .find({assigned_incubator: incubator})
+            .find({ $or: [
+                {_id: { $in: incubator.applications_submitted.map(application => application.application_id) }},
+                {_id: { $in: incubator.applications_rejected.map(application => application.application_id) }},
+                {_id: { $in: incubator.applications_accepted.map(application => application.application_id) }},
+            ]
+            })
             .populate('assigned_incubator')
             .sort({createdAt: -1})
-            .limit(pageSize)
-            .skip(pageSize*(page-1));
+            .skip(pageSize * (page - 1))
+            .limit(pageSize);
 
             res.status(200).json({applications,page,pages: Math.ceil(count/pageSize)});
             // console.log(applications);
@@ -328,18 +304,47 @@ exports.createApplication = asyncHandler(async (req, res) => {
             startup_problem: req.body.start_up_problem,
             startup_differentiator: req.body.start_up_differentiator,
             creator: req.user._id,
+            pitch_deck : req.body.pdf
         });
+
         await application.save();
         applications24hrchecker()
         res.status(200).json({message: "Application succesfully created"});
 
-        let applications_all = await Application_Model.find()
+        // let applications_all = await Application_Model.find()
         // console.log("\n\n\n",applications_all);
+        
+        const incubators = await Incubator_Model.find();
+        let currApplications =1000;
+        
+        for(let j=0;j<incubators.length;j++){
+            let appln_now = incubators[j].applications_submitted.length;
+            if(appln_now<=currApplications && incubators[j].active){ 
+                currApplications = incubators[j].applications_submitted.length;
+                currentIncubator = incubators[j];
+            }
+        }
 
-        assignApplication();
+        if(currentIncubator.active===false){
+            await Application_Model.updateOne(
+                { _id: application._id },
+                { $set: { curr_status: "Rejected" } }
+            );
+        }
 
-        applications_bat = await Application_Model.find()
-        // console.log("\n\n\n\n",applications_bat);
+        await Application_Model.updateOne({ _id: application._id },
+            { $set: { assigned_incubator: currentIncubator._id } }
+        );
+
+        await Incubator_Model.updateOne(
+            {_id:currentIncubator._id},
+            { $push: { applications_submitted:  {  application_id: application._id,  timestamp: new Date() }}}
+        );
+
+        // assignApplication();
+
+        // applications_bat = await Application_Model.find()
+        // // console.log("\n\n\n\n",applications_bat);
     } 
 
     catch (err) {

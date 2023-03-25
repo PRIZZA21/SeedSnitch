@@ -13,6 +13,8 @@ const Apply = () => {
   const [college_name, setCollege_name] = useState("");
   const [contact_number, setContact_number] = useState(0);
   const [start_up_stage, setStart_up_stage] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [pdf, setPdf] = useState("");
   const [start_up_problem, setStart_up_problem] = useState("");
   const [start_up_differentiator, setStart_up_differentiator] = useState("");
 
@@ -40,6 +42,30 @@ const Apply = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("pdf", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      var { data } = await axios.post(
+        "/api/uploadpdf",
+        formData,
+        config
+      );
+      setPdf(data);
+      setUploading(false);
+    } catch (error) {
+      setUploading(false);
+    }
+  };
   
   let config = {}
 
@@ -74,6 +100,7 @@ const Apply = () => {
           start_up_stage,
           start_up_problem,
           start_up_differentiator,
+          pdf
         },
         config
       )
@@ -142,7 +169,6 @@ const Apply = () => {
           </section>
 
           <section
-            id="about-container"
             className="mt-10 md:mt-10 md:mb-20 h-auto"
           >
             <div className="h-full w-full flex flex-col gap-4 justify-between items-center space-y-8 p-4 md:pt-10">
@@ -449,20 +475,42 @@ const Apply = () => {
                       ></textarea>
                     </div>
                   </div>
+
+
+                  <div className="w-full flex flex-wrap">
+                    <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                      <label
+                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                        htmlFor="grid-diff"
+                      >
+                        Upload Pitchdeck (Recommended) [pdf-max-1mb]
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="file"
+                        onChange={uploadFileHandler}
+                      />
+                    </div>
+                  </div>
                   {/* </div> */}
 
                   <div className="w-full flex flex-wrap mb-6">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0 md:mt-8">
-                      <input
+                    {!uploading ? 
+                    (<input
                         className="shadow color focus:shadow-outline focus:outline-none text-white cursor-pointer font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
                         type="submit"
-                      />
+                    />) : 
+                    (<div className="shadow color focus:shadow-outline focus:outline-none text-white  font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center ">Please wait till uploading</div>)
+                    }
                     </div>
                   </div>
                 </form>
               </div>
             </div>
+
           </section>
+          
         </div>
       ) : (
         <div className="h-500 bg-green">

@@ -28,7 +28,9 @@ const applications = require('./routes/Application_Routes');
 const incubators = require('./routes/Incubator_Routes');
 const ecells = require('./routes/Ecell_Routes');
 const blogs = require('./routes/Blog_Routes');
+const ambassador = require('./routes/Ambassador_Routes');
 const uploadRoutes = require('./routes/Upload_Routes');
+const Upload_Pdf_Routes = require('./routes/Upload_Pdf_Routes');
 
 
 // Setting up express and port for running server
@@ -83,9 +85,11 @@ app.use('/api/posts', posts);
 app.use('/api/replies', replies);
 app.use('/api/applications', applications);
 app.use('/api/incubators', incubators);
+app.use('/api/ambassador', ambassador);
 app.use('/api/ecells', ecells);
 app.use('/api/blogs', blogs);
 app.use('/api/uploads', uploadRoutes);
+app.use('/api/uploadpdf', Upload_Pdf_Routes);
 
 
 // Setting up the static files

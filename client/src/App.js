@@ -59,6 +59,7 @@ const App = () => {
           <Route path="blog/:id" element={<BlogDetails />} />
           <Route path="login" element={<Login />} />
           <Route path="incubator" element={<IncubatorApplicationsScreen />} />
+          <Route path="incubator/page/:pageNumber" element={<IncubatorApplicationsScreen />} />
           <Route path="register" element={<Register />} />
           <Route path="apply" element={<Apply />} />
           <Route path="ambassador" element={<Ambassador />} />
