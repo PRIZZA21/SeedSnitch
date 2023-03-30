@@ -68,9 +68,7 @@ const BlogPage = () => {
               <div className="card__body">
                 <h4> {blog.title}</h4>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Soluta porro necessitatibus laborum, velit ex atque nisi
-                  voluptate minus iusto adipisci.
+                  Check out this Blog right now
                 </p>
               </div>
               {/* <div className="card__footer">

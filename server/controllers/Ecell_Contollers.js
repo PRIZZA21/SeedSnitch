@@ -84,7 +84,7 @@ exports.createEcell = async(req,res) => {
         email: req.body.email,
         profile_pic: req.body.image,
         password: pwd,
-        isAmbassador: true
+        isEcell: true
     });
     
 

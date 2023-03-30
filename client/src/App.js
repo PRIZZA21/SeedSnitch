@@ -41,6 +41,7 @@ import AdminLayout from "./AdminLayout";
 // import AdminPanel from "./Admin_Panel/AdminPanel";
 import GeneralUserLayout from "./General_User_Panel/GeneralUserLayout";
 import PageNotFound from "./General_User_Panel/screens/PageNotFound";
+import GeneralAddBlog from "./Incubator_Panel/screens/GeneralAddBlog";
 
 const App = () => {
   return (
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="blog/:id" element={<BlogDetails />} />
           <Route path="login" element={<Login />} />
           <Route path="incubator" element={<IncubatorApplicationsScreen />} />
+          <Route path="addBlog" element={<GeneralAddBlog />} />
           <Route path="incubator/page/:pageNumber" element={<IncubatorApplicationsScreen />} />
           <Route path="register" element={<Register />} />
           <Route path="apply" element={<Apply />} />

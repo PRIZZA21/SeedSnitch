@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     hash_password: { type: String, required: true},
     isAdmin      : { type: Boolean, default: false},
     isAmbassador : { type: Boolean, default: false},
+    isEcell : { type: Boolean, default: false},
     isIncubator  : { type: Boolean, default: false},
     applications : { type: [mongoose.Schema.Types.ObjectId], ref: "Application", default: [] },
     profile_pic  : { type: String, default: ""}

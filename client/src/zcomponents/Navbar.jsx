@@ -56,11 +56,17 @@ const Navbar = () => {
       </div>
 
       <div className="hidden container  flex-row items-center justify-center space-x-10 lg:flex max-w-1/6">
-        {userInfo && userInfo.isIncubator && (
+        {userInfo && (userInfo.isIncubator) && (
           <NavLink to="/incubator" className="link font-bold">
             Applications
           </NavLink>
         )}
+        {userInfo && (userInfo.isEcell || userInfo.isIncubator) && (
+          <NavLink to="/addBlog" className="link">
+            Post Blog
+          </NavLink>
+        )}
+
         <NavLink to="/about" className="link">
           About
         </NavLink>
@@ -118,20 +124,7 @@ const Navbar = () => {
       </div>
 
       <div className="max-w-1/3 hidden items-center justify-end pr-4 font-semibold button-effect space-x-4 lg:flex">
-        {/* <Link
-          to="/apply"
-          className="cursor-pointer border-gray-200 border flex justify-center items-center font-medium rounded-md hover:bg-accent text-black text-xs shrink-0 py-2 px-2 md:py-2 md:px-4 md:text-sm"
-        >
-          Apply
-        </Link>
-
-        <Link
-          to="/ambassador"
-          className="cursor-pointer flex justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs shrink-0 py-2 px-3 md:py-2 md:px-6 md:text-sm"
-        >
-          Become an ambassador
-        </Link> */}
-
+    
         {!userInfo && (
           <Link
             to="/login"
@@ -212,6 +205,12 @@ const Navbar = () => {
            {userInfo && userInfo.isIncubator && (
               <Link to="/incubator" className="font-normal px-3">
                 Applications
+              </Link>
+            )}
+
+           {userInfo && (userInfo.isIncubator||userInfo.isEcell) && (
+              <Link to="/addBlog" className="font-normal px-3">
+                Post Blog
               </Link>
             )}
           <Link to="/about" className="font-normal px-3">

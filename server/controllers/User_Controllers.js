@@ -144,6 +144,7 @@ exports.registerUser = asyncHandler(async(req,res) => {
                 isAdmin: user.isAdmin,
                 isIncubator: user.isIncubator,
                 isAmbassador: user.isAmbassador,
+                isEcell: user.isEcell,
                 profile_pic:user.profile_pic,
                 token: generateToken(user)
             })
@@ -188,6 +189,7 @@ exports.authenticateUser = asyncHandler(async(req,res) => {
                 isAdmin: user.isAdmin,
                 isIncubator: user.isIncubator,
                 isAmbassador: user.isAmbassador,
+                isEcell: user.isEcell,
                 token: generateToken(user._id),
                 profile_pic : user.profile_pic
             })
@@ -224,6 +226,7 @@ exports.getUserProfile = asyncHandler(async(req,res) => {
             isAdmin: user.isAdmin,
             isAmbassador: user.isAmbassador,
             isIncubator:user.isIncubator,
+            isEcell: user.isEcell,
             applications: user.applications,
             profile_pic: user.profile_pic
 
