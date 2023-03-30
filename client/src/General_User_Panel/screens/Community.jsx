@@ -9,9 +9,7 @@ const Community = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("/api/ecells/all")
-      .then((res) => setEcellsList(res.data));
+    axios.get("/api/ecells/all").then((res) => setEcellsList(res.data));
     setLoading(false);
   }, []);
 
@@ -19,14 +17,20 @@ const Community = () => {
 
   return (
     <div>
-      <Infobar start_text={'Our Network of'} end_text={'Entrepreneurial Cells'} invert_text_color={true}/>
+      <Infobar
+        start_text={"Our Network of"}
+        end_text={"Entrepreneurial Cells"}
+        invert_text_color={true}
+      />
       <section>
-        <div className="py-4 min-h-[370px] text-center mx-auto flex flex-col items-center justify-start">
-
+        <div className="py-4 min-h-[60vh] text-center mx-auto flex flex-col items-center justify-start">
           <div className="w-full p-4 flex flex-col  justify-center items-center my-4 md:flex-row md:flex-wrap">
             {ecellsList &&
               ecellsList.map((ecell) => (
-                <div key={ecell._id} className="w-full h-100 bg-white rounded-lg border-2 md:shadow-md m-4 md:mx-6 md:my-10 md:w-1/5">
+                <div
+                  key={ecell._id}
+                  className="w-full h-100 bg-white rounded-lg border-2 md:shadow-md m-4 md:mx-6 md:my-10 md:w-1/5"
+                >
                   <img
                     src={`/${ecell.logo}`}
                     alt=""

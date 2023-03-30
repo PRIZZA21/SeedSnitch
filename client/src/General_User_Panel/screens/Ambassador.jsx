@@ -2,29 +2,28 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Ambassador = () => {
+  const url =
+    "https://script.google.com/macros/s/AKfycbxdM7XaEJ1Gq1Xy_IrSeUWDV5ARJUKkFv7DcCCIOunwsu1m5IHb85E4TBudYqCpbtEV/exec";
 
-  const url = "https://script.google.com/macros/s/AKfycbxdM7XaEJ1Gq1Xy_IrSeUWDV5ARJUKkFv7DcCCIOunwsu1m5IHb85E4TBudYqCpbtEV/exec"
- 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [fname, setFname] = useState('');
-  const [email, setEmail] = useState('');
+  const [fname, setFname] = useState("");
+  const [email, setEmail] = useState("");
   const toggleHandler = () => {
     setIsSubmitted(!isSubmitted);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+
     fetch(url, { method: "POST", body: new FormData(e.target) })
       .then((response) => {
         setIsSubmitted(true);
       })
       .catch((error) => console.error("Error!", error.message));
 
-      axios.post(`/api/ambassador/amb-mail`,{fname,email})
+    axios.post(`/api/ambassador/amb-mail`, { fname, email });
   };
 
-  
   if (isSubmitted) {
     return (
       <div className="flex h-[88vh] w-full">
@@ -43,10 +42,10 @@ const Ambassador = () => {
               className="h-52 w-52 mx-auto mb-4"
               alt=""
             />
-            <h2 className="font-serif text-2xl font-bold mb-2 text-gray-800 text-center">
+            <h2 className=" text-2xl font-bold mb-2 text-gray-800 text-center">
               Thanks for applying
             </h2>
-            <p className="font-serif text-gray-700 text-center">
+            <p className=" text-gray-700 text-center">
               We will revert back to you soon
             </p>
           </div>
@@ -157,14 +156,14 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                       htmlFor="grid-name"
                     >
                       First Name
                     </label>
                     <input
                       name="Name"
-                      className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="appearance-none font-serif block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-name"
                       type="text"
                       required
@@ -176,14 +175,14 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                       htmlFor="grid-name"
                     >
                       Last Name
                     </label>
                     <input
                       name="LastName"
-                      className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="appearance-none font-serif block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-name"
                       type="text"
                       required
@@ -197,13 +196,13 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                       htmlFor="grid-email"
                     >
                       Email
                     </label>
                     <input
-                      className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="appearance-none font-serif block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-email"
                       name="Email"
                       type="email"
@@ -215,13 +214,13 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                       htmlFor="grid-linkedin"
                     >
                       Linkedin profile
                     </label>
                     <input
-                      className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="appearance-none font-serif block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-name"
                       name="Linkedin"
                       type="url"
@@ -233,14 +232,14 @@ const Ambassador = () => {
               <div className="flex flex-wrap -mx-3 mb-2 mt-8">
                 <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                     htmlFor="grid-plan"
                   >
                     How do you plan to network with startup founders or those in
                     the ideation stage at your college?
                   </label>
                   <textarea
-                    className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-plan"
                     name="Networking Approach"
                     placeholder="Describe your approach here."
@@ -252,7 +251,7 @@ const Ambassador = () => {
               <div className="flex flex-wrap -mx-3 mb-2 mt-8">
                 <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                     htmlFor="grid-prob"
                   >
                     Do you know people who are working on a startup idea, and
@@ -261,7 +260,7 @@ const Ambassador = () => {
                   </label>
                   <textarea
                     name="Founder Linkedin"
-                    className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-prob"
                     placeholder="Drop their linkedin profiles here."
                     rows="7"
@@ -272,14 +271,14 @@ const Ambassador = () => {
               <div className="flex flex-wrap -mx-3 mb-2 mt-8">
                 <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
                     htmlFor="grid-desc"
                   >
                     Is there anything you want to tell us about yourself?
                   </label>
                   <textarea
                     name="About Yourself"
-                    className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className=" font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-desc"
                     placeholder="Tell us about yourself."
                     rows="7"

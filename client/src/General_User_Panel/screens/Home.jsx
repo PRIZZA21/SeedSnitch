@@ -61,8 +61,8 @@ const Home = () => {
           </div>
           <div className="max-w-lg text-medBlue font-semibold text-[20px] text-left">
             <p>
-            Supporting college entrepreneurs through funding prospects, mentorship, and
-              campus representation.
+              Supporting college entrepreneurs through funding prospects,
+              mentorship, and campus representation.
             </p>
           </div>
           <div className="flex gap-4">
@@ -124,10 +124,6 @@ const Home = () => {
             <h2 className="md:font-extrabold font-bold text-[1.8rem] md:text-5xl pb-2 text-accent">
               A Guide <span className="text-[#242424]">for Participants</span>
             </h2>
-            <h2 class="font-light text-2xl pt-1 md:font-normal text-[#242424]">
-            A comprehensive overview of the benefits and opportunities available
-            to participants in our program.
-          </h2>
           </div>
         </div>
       </section>
@@ -135,21 +131,22 @@ const Home = () => {
       <section>
         <div className="w-full mx-auto h-auto flex flex-col items-center justify-center px-10 md:px-6 md:mb-0 md:pb-10 mb-6 mt-18 pt-4">
           <div className="index-row gap-5 flex flex-col justify-between w-5/6 md:w-5/6 md:flex-row ">
-            
-
             <div className="course-col flex flex-col gap-3 p-2 pt-0">
-              <img src="img/Student_Founders.png" alt="incubators" className="p-2"/>
+              <img
+                src="img/Student_Founders.png"
+                alt="incubators"
+                className="p-2"
+              />
 
               <div>
                 <h3>Student Founders</h3>
                 <p className="pb-2 pt-1 px-2">
-                Our platform is designed in a manner that ensures maximum
-                number of applications bag funding whereas the ones that 
-                do not, receive a thorough examination of their idea.
+                  Our platform is designed in a manner that ensures maximum
+                  number of applications bag funding whereas the ones that do
+                  not, receive a thorough examination of their idea.
                 </p>
               </div>
             </div>
-
 
             <div className="course-col flex flex-col gap-3 p-2 pt-0">
               <img
@@ -168,22 +165,23 @@ const Home = () => {
               </div>
             </div>
 
-
             <div className="course-col flex flex-col gap-3 px-2 pt-0">
-              <img src="img/College_Students.png" alt="incubators" className="p-2" />
+              <img
+                src="img/College_Students.png"
+                alt="incubators"
+                className="p-2"
+              />
 
               <div>
                 <h3>College Students</h3>
                 <p className="pb-2 pt-1 px-2">
-                Our Ambassador Program is designed to incentivise and promote 
-                the spirit of entrepreneurship among college students and 
-                help them earn by referring startups to our platform.
+                  Our Ambassador Program is designed to incentivise and promote
+                  the spirit of entrepreneurship among college students and help
+                  them earn by referring startups to our platform.
                 </p>
               </div>
             </div>
           </div>
-
-
         </div>
       </section>
     </div>

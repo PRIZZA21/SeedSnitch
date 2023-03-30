@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Infobar from "../../Common_Components/Infobar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import {
-  getUserDetails,
-} from "../../redux/actions/userActions";
+import { getUserDetails } from "../../redux/actions/userActions";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -15,8 +13,8 @@ const ProfileScreen = () => {
   const [password, setPassword] = useState("");
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState("");
-  const [error,setError] = useState(null);
-  const [message,setMessage] = useState(null);
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -53,17 +51,18 @@ const ProfileScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!uploading){
+    if (!uploading) {
       setError(null);
       setMessage(null);
       axios
-      .put(`/api/users/profile`,{ name, email, password, image }, config)
-      .then(res=>{setMessage(res.data.message)})
-      .catch(
-        res=>{ setError(res.response.data.error)}
-      )
+        .put(`/api/users/profile`, { name, email, password, image }, config)
+        .then((res) => {
+          setMessage(res.data.message);
+        })
+        .catch((res) => {
+          setError(res.response.data.error);
+        });
     }
-      
   };
 
   const applnHandler = () => {
@@ -86,11 +85,7 @@ const ProfileScreen = () => {
           "Content-Type": "multipart/form-data",
         },
       };
-      var { data } = await axios.post(
-        "/api/uploads",
-        formData,
-        config
-      );
+      var { data } = await axios.post("/api/uploads", formData, config);
       data = data.substr(8);
       data = "/" + data;
       setImage(data);
@@ -101,24 +96,28 @@ const ProfileScreen = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse pb-8 md:flex-row">
+    <div className="flex flex-col-reverse pb-8 md:flex-row min-h-[78vh]">
       <div className="w-full md:w-1/4 bg-green relative mt-20 border-t-2 border-r-2 border-b-slate-200 flex">
-        <div className="sticky top-28 ">
+        <div className="sticky top-28 mx-auto">
           <div className="w-full h-full rounded-md mx-auto flex flex-row justify-center mr-3">
             <form
               className="w-full h-full max-w-lg px-8 py-6"
               name="profile"
               onSubmit={submitHandler}
             >
-              {error && <div className='text-red-400 mb-5 text-center'>{error}</div>}
+              {error && (
+                <div className="text-red-400 mb-5 text-center">{error}</div>
+              )}
 
               {message && (
-                <div className="text-green-500 font-semibold text-lg mb-5 text-center">{message}</div>
+                <div className="text-green-500 font-semibold text-lg mb-5 text-center">
+                  {message}
+                </div>
               )}
 
               <div className="flex flex-wrap -mx-3 mb-4">
                 {image !== "" ? (
-                  <div className="rounded-full w-28 h-28 mx-auto bg-gray-100 mb-4 flex items-center justify-center">
+                  <div className="rounded-full w-28 h-28 mx-auto font-serif mb-4 flex items-center justify-center">
                     <img
                       src={`/${image}`}
                       className="rounded-full w-36 h-28"
@@ -136,14 +135,14 @@ const ProfileScreen = () => {
 
                 <div className="w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                     htmlFor="grid-name"
                   >
                     Enter Image
                   </label>
 
                   <input
-                    className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="appearance-none block w-full font-serif text-darkBlue border border-gray font-serif rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="img-file"
                     type="file"
                     name="img-file"
@@ -155,13 +154,13 @@ const ProfileScreen = () => {
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                     htmlFor="grid-name"
                   >
                     Name
                   </label>
                   <input
-                    className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="appearance-none block w-full font-serif text-darkBlue border border-gray font-serif rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-name"
                     type="text"
                     name="Name"
@@ -174,13 +173,13 @@ const ProfileScreen = () => {
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                     htmlFor="grid-email"
                   >
                     Email
                   </label>
                   <input
-                    className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="appearance-none block w-full font-serif text-darkBlue border border-gray font-serif rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-email"
                     type="email"
                     name="Email"
@@ -193,13 +192,13 @@ const ProfileScreen = () => {
               <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                     htmlFor="grid-password"
                   >
                     Password
                   </label>
                   <input
-                    className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="appearance-none block w-full font-serif text-darkBlue border border-gray font-serif rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-password"
                     type="password"
                     name="Subject"
@@ -211,12 +210,17 @@ const ProfileScreen = () => {
 
               <div className="w-full">
                 <div className="w-full flex flex-row items-center">
-                 {!uploading ? (<input
-                    className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
-                    type="submit"
-                    value="Update"
-                  />) : (
-                  <div className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center">Please wait till uploading</div>) }
+                  {!uploading ? (
+                    <input
+                      className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
+                      type="submit"
+                      value="Update"
+                    />
+                  ) : (
+                    <div className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center">
+                      Please wait till uploading
+                    </div>
+                  )}
                 </div>
               </div>
             </form>

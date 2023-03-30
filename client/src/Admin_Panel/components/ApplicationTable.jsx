@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { listApplications } from "../../redux/actions/applicationsActions";
 import Loader from "../../Common_Components/Loader";
 import { Pagination } from "react-bootstrap";
@@ -23,21 +23,17 @@ const Paginate = ({ pages }) => {
   );
 };
 
-
-const TableData = ({child}) => {
-  return(
-      <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
-  )
-}
-
-const TableDataText = ({text}) => {
+const TableData = ({ child }) => {
   return (
-      <p className="text-center text-gray-900 whitespace-no-wrap">
-          {text}
-      </p>
-  )
-}
+    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      {child}
+    </td>
+  );
+};
 
+const TableDataText = ({ text }) => {
+  return <p className="text-center text-gray-900 whitespace-no-wrap">{text}</p>;
+};
 
 const ApplicationTable = () => {
   const table_headers = [
@@ -76,7 +72,10 @@ const ApplicationTable = () => {
           <table className="min-w-full leading-normal text-center">
             <thead>
               {table_headers.map((theader) => (
-                <th key={theader} className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs text-center font-semibold text-black uppercase tracking-wider">
+                <th
+                  key={theader}
+                  className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs text-center font-semibold text-black title font-serif tracking-wider"
+                >
                   {theader}
                 </th>
               ))}
@@ -87,9 +86,7 @@ const ApplicationTable = () => {
                 applications.map((application) => (
                   <tr key={application._id}>
                     <TableData
-                      child={
-                          <TableDataText text={application.startup_name} />
-                      }
+                      child={<TableDataText text={application.startup_name} />}
                     />
 
                     <TableData

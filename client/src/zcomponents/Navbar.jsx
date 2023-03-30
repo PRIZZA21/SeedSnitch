@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
   const [colorChange, setColorchange] = useState(false);
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(true);
 
   const toggleHamburger = () => {
     setOpenMenu(!openMenu);
@@ -163,14 +163,7 @@ const Navbar = () => {
 
             </button>
             <ul className="dropdown-menu absolute hidden text-gray-700 bg-gray-200 pt-1 -ml-10 mt-0">
-              <li onClick={logoutHandler}>
-                <div
-                  className="rounded hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap div"
-                  to="/"
-                >
-                  Logout
-                </div>
-              </li>
+              
               <li>
                 <Link
                   className="rounded hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap link"
@@ -179,6 +172,17 @@ const Navbar = () => {
                   Profile
                 </Link>
               </li>
+
+              <li onClick={logoutHandler}>
+                <div
+                  className="rounded hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap div"
+                  to="/"
+                >
+                  Logout
+                </div>
+              </li>
+
+              
             </ul>
           </div>
         )}

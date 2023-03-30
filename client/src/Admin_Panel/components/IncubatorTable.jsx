@@ -20,38 +20,33 @@ const Paginate = ({ pages, page }) => {
   );
 };
 
-const TableData = ({child}) => {
-  return(
-      <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">{child}</td>
-  )
-}
-
-const TableDataText = ({text}) => {
+const TableData = ({ child }) => {
   return (
-      <p className="text-center text-gray-900 whitespace-no-wrap">
-          {text}
-      </p>
-  )
-}
+    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      {child}
+    </td>
+  );
+};
 
-
+const TableDataText = ({ text }) => {
+  return <p className="text-center text-gray-900 whitespace-no-wrap">{text}</p>;
+};
 
 export const Toggle = ({ label, toggled, onClick }) => {
-  const [isToggled, toggle] = useState(toggled)
+  const [isToggled, toggle] = useState(toggled);
 
   const callback = () => {
-      toggle(!isToggled)
-      onClick(!isToggled)
-  }
+    toggle(!isToggled);
+    onClick(!isToggled);
+  };
 
   return (
-      <label>
-          <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
-          <span />
-          <strong>{label}</strong>
-      </label>
-  )
-}
+    <label class="switch">
+      <input type="checkbox" defaultChecked={isToggled} onClick={callback}/>
+      <span class="slider round"></span>
+    </label>
+  );
+};
 
 const IncubatorTable = () => {
   const table_headers = [
@@ -59,7 +54,7 @@ const IncubatorTable = () => {
     "Incubator Email",
     "Applications Submitted",
     "Applications Accepted",
-    "Recieve Applications"
+    "Recieve Applications",
   ];
   const { pageNumber } = useParams() || 1;
   const [loading, setLoading] = useState("true");
@@ -68,18 +63,16 @@ const IncubatorTable = () => {
   const [pages, setPages] = useState(1);
 
   const logState = (id) => {
-    axios.put(`/api/incubators/toggleincubator/${id}`)
-  }
+    axios.put(`/api/incubators/toggleincubator/${id}`);
+  };
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`/api/incubators?pageNumber=${pageNumber}`)
-      .then((res) => {
-        setIncubatorList(res.data.incubators);
-        setPage(res.data.page);
-        setPages(res.data.pages);
-      });
+    axios.get(`/api/incubators?pageNumber=${pageNumber}`).then((res) => {
+      setIncubatorList(res.data.incubators);
+      setPage(res.data.page);
+      setPages(res.data.pages);
+    });
     setLoading(false);
   }, [pageNumber]);
 
@@ -91,7 +84,10 @@ const IncubatorTable = () => {
         <table className="min-w-full leading-normal text-center">
           <thead>
             {table_headers.map((theader) => (
-              <th key={theader} className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-black uppercase tracking-wider">
+              <th
+                key={theader}
+                className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-black title font-serif tracking-wider"
+              >
                 {theader}
               </th>
             ))}
@@ -120,9 +116,9 @@ const IncubatorTable = () => {
                   <TableData
                     child={
                       <Toggle
-                          label=""
-                          toggled={incubator.active}
-                          onClick={()=> logState(incubator._id)}
+                        label=""
+                        toggled={incubator.active}
+                        onClick={() => logState(incubator._id)}
                       />
                     }
                   />

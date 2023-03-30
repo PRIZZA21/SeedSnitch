@@ -38,25 +38,26 @@ const TechSupport = () => {
   const [selectedPostId, setSelectedPostId] = useState(null);
 
   const replyviewchange = (id) => {
-    if(id===selectedPostId) {setSelectedPostId(null); return;}
+    if (id === selectedPostId) {
+      setSelectedPostId(null);
+      return;
+    }
     setSelectedPostId(id);
   };
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`/api/posts?pageNumber=${pageNumber}`)
-      .then((res) => {
-        setPostsList(res.data.all_posts);
-        setPage(res.data.page);
-        setPages(res.data.pages);
-      });
+    axios.get(`/api/posts?pageNumber=${pageNumber}`).then((res) => {
+      setPostsList(res.data.all_posts);
+      setPage(res.data.page);
+      setPages(res.data.pages);
+    });
     setLoading(false);
   }, [pageNumber]);
-  
+
   let config = {};
 
-  if(userInfo){
+  if (userInfo) {
     config = {
       headers: {
         authorization: `Bearer ${userInfo.token}`,
@@ -66,14 +67,10 @@ const TechSupport = () => {
 
   const reply_handler = (id) => {
     axios
-      .post(
-        `/api/replies/create/${id}`,
-        { comment: reply },
-        config
-      )
+      .post(`/api/replies/create/${id}`, { comment: reply }, config)
       .then((res) => {
         setReply("");
-        setSelectedPostId(null)
+        setSelectedPostId(null);
       });
   };
 
@@ -93,7 +90,7 @@ const TechSupport = () => {
               className="cursor-pointer flex mb-2 justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs mx-auto py-2 px-3 mb-10 w-1/2 md:w-1/4  md:py-2 md:px-6 md:text-sm"
               to="/create-post"
             >
-              Ask a question
+              Ask a Question
             </Link>
           ) : (
             <span className="font-medium text-xl flex justify-center mb-10">

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { login } from "../../redux/actions/userActions";
 
 const Apply = () => {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [startup_name, setStartup_name] = useState("");
@@ -31,9 +30,8 @@ const Apply = () => {
   };
 
   const googleAuth = () => {
-    window.open('/api/users/auth/google/callback',"_self")
-  }
-
+    window.open("/api/users/auth/google/callback", "_self");
+  };
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -55,38 +53,31 @@ const Apply = () => {
           "Content-Type": "multipart/form-data",
         },
       };
-      var { data } = await axios.post(
-        "/api/uploadpdf",
-        formData,
-        config
-      );
+      var { data } = await axios.post("/api/uploadpdf", formData, config);
       setPdf(data);
       setUploading(false);
     } catch (error) {
       setUploading(false);
     }
   };
-  
-  let config = {}
 
-  if(userInfo)
-  config = {
-    headers: {
-      authorization: `Bearer ${userInfo.token}`,
-    },
-  };
+  let config = {};
+
+  if (userInfo)
+    config = {
+      headers: {
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    };
 
   const url =
-  "https://script.google.com/macros/s/AKfycbyOIhdFjRk-y8fRCYBcqdgiGdk9eaB6rkLjq8_aI1iC_GeHIzLk4vNFPT24UhI5yxX4mw/exec";
-
+    "https://script.google.com/macros/s/AKfycbyOIhdFjRk-y8fRCYBcqdgiGdk9eaB6rkLjq8_aI1iC_GeHIzLk4vNFPT24UhI5yxX4mw/exec";
 
   const submitHandler = (e) => {
     e.preventDefault();
     fetch(url, { method: "POST", body: new FormData(e.target) })
-          .then((response) => {
-            
-          })
-          .catch((error) => console.error("Error!", error.message));
+      .then((response) => {})
+      .catch((error) => console.error("Error!", error.message));
     axios
       .post(
         `/api/applications/create`,
@@ -100,7 +91,7 @@ const Apply = () => {
           start_up_stage,
           start_up_problem,
           start_up_differentiator,
-          pdf
+          pdf,
         },
         config
       )
@@ -110,7 +101,7 @@ const Apply = () => {
         }
       })
       .catch((err) => {
-        setError(err)
+        setError(err);
       });
   };
 
@@ -132,7 +123,7 @@ const Apply = () => {
               className="h-52 w-52 mx-auto mb-4"
               alt=""
             />
-            <h2 className="font-serif text-2xl font-bold mb-2 text-gray-800 text-center">
+            <h2 className="font-serif text-2xl font-medium mb-2 text-gray-800 text-center">
               Thanks for applying
             </h2>
             <p className="font-serif text-gray-700 text-center">
@@ -152,10 +143,10 @@ const Apply = () => {
     <div>
       {userInfo ? (
         <div>
-          <section className="mt-20 gap-x-8 h-[auto] md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
+          <section className="mt-20 gap-x-8 h-[auto] md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200 ">
             <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
               <div className="w-full md:w-[800px] text-center p-4 md:p-2">
-                <h2 className="md:font-extrabold font-bold text-4xl md:text-5xl pb-2 text-accent">
+                <h2 className="md:font-extrabold font-medium text-4xl md:text-5xl pb-2 text-accent">
                   Pitch <span className="text-[#242424]">your vision</span>
                 </h2>
                 <h2 className="font-light text-2xl hidden md:block md:font-normal text-[#242424]">
@@ -168,9 +159,7 @@ const Apply = () => {
             </div>
           </section>
 
-          <section
-            className="mt-10 md:mt-10 md:mb-20 h-auto"
-          >
+          <section className="mt-10 md:mt-10 md:mb-20 h-auto ">
             <div className="h-full w-full flex flex-col gap-4 justify-between items-center space-y-8 p-4 md:pt-10">
               <div className="w-full md:w-[800px] h-auto rounded-md mx-auto border-t px-2 bg-white">
                 <form
@@ -179,20 +168,18 @@ const Apply = () => {
                   id="apply-form"
                   onSubmit={submitHandler}
                 >
-
-                  
                   <div className="md:flex md:items-start md:justify-between bg-white justify-center">
                     <div className="w-full md:w-1/2 flex flex-col md:items-start md:justify-start items-center">
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                             htmlFor="grid-name"
                           >
                             First Name
                           </label>
                           <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-name"
                             type="text"
                             required
@@ -206,13 +193,13 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                             htmlFor="grid-email"
                           >
                             E-Mail
                           </label>
                           <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-email"
                             type="email"
                             name="Email"
@@ -226,13 +213,13 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full md:w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                           htmlFor="grid-startname"
                         >
                           Startup Name
                         </label>
                         <input
-                          className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-startname"
                           type="text"
                           required
@@ -246,13 +233,13 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                             htmlFor="grid-linkedin"
                           >
                             Linkedin Profile Link
                           </label>
                           <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-name"
                             name="Linkedin"
                             type="url"
@@ -266,13 +253,13 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                           htmlFor="grid-college"
                         >
                           College
                         </label>
                         <input
-                          className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-name"
                           required
                           name="College"
@@ -285,13 +272,13 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                           htmlFor="grid-number"
                         >
                           Contact Number
                         </label>
                         <input
-                          className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-number"
                           required
                           name="apply"
@@ -305,14 +292,14 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full md:w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                           htmlFor="grid-stage"
                         >
                           What is the current status of your startup (Ideation,
                           Early-stage)?
                         </label>
                         <input
-                          className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-stage"
                           type="text"
                           required
@@ -328,13 +315,13 @@ const Apply = () => {
                       {/* <div className="w-full flex flex-wrap -mx-3 mb-2">
                       <div className="w-full md:w-full mb-6 md:mb-0 px-3">
                         <label
-                          className="tracking-wide text-darkBlue text-xs font-bold mb-2 w-full"
+                          className="tracking-wide text-darkBlue text-xs font-medium mb-2 w-full"
                           htmlFor="grid-diff"
                         >
                           Describe your startup?
                         </label>
                         <textarea
-                          className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-diff"
                           placeholder="What makes you stand apart?"
                           rows="7"
@@ -349,13 +336,13 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full md:w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                             htmlFor="grid-startname"
                           >
                             Startup Name
                           </label>
                           <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-startname"
                             type="text"
                             required
@@ -368,13 +355,13 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                             htmlFor="grid-college"
                           >
                             College
                           </label>
                           <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-name"
                             required
                             name="College"
@@ -387,13 +374,13 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                             htmlFor="grid-number"
                           >
                             Contact Number
                           </label>
                           <input
-                            className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-number"
                             required
                             name="Contact"
@@ -409,14 +396,14 @@ const Apply = () => {
                   <div className="flex flex-wrap mb-6 w-full">
                     <div className="w-full md:w-full px-3">
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                         htmlFor="grid-stage"
                       >
                         What is the current status of your startup (Ideation,
                         Early-stage)?
                       </label>
                       <input
-                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-stage"
                         type="text"
                         required
@@ -429,20 +416,20 @@ const Apply = () => {
                   <div className="w-full flex flex-wrap mb-2">
                     <div className="w-full mb-6 md:mb-0 px-3">
                       {/* <label
-                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                         htmlFor="grid-prob"
                       >
                         What is the problem you are trying to solve with your
                         startup?
                       </label> */}
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                         htmlFor="grid-prob"
                       >
                         Describe your startup?
                       </label>
                       <textarea
-                        className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-prob"
                         placeholder="A brief description of your Idea"
                         rows="7"
@@ -456,14 +443,14 @@ const Apply = () => {
                   <div className="w-full flex flex-wrap">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                         htmlFor="grid-diff"
                       >
                         How does your startup differentiate itself from similar
                         products (if any)?
                       </label>
                       <textarea
-                        className="w-full bg-gray-100 text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-diff"
                         placeholder="What makes you stand apart?"
                         rows="7"
@@ -476,17 +463,16 @@ const Apply = () => {
                     </div>
                   </div>
 
-
                   <div className="w-full flex flex-wrap">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2 "
                         htmlFor="grid-diff"
                       >
                         Upload Pitchdeck (Recommended) [pdf-max-1mb]
                       </label>
                       <input
-                        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 "
                         type="file"
                         onChange={uploadFileHandler}
                       />
@@ -496,21 +482,22 @@ const Apply = () => {
 
                   <div className="w-full flex flex-wrap mb-6">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0 md:mt-8">
-                    {!uploading ? 
-                    (<input
-                        className="shadow color focus:shadow-outline focus:outline-none text-white cursor-pointer font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
-                        type="submit"
-                    />) : 
-                    (<div className="shadow color focus:shadow-outline focus:outline-none text-white  font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center ">Please wait till uploading</div>)
-                    }
+                      {!uploading ? (
+                        <input
+                          className="shadow color focus:shadow-outline focus:outline-none text-white cursor-pointer font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697]"
+                          type="submit"
+                        />
+                      ) : (
+                        <div className="shadow color focus:shadow-outline focus:outline-none text-white  font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center ">
+                          Please wait till uploading
+                        </div>
+                      )}
                     </div>
                   </div>
                 </form>
               </div>
             </div>
-
           </section>
-          
         </div>
       ) : (
         <div className="h-500 bg-green">
@@ -541,21 +528,28 @@ const Apply = () => {
                 name="apply"
                 onSubmit={loginHandler}
               >
-                 <div className='rounded-lg py-2 text-xl mb-6 flex flex-row justify-center cursor-pointer bg-green-200' onClick={googleAuth}>
-                    Continue with Google &nbsp; <img src='../img/google-logo.png' className='w-6 h-6 mt-1' alt=''/>
-                  </div>
-
+                <div
+                  className="rounded-lg py-2 text-xl mb-6 flex flex-row justify-center cursor-pointer bg-green-200"
+                  onClick={googleAuth}
+                >
+                  Continue with Google &nbsp;{" "}
+                  <img
+                    src="../img/google-logo.png"
+                    className="w-6 h-6 mt-1"
+                    alt=""
+                  />
+                </div>
 
                 <div className="flex flex-wrap -mx-3 mb-4">
                   <div className="w-full px-3">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                       htmlFor="grid-email"
                     >
                       Email
                     </label>
                     <input
-                      className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-email"
                       type="email"
                       name="Email"
@@ -569,13 +563,13 @@ const Apply = () => {
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-full px-3">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                      className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
                       htmlFor="grid-password"
                     >
                       Password
                     </label>
                     <input
-                      className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-password"
                       type="password"
                       required
@@ -592,7 +586,7 @@ const Apply = () => {
                     htmlFor="grid-password"
                   >
                     Don't have an account{" "}
-                    <Link to="/register" className="font-bold">
+                    <Link to="/register" className="font-medium">
                       Register Now
                     </Link>
                   </span>

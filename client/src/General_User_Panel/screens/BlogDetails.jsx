@@ -22,26 +22,27 @@ const BlogDetails = () => {
     <div>
       <div className="p-8 md:px-20 mt-20 md:py-20">
         <div className="flex flex-col items-center gap-20 md:gap-8 justify-center mb-5">
+          <div className="flex flex-col w-full md:w-1/2 justify-center ">
+            <div className="text-4xl text-left font-medium mb-2 text-center text-[#242424]">
+              {blog.title}
+            </div>
+            <p className="text-xl  font-semibold text-center md:ml-48  my-4">
+              - Posted By:{" "}
+              <span className="text-accent">
+                {/* {blog.author && blog.author.name} */}
+                Admin
+              </span>
+            </p>
+          </div>
           <img
             src={`/${blog.banner}`}
             className="h-96 w-full md:w-1/2 object-cover rounded-lg"
             alt=""
           />
-          <div className="flex flex-col w-full md:w-1/2 justify-center border-b-2">
-            <div className="text-4xl text-left font-bold mb-2">
-              {blog.title}
-            </div>
-            <p className="text-xl  font-semibold text-left my-4">
-              Posted By:{" "}
-              <span className="text-accent">
-                {blog.author && blog.author.name}
-              </span>
-            </p>
-          </div>
         </div>
 
         <div
-          className="text-justify leading-10 text-[1.5rem] w-full md:w-1/2 md:mx-auto"
+          className="text-justify leading-10 text-[1.5rem] w-full md:w-1/2 md:mx-auto text-[#242424]"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </div>

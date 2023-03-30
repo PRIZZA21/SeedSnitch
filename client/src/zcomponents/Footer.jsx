@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./footer.css";
 const Footer = () => {
   return (
-    <footer className="bg-[#0f6d6d] text-white py-2 static bottom-0 left-0 w-full">
-      <div className="footer">
-        <div className="row">
+    <footer className="bg-[#0f6d6d] text-white py-2 static bottom-0 left-0 w-full footer">
+      <div className="footer ">
+        <div className="row ">
           <Link
             target="_blank"
             to="https://instagram.com/seedsnitch?igshid=ZDdkNTZiNTM="
