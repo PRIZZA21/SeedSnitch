@@ -184,7 +184,6 @@ const Apply = () => {
                             type="text"
                             required
                             name="Name"
-                            placeholder="Name"
                             onChange={(e) => setName(e.target.value)}
                           />
                         </div>
@@ -204,7 +203,6 @@ const Apply = () => {
                             type="email"
                             name="Email"
                             required
-                            placeholder="Enter your email id"
                             onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
@@ -224,7 +222,6 @@ const Apply = () => {
                           type="text"
                           required
                           name="Startup-Name"
-                          placeholder="Subject"
                           onChange={(e) => setStartup_name(e.target.value)}
                         />
                       </div>
@@ -243,7 +240,6 @@ const Apply = () => {
                             id="grid-name"
                             name="Linkedin"
                             type="url"
-                            placeholder="Your LinkedIn profile"
                             onChange={(e) =>
                               setLinkedin_profile(e.target.value)
                             }
@@ -264,7 +260,6 @@ const Apply = () => {
                           required
                           name="College"
                           type="text"
-                          placeholder="College name"
                           onChange={(e) => setCollege_name(e.target.value)}
                         />
                       </div>
@@ -282,7 +277,6 @@ const Apply = () => {
                           id="grid-number"
                           required
                           name="apply"
-                          placeholder="Enter your contact number "
                           type="number"
                           onChange={(e) => setContact_number(e.target.value)}
                         />
@@ -304,7 +298,6 @@ const Apply = () => {
                           type="text"
                           required
                           name="Startup Stage"
-                          placeholder="Current status of startup"
                           onChange={(e) => setStart_up_stage(e.target.value)}
                         />
                       </div>
@@ -323,7 +316,6 @@ const Apply = () => {
                         <textarea
                           className="w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-diff"
-                          placeholder="What makes you stand apart?"
                           rows="7"
                           name="Idea Description"
                           required
@@ -347,7 +339,6 @@ const Apply = () => {
                             type="text"
                             required
                             name="Startup-Name"
-                            placeholder="Subject"
                             onChange={(e) => setStartup_name(e.target.value)}
                           />
                         </div>
@@ -366,7 +357,6 @@ const Apply = () => {
                             required
                             name="College"
                             type="text"
-                            placeholder="College name"
                             onChange={(e) => setCollege_name(e.target.value)}
                           />
                         </div>
@@ -384,7 +374,6 @@ const Apply = () => {
                             id="grid-number"
                             required
                             name="Contact"
-                            placeholder="Enter your contact number "
                             type="number"
                             onChange={(e) => setContact_number(e.target.value)}
                           />
@@ -408,7 +397,6 @@ const Apply = () => {
                         type="text"
                         required
                         name="Startup Stage"
-                        placeholder="Current status of your Startup"
                         onChange={(e) => setStart_up_stage(e.target.value)}
                       />
                     </div>
@@ -431,7 +419,6 @@ const Apply = () => {
                       <textarea
                         className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-prob"
-                        placeholder="A brief description of your Idea"
                         rows="7"
                         required
                         name="Problem Statement"
@@ -452,7 +439,6 @@ const Apply = () => {
                       <textarea
                         className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-diff"
-                        placeholder="What makes you stand apart?"
                         rows="7"
                         name="USP"
                         required
@@ -554,7 +540,6 @@ const Apply = () => {
                       type="email"
                       name="Email"
                       required
-                      placeholder="Enter your email id"
                       onChange={(e) => setLogin_Email(e.target.value)}
                     />
                   </div>
@@ -574,7 +559,6 @@ const Apply = () => {
                       type="password"
                       required
                       name="Subject"
-                      placeholder="Enter your password"
                       onChange={(e) => setLogin_Password(e.target.value)}
                     />
                   </div>

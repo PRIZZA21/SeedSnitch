@@ -15,7 +15,7 @@ const Infobar = ({
         additonalClass ? additonalClass : "mt-20 bg-[#f8f8f8] "
       }`}
     >
-      <div className="text-center py-12 md:w-=full w-full h-auto  mx-auto flex flex-row items-center justify-around">
+      <div className="text-center py-12 tab:gap-5 w-full h-auto  mx-auto flex tab:flex-row  gap-8 flex-col items-center tab:justify-around justify-center">
         <h2
           className={`md:font-extrabold font-bold text-4xl md:text-5xl pb-2  ${
             invert_text_color ? "text-[#242424]" : "text-accent"

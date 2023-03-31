@@ -91,17 +91,16 @@ const Home = () => {
       <section id="intro2" className="w-screen h-fit mb-6 block md:hidden">
         <div className="w-full h-fit space-y-12 pt-12 pb-4 flex flex-col items-center justify-center mt-12 md:mt-28 rounded-xl z-10">
           <div
-            className="container text-center text-3xl md:text-5xl text-accent font-[800] flex flex-col justify-center bg-[#f8f8f8] py-8"
+            className="container text-center text-5xl  text-accent font-[800] flex flex-col justify-center  py-8"
             id="intro-text"
           >
-            <span>Fueling the college</span>
-            <span> startup revolution</span>
+            <span>Fueling the college startup revolution</span>
           </div>
           <div className="px-3">
             <img src="img/2.jpg" className="object-cover" alt="" />
           </div>
 
-          <div className="text-medBlue font-bold text-center text-[20px]">
+          <div className="text-medBlue font-bold text-center text-[20px] px-8">
             <p>
               Supporting college entrepreneurs with funding prospects,
               networking, and campus representation.
@@ -118,7 +117,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="mt-2 md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200">
+      <section className="mt-2 md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full ">
         <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
           <div className="w-full md:w-[800px] text-center p-4 md:p-2">
             <h2 className="md:font-extrabold font-bold text-[1.8rem] md:text-5xl pb-2 text-accent">
@@ -129,9 +128,9 @@ const Home = () => {
       </section>
 
       <section>
-        <div className="w-full mx-auto h-auto flex flex-col items-center justify-center px-10 md:px-6 md:mb-0 md:pb-10 mb-6 mt-18 pt-4">
+        <div className="w-full mx-auto h-auto flex flex-col items-center justify-center md:px-6 md:mb-0 md:pb-10 mb-6 mt-18 pt-4">
           <div className="index-row gap-5 flex flex-col justify-between w-5/6 md:w-5/6 md:flex-row ">
-            <div className="course-col flex flex-col gap-3 p-2 pt-0">
+            <div className="course-col md:w-1/3 flex flex-col gap-3 p-2 pt-0">
               <img
                 src="img/Student_Founders.png"
                 alt="incubators"
@@ -148,7 +147,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="course-col flex flex-col gap-3 p-2 pt-0">
+            <div className="course-col md:w-1/3 flex flex-col gap-3 p-2 pt-0">
               <img
                 className="mt-6 p-2"
                 src="img/Incubators_.png"
@@ -165,7 +164,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="course-col flex flex-col gap-3 px-2 pt-0">
+            <div className="course-col md:w-1/3 flex flex-col gap-3 px-2 pt-0">
               <img
                 src="img/College_Students.png"
                 alt="incubators"

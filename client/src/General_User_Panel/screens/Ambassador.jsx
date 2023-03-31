@@ -167,7 +167,6 @@ const Ambassador = () => {
                       id="grid-name"
                       type="text"
                       required
-                      placeholder="First Name"
                       onChange={(e) => setFname(e.target.value)}
                     />
                   </div>
@@ -186,7 +185,6 @@ const Ambassador = () => {
                       id="grid-name"
                       type="text"
                       required
-                      placeholder="Last Name"
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
@@ -207,7 +205,6 @@ const Ambassador = () => {
                       name="Email"
                       type="email"
                       required
-                      placeholder="Enter your email id"
                     />
                   </div>
                 </div>
@@ -224,7 +221,6 @@ const Ambassador = () => {
                       id="grid-name"
                       name="Linkedin"
                       type="url"
-                      placeholder="Your linkedin profile"
                     />
                   </div>
                 </div>
@@ -242,7 +238,6 @@ const Ambassador = () => {
                     className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-plan"
                     name="Networking Approach"
-                    placeholder="Describe your approach here."
                     rows="7"
                     required
                   ></textarea>
@@ -262,7 +257,6 @@ const Ambassador = () => {
                     name="Founder Linkedin"
                     className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-prob"
-                    placeholder="Drop their linkedin profiles here."
                     rows="7"
                     required
                   ></textarea>
@@ -280,7 +274,6 @@ const Ambassador = () => {
                     name="About Yourself"
                     className=" font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-desc"
-                    placeholder="Tell us about yourself."
                     rows="7"
                     required
                   ></textarea>

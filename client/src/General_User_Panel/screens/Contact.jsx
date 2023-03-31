@@ -91,7 +91,6 @@ const Contact = () => {
                     type="text"
                     required
                     name="First Name"
-                    placeholder="First Name"
                   />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
@@ -105,7 +104,6 @@ const Contact = () => {
                     className=" font-serif appearance-none block w-full  text-darkBlue border border-gra rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-last-name"
                     type="text"
-                    placeholder="Last Name"
                     name="Last Name"
                   />
                 </div>
@@ -124,7 +122,6 @@ const Contact = () => {
                     type="email"
                     name="Email"
                     required
-                    placeholder="Enter your email address"
                   />
                 </div>
               </div>
@@ -142,7 +139,6 @@ const Contact = () => {
                     type="text"
                     required
                     name="Subject"
-                    placeholder="Subject"
                   />
                 </div>
               </div>
@@ -158,7 +154,6 @@ const Contact = () => {
                   <textarea
                     className="resize-none w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-message"
-                    placeholder="Enter your message"
                     rows="7"
                     name="Message"
                     required
