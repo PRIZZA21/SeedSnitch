@@ -362,7 +362,6 @@ details[open] .faq-card-spoiler {
   margin: 1% 0%;
   padding: 0.6% 0%;
   /* color: gray; */
-  font-size: 0.8em;
 }
 #linkedin:hover {
   color: rgb(59, 137, 255);
@@ -408,7 +407,7 @@ details[open] .faq-card-spoiler {
     text-align: left;
   }
   .footer .row a i {
-    margin: 0% 3%;
+    margin: 0% 5%;
   }
 }
 .navbarColor {

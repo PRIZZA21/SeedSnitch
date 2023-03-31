@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0f6d6d] text-white py-2 static bottom-0 left-0 w-full footer">
       <div className="footer ">
-        <div className="row ">
+        <div className="row  ">
           <Link
             target="_blank"
             to="https://instagram.com/seedsnitch?igshid=ZDdkNTZiNTM="
@@ -39,16 +39,24 @@ const Footer = () => {
         <div className="row">
           <ul>
             <li>
-              <Link to="./about">About us</Link>
+              <Link className="md:text-[18px]" to="./about">
+                About us
+              </Link>
             </li>
             <li>
-              <Link to="./contact">Contact us</Link>
+              <Link className="md:text-[18px]" to="./contact">
+                Contact us
+              </Link>
             </li>
             <li>
-              <Link to="./faq">FAQ</Link>
+              <Link className="md:text-[18px]" to="./faq">
+                FAQ
+              </Link>
             </li>
             <li>
-              <Link to="./ambassador">Ambassador Program </Link>
+              <Link className="md:text-[18px]" to="./ambassador">
+                Ambassador Program{" "}
+              </Link>
             </li>
           </ul>
         </div>

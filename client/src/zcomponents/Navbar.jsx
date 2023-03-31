@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
   const [colorChange, setColorchange] = useState(false);
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const toggleHamburger = () => {
     setOpenMenu(!openMenu);
@@ -36,7 +36,6 @@ const Navbar = () => {
 
   window.addEventListener("scroll", changeNavbarColor);
 
-
   return (
     <nav
       className={
@@ -56,24 +55,23 @@ const Navbar = () => {
       </div>
 
       <div className="hidden container  flex-row items-center justify-center space-x-10 lg:flex max-w-1/6">
-        {userInfo && (userInfo.isIncubator) && (
+        {userInfo && userInfo.isIncubator && (
           <NavLink to="/incubator" className="link font-bold">
             Applications
           </NavLink>
         )}
-        {userInfo && (userInfo.isEcell || userInfo.isIncubator) && (
-          <NavLink to="/addBlog" className="link">
+        {userInfo && (userInfo.isIncubator||userInfo.isEcell) && (
+          <NavLink to="/addBlog" className="link font-bold">
             Post Blog
           </NavLink>
         )}
-
         <NavLink to="/about" className="link">
           About
         </NavLink>
         <NavLink to="/community" className="link">
           Community
         </NavLink>
-       
+
         {/* <NavLink to="/contact" className="link">
           Contact
         </NavLink> */}
@@ -124,7 +122,20 @@ const Navbar = () => {
       </div>
 
       <div className="max-w-1/3 hidden items-center justify-end pr-4 font-semibold button-effect space-x-4 lg:flex">
-    
+        {/* <Link
+          to="/apply"
+          className="cursor-pointer border-gray-200 border flex justify-center items-center font-medium rounded-md hover:bg-accent text-black text-xs shrink-0 py-2 px-2 md:py-2 md:px-4 md:text-sm"
+        >
+          Apply
+        </Link>
+
+        <Link
+          to="/ambassador"
+          className="cursor-pointer flex justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs shrink-0 py-2 px-3 md:py-2 md:px-6 md:text-sm"
+        >
+          Become an ambassador
+        </Link> */}
+
         {!userInfo && (
           <Link
             to="/login"
@@ -137,35 +148,22 @@ const Navbar = () => {
         {userInfo && (
           <div className="dropdown inline-block relative link">
             <button className="rounded inline-flex items-center">
-              
-              {
-              userInfo.profile_pic===""?
-             ( <div className="rounded-full border-gray-200 bg-[#0C6980] text-white border-1 w-8 flex flex-row justify-center h-8 items-center font-bold text-lg">
-                {" "}
-                {userInfo.name.split(" ")[0].charAt(0)}
-              </div>):
-              <div className="rounded-full w-10 h-10 mx-auto bg-gray-100 flex items-center justify-center">
-                <img
-                  src={`/${userInfo.profile_pic}`}
-                  className="rounded-full w-10 h-10"
-                  alt=""
-                />
+              {userInfo.profile_pic === "" ? (
+                <div className="rounded-full border-gray-200 bg-[#0C6980] text-white border-1 w-8 flex flex-row justify-center h-8 items-center font-bold text-lg">
+                  {" "}
+                  {userInfo.name.split(" ")[0].charAt(0)}
                 </div>
-              }
-
-
+              ) : (
+                <div className="rounded-full w-10 h-10 mx-auto bg-gray-100 flex items-center justify-center">
+                  <img
+                    src={`/${userInfo.profile_pic}`}
+                    className="rounded-full w-10 h-10"
+                    alt=""
+                  />
+                </div>
+              )}
             </button>
             <ul className="dropdown-menu absolute hidden text-gray-700 bg-gray-200 pt-1 -ml-10 mt-0">
-              
-              <li>
-                <Link
-                  className="rounded hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap link"
-                  to="/user/profile"
-                >
-                  Profile
-                </Link>
-              </li>
-
               <li onClick={logoutHandler}>
                 <div
                   className="rounded hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap div"
@@ -174,8 +172,14 @@ const Navbar = () => {
                   Logout
                 </div>
               </li>
-
-              
+              <li>
+                <Link
+                  className="rounded hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap link"
+                  to="/user/profile"
+                >
+                  Profile
+                </Link>
+              </li>
             </ul>
           </div>
         )}
@@ -198,81 +202,71 @@ const Navbar = () => {
         <div
           className={
             openMenu
-              ? "absolute flex-col items-center self-end py-4 mt-10 space-y-4 hidden font-bold sm:w-min-3xl sm:self-center px-8 right-6 drop-shadow-md text-black bg-slate-50"
-              : "absolute flex-col items-center self-end py-4 mt-10 space-y-4 font-bold sm:w-min-3xl sm:self-center px-2 right-6 drop-shadow-md text-black bg-slate-50 flex"
+              ? "absolute flex-col items-center self-end py-4 mt-10 space-y-4 hidden font-bold sm:w-min-3xl sm:self-center px-8 right-6 drop-shadow-md text-black bg-slate-50 "
+              : "absolute flex-col items-center self-end py-4 mt-10 space-y-4 font-bold sm:w-min-3xl sm:self-center px-2 right-6 drop-shadow-md text-black bg-slate-50 flex gap-y-4"
           }
         >
-           {userInfo && userInfo.isIncubator && (
-              <Link to="/incubator" className="font-normal px-3">
-                Applications
-              </Link>
-            )}
-
-           {userInfo && (userInfo.isIncubator||userInfo.isEcell) && (
-              <Link to="/addBlog" className="font-normal px-3">
-                Post Blog
-              </Link>
-            )}
-          <Link to="/about" className="font-normal px-3">
+          {userInfo && userInfo.isIncubator && (
+            <Link to="/incubator" className="font-medium px-3">
+              Applications
+            </Link>
+          )}
+          {userInfo && (userInfo.isIncubator|| userInfo.isEcell) && (
+            <Link to="/addBlog" className="font-medium px-3">
+              Post Blog
+            </Link>
+          )}
+          <Link to="/about" className="font-medium px-3">
             About
           </Link>
-          <Link to="/community" className="font-normal px-3">
+          <Link to="/apply" className="font-medium text-darkBlue px-3">
+            Apply
+          </Link>
+          <Link to="/community" className="font-medium px-3">
             Community
           </Link>
-          <Link to="/contact" className="font-normal px-3">
-            Contact
-          </Link>
-          <Link to="/discussion-forum" className="font-normal px-3">
+          <Link to="/ambassador" className="font-medium text-darkBlue px-3">
+            Ambassador Program
+          </Link>{" "}
+          <Link to="/discussion-forum" className="font-medium px-3">
             Discussion Forum
-          </Link>
-          <Link to="/blogs/page/1" className="font-normal px-3">
+          </Link>{" "}
+          <Link to="/blogs/page/1" className="font-medium px-3">
             Blogs
+          </Link>{" "}
+          <Link to="/pitch-deck" className="font-medium px-3">
+            Pitch Deck
+          </Link>{" "}
+          <Link to="/company-reg" className="font-medium px-3">
+            Company Registration
           </Link>
-          <Link to="/faq" className="font-normal px-3">
+          <Link to="/faq" className="font-medium px-3">
             FAQ
           </Link>
-          <Link to="/pitch-deck" className="font-normal px-3">
-          Pitch Deck
+          <Link to="/contact" className="font-medium px-3">
+            Contact
           </Link>
-          <Link to="/company-reg" className="font-normal px-3">
-          Company Registration
-          </Link>
-
           {userInfo && userInfo.isAdmin && (
-            <Link to="/admin/applications/page/1" className="font-normal px-3">
+            <Link to="/admin/applications/page/1" className="font-medium px-3">
               Admin Options
             </Link>
           )}
-
-        {!userInfo && (
-          <Link
-            to="/login"
-            className="font-normal px-3"
-          >
-            Login
-          </Link>
-        )}
-
-        {userInfo && (
+          {!userInfo && (
+            <Link to="/login" className="font-medium px-3">
+              Login
+            </Link>
+          )}
+          {userInfo && (
             <>
-            <Link to="/" className="font-normal px-3" onClick={logoutHandler}>
-              Logout
-            </Link>
-            <Link to="/user/profile" className="font-normal px-3">
-              Profile
-            </Link>
+              {" "}
+              <Link to="/user/profile" className="font-medium px-3">
+                Profile
+              </Link>
+              <Link to="/" className="font-medium px-3" onClick={logoutHandler}>
+                Logout
+              </Link>
             </>
-        )}
-
-
-
-          <Link to="/apply" className="font-bold text-darkBlue px-3">
-            Apply
-          </Link>
-
-          <Link to="/ambassador" className="font-bold text-darkBlue px-3">
-            Ambassador Program
-          </Link>
+          )}
         </div>
       </div>
     </nav>

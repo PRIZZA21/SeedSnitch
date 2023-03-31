@@ -4,7 +4,7 @@ import { Pagination } from "react-bootstrap";
 import Loader from "../../Common_Components/Loader";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const Paginate = ({ pages, page }) => {
   return (
@@ -24,7 +24,7 @@ const Paginate = ({ pages, page }) => {
 
 const TableData = ({ child }) => {
   return (
-    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
       {child}
     </td>
   );
@@ -66,7 +66,7 @@ const IncubatorTable = () => {
         <table className="min-w-full leading-normal">
           <thead>
             {table_headers.map((theader) => (
-              <th className="px-5 py-3 text-center border-b-2 border-gray-200 font-serif text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-5 py-3 text-center border-b-2 border-gray-200 font-serif text-left text-[16px]font-semibold text-gray-700  tracking-wider">
                 {theader}
               </th>
             ))}
@@ -84,7 +84,11 @@ const IncubatorTable = () => {
                   <TableData child={<TableDataText text={blog.title} />} />
                   <TableData
                     child={
-                      <img src={`/${blog.banner}`} className="w-8 h-8 mx-auto" alt="" />
+                      <img
+                        src={`/${blog.banner}`}
+                        className="w-8 h-8 mx-auto"
+                        alt=""
+                      />
                     }
                   />
 
@@ -95,7 +99,7 @@ const IncubatorTable = () => {
                         className="inline-block text-gray-500 hover:text-gray-700"
                       >
                         <FontAwesomeIcon
-                          icon={faPlay}
+                          icon={faEdit}
                           onClick={() => blog_detailsHandler(blog._id)}
                         />
                       </button>

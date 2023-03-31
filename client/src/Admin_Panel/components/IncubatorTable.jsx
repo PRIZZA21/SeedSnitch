@@ -22,7 +22,7 @@ const Paginate = ({ pages, page }) => {
 
 const TableData = ({ child }) => {
   return (
-    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
+    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
       {child}
     </td>
   );
@@ -42,7 +42,7 @@ export const Toggle = ({ label, toggled, onClick }) => {
 
   return (
     <label class="switch">
-      <input type="checkbox" defaultChecked={isToggled} onClick={callback}/>
+      <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
       <span class="slider round"></span>
     </label>
   );
@@ -86,7 +86,7 @@ const IncubatorTable = () => {
             {table_headers.map((theader) => (
               <th
                 key={theader}
-                className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-black title font-serif tracking-wider"
+                className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-[16px] font-semibold text-black title font-serif tracking-wider"
               >
                 {theader}
               </th>

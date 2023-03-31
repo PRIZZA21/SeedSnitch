@@ -65,11 +65,9 @@ const BlogPage = () => {
                   className="card__image"
                 />
               </div>
-              <div className="card__body">
-                <h4> {blog.title}</h4>
-                <p>
-                  Check out this Blog right now
-                </p>
+              <div className="card__body text-center">
+                <h4 className="font-medium"> {blog.title}</h4>
+                <p>Check out this Blog right now</p>
               </div>
               {/* <div className="card__footer">
                 <div className="user">

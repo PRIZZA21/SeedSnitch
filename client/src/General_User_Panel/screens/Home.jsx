@@ -40,10 +40,10 @@ const Home = () => {
     <div>
       <section
         id="intro"
-        className="hidden h-auto w-full overflow-hidden md:flex justify-between flex-row mt-24 px-24 mb-6 text-left"
+        className="hidden h-auto w-full overflow-hidden md:flex justify-between flex-row mt-24 px-24 mb-6 text-left "
       >
         <div
-          className="w-1/2 space-y-8 flex flex-col justify-center items-start pt-20 text-center pl-32"
+          className="w-1/2 space-y-8 flex flex-col justify-center items-start pt-20 text-center pl-32 md:gap-y-6"
           id="intro-text"
         >
           <div
@@ -66,11 +66,6 @@ const Home = () => {
             </p>
           </div>
           <div className="flex gap-4">
-            {/* <Link to="/about">
-              <button className="text-white bg-[#0C6980] rounded-md py-3 px-7 text-[18px] hover:bg-[#084352]">
-                Learn More
-              </button>
-            </Link> */}
             <Link to="/apply">
               <button className="text-black text-[700] border-[1px] border-gray rounded-md py-3 px-7 text-[18px] hover:bg-accent">
                 Apply
@@ -96,8 +91,8 @@ const Home = () => {
           >
             <span>Fueling the college startup revolution</span>
           </div>
-          <div className="px-3">
-            <img src="img/2.jpg" className="object-cover" alt="" />
+          <div className="pl-6 mx-auto">
+            <img src="img/2.jpg" className="object-cover " alt="" />
           </div>
 
           <div className="text-medBlue font-bold text-center text-[20px] px-8">
@@ -117,10 +112,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="mt-2 md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full ">
-        <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
+      <section className="mt-2 md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full   md:bg-[#f8f8f8] ">
+        <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12 ">
           <div className="w-full md:w-[800px] text-center p-4 md:p-2">
-            <h2 className="md:font-extrabold font-bold text-[1.8rem] md:text-5xl pb-2 text-accent">
+            <h2 className="md:font-extrabold text-4xl font-bold  md:text-5xl pb-2 text-accent">
               A Guide <span className="text-[#242424]">for Participants</span>
             </h2>
           </div>

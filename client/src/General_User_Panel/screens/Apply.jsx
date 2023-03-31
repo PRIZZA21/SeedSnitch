@@ -146,7 +146,7 @@ const Apply = () => {
           <section className="mt-20 gap-x-8 h-[auto] md:flex-row px-4 md:px-0 md:gap-x-16 bg-[#f8f8f8] w-full border border-b-slate-200 ">
             <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12">
               <div className="w-full md:w-[800px] text-center p-4 md:p-2">
-                <h2 className="md:font-extrabold font-medium text-4xl md:text-5xl pb-2 text-accent">
+                <h2 className="md:font-extrabold font-bold text-4xl md:text-5xl pb-2 text-accent">
                   Pitch <span className="text-[#242424]">your vision</span>
                 </h2>
                 <h2 className="font-light text-2xl hidden md:block md:font-normal text-[#242424]">
@@ -173,7 +173,7 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                            className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-name"
                           >
                             First Name
@@ -192,7 +192,7 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                            className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-email"
                           >
                             E-Mail
@@ -211,7 +211,7 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full md:w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                          className="block tracking-wide text-darkBlue  font-medium mb-2"
                           htmlFor="grid-startname"
                         >
                           Startup Name
@@ -230,7 +230,7 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                            className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-linkedin"
                           >
                             Linkedin Profile Link
@@ -249,7 +249,7 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                          className="block tracking-wide text-darkBlue  font-medium mb-2"
                           htmlFor="grid-college"
                         >
                           College
@@ -267,7 +267,7 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                          className="block tracking-wide text-darkBlue  font-medium mb-2"
                           htmlFor="grid-number"
                         >
                           Contact Number
@@ -286,7 +286,7 @@ const Apply = () => {
                       {/* <div className="flex flex-wrap -mx-3 mb-6 w-full">
                       <div className="w-full md:w-full px-3">
                         <label
-                          className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                          className="block tracking-wide text-darkBlue  font-medium mb-2"
                           htmlFor="grid-stage"
                         >
                           What is the current status of your startup (Ideation,
@@ -308,7 +308,7 @@ const Apply = () => {
                       {/* <div className="w-full flex flex-wrap -mx-3 mb-2">
                       <div className="w-full md:w-full mb-6 md:mb-0 px-3">
                         <label
-                          className="tracking-wide text-darkBlue text-xs font-medium mb-2 w-full"
+                          className="tracking-wide text-darkBlue  font-medium mb-2 w-full"
                           htmlFor="grid-diff"
                         >
                           Describe your startup?
@@ -328,7 +328,7 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full md:w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                            className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-startname"
                           >
                             Startup Name
@@ -346,7 +346,7 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                            className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-college"
                           >
                             College
@@ -364,7 +364,7 @@ const Apply = () => {
                       <div className="flex flex-wrap mb-6 w-full">
                         <div className="w-full px-3">
                           <label
-                            className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                            className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-number"
                           >
                             Contact Number
@@ -385,7 +385,7 @@ const Apply = () => {
                   <div className="flex flex-wrap mb-6 w-full">
                     <div className="w-full md:w-full px-3">
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                        className="block tracking-wide text-darkBlue  font-medium mb-2"
                         htmlFor="grid-stage"
                       >
                         What is the current status of your startup (Ideation,
@@ -404,14 +404,14 @@ const Apply = () => {
                   <div className="w-full flex flex-wrap mb-2">
                     <div className="w-full mb-6 md:mb-0 px-3">
                       {/* <label
-                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                        className="block tracking-wide text-darkBlue  font-medium mb-2"
                         htmlFor="grid-prob"
                       >
                         What is the problem you are trying to solve with your
                         startup?
                       </label> */}
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                        className="block tracking-wide text-darkBlue  font-medium mb-2"
                         htmlFor="grid-prob"
                       >
                         Describe your startup?
@@ -430,7 +430,7 @@ const Apply = () => {
                   <div className="w-full flex flex-wrap">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                        className="block tracking-wide text-darkBlue  font-medium mb-2"
                         htmlFor="grid-diff"
                       >
                         How does your startup differentiate itself from similar
@@ -452,7 +452,7 @@ const Apply = () => {
                   <div className="w-full flex flex-wrap">
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                       <label
-                        className="block tracking-wide text-darkBlue text-xs font-medium mb-2 "
+                        className="block tracking-wide text-darkBlue  font-medium mb-2 "
                         htmlFor="grid-diff"
                       >
                         Upload Pitchdeck (Recommended) [pdf-max-1mb]
@@ -529,7 +529,7 @@ const Apply = () => {
                 <div className="flex flex-wrap -mx-3 mb-4">
                   <div className="w-full px-3">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                      className="block tracking-wide text-darkBlue  font-medium mb-2"
                       htmlFor="grid-email"
                     >
                       Email
@@ -548,7 +548,7 @@ const Apply = () => {
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-full px-3">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-medium mb-2"
+                      className="block tracking-wide text-darkBlue  font-medium mb-2"
                       htmlFor="grid-password"
                     >
                       Password

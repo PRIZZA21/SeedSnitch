@@ -77,17 +77,21 @@ const TechSupport = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="mt-16 mx-auto faq-body gap-x-8 h-[auto] flex flex-col items-center justify-center px-4 md:px-0 md:gap-x-16 w-full pb-12">
+    <div
+      className={`${
+        postsList ? "" : "md:pt-36"
+      } mt-16 mx-auto faq-body gap-x-8 h-full  flex flex-col items-center justify-end px-4 md:px-0 md:gap-x-16 w-full pb-12`}
+    >
       <img
         src="../img/forum.png"
         className="mt-8 h-[300px] mb-8 object-contain"
         alt=""
       />
-      <div className="container">
+      <div className="container h-full ">
         <div>
           {userInfo ? (
             <Link
-              className="cursor-pointer flex mb-2 justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs mx-auto py-2 px-3 mb-10 w-1/2 md:w-1/4  md:py-2 md:px-6 md:text-sm"
+              className=" cursor-pointer flex mb-2 justify-center items-center font-medium rounded-md border bg-[#0C6980] text-white hover:bg-[#084352] hover:text-white text-xs mx-auto py-2 px-3 mb-10 w-1/2 md:w-1/4  md:py-2 md:px-6 md:text-sm"
               to="/create-post"
             >
               Ask a Question
@@ -124,7 +128,7 @@ const TechSupport = () => {
                     <div className="post-card-author my-2">
                       Posted By: {post.author && post.author.name}
                     </div>
-                    <div className="post-card-description">
+                    <div className="post-card-description text-justify">
                       {post.description}
                     </div>
                   </div>

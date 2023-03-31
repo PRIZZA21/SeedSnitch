@@ -64,29 +64,27 @@ const Login = () => {
               </div>
 
               <div className="w-full   mb-6 md:mb-0">
-                <label className="block tracking-wide text-darkBlue text-s font-medium mb-2">
+                <label className="font-inter block tracking-wide text-darkBlue text-s font-medium mb-2">
                   Email
                 </label>
                 <input
-                  className=" font-serif  w-full text-darkBlue border rounded py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className="text-serif md:text-[18px]font-serif  w-full text-darkBlue border rounded py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
                   label="Email"
                   type="email"
                   name="email"
-                  placeholder="Enter the your email id"
                   required={true}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="w-full   mb-6 md:mb-0">
-                <label className="block tracking-wide text-darkBlue text-s font-medium mb-2">
+                <label className="font-inter block tracking-wide text-darkBlue text-s font-medium mb-2">
                   Password
                 </label>
                 <input
-                  className=" font-serif  w-full text-darkBlue border rounded py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className="text-serif md:text-[18px]font-serif  w-full text-darkBlue border rounded py-3 px-2 mb-3 leading-tight focus:outline-none focus:bg-white"
                   label="Password"
                   type="password"
                   name="password"
-                  placeholder="Enter your password"
                   required={true}
                   onChange={(e) => setPassword(e.target.value)}
                 />

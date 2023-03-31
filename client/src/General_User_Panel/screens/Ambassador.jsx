@@ -156,7 +156,7 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                      className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-name"
                     >
                       First Name
@@ -174,7 +174,7 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                      className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-name"
                     >
                       Last Name
@@ -194,7 +194,7 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                      className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-email"
                     >
                       Email
@@ -211,7 +211,7 @@ const Ambassador = () => {
                 <div className="flex flex-wrap w-full mb-6">
                   <div className="w-full">
                     <label
-                      className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                      className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-linkedin"
                     >
                       Linkedin profile
@@ -228,7 +228,7 @@ const Ambassador = () => {
               <div className="flex flex-wrap -mx-3 mb-2 mt-8">
                 <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                    className="block tracking-wide text-darkBlue  font-medium  mb-2"
                     htmlFor="grid-plan"
                   >
                     How do you plan to network with startup founders or those in
@@ -246,7 +246,7 @@ const Ambassador = () => {
               <div className="flex flex-wrap -mx-3 mb-2 mt-8">
                 <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                    className="block tracking-wide text-darkBlue  font-medium  mb-2"
                     htmlFor="grid-prob"
                   >
                     Do you know people who are working on a startup idea, and
@@ -265,7 +265,7 @@ const Ambassador = () => {
               <div className="flex flex-wrap -mx-3 mb-2 mt-8">
                 <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-medium  mb-2"
+                    className="block tracking-wide text-darkBlue  font-medium  mb-2"
                     htmlFor="grid-desc"
                   >
                     Is there anything you want to tell us about yourself?

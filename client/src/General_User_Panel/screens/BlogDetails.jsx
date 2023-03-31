@@ -20,29 +20,30 @@ const BlogDetails = () => {
 
   return (
     <div>
-      <div className="p-8 md:px-20 mt-20 md:py-20">
-        <div className="flex flex-col items-center gap-20 md:gap-8 justify-center mb-5">
-          <div className="flex flex-col w-full md:w-1/2 justify-center ">
-            <div className="text-4xl text-left font-medium mb-2 text-center text-[#242424]">
-              {blog.title}
+      <div className="p-8 md:px-20 mt-20 md:py-20 ">
+        <div className="flex flex-col items-center gap-20 md:gap-8 justify-center mb-5 h-auto ">
+          <div className="flex flex-col w-full md:w-1/2 justify-center items-center  gap-y-6">
+            <img
+              src={`/${blog.banner}`}
+              className="h-[400px] w-[800px]   rounded-lg"
+              alt=""
+            />
+            <div className="text-justify">
+              <h1 className="text-5xl text-left font-medium mb-2 text-center text-[#242424]">
+                {blog.title}
+              </h1>
+              <p className="text-[20px]  font-semibold text-center md:ml-48  my-4">
+                - Posted By:{" "}
+                <span className="text-accent">
+                  {blog.author && blog.author.name}
+                </span>
+              </p>
             </div>
-            <p className="text-xl  font-semibold text-center md:ml-48  my-4">
-              - Posted By:{" "}
-              <span className="text-accent">
-                {/* {blog.author && blog.author.name} */}
-                Admin
-              </span>
-            </p>
           </div>
-          <img
-            src={`/${blog.banner}`}
-            className="h-96 w-full md:w-1/2 object-cover rounded-lg"
-            alt=""
-          />
         </div>
 
         <div
-          className="text-justify leading-10 text-[1.5rem] w-full md:w-1/2 md:mx-auto text-[#242424]"
+          className="text-justify leading-10 text-[1.5rem] w-full md:w-1/2 md:mx-auto text-[#242424] justify-center"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </div>
