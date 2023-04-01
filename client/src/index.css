@@ -894,3 +894,36 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
+
+
+.startup-card {
+  border: 1px solid #dce0e8;
+  border-radius: 6px;
+  list-style: none;
+  position: relative;
+}
+
+
+.startup-card-description {
+  list-style: none;
+  font-size: 1.1rem;
+  color: gray;
+  font-weight: 400;
+  width: 80%;
+  height:fit-content ;
+  word-wrap: break-word;
+}
+
+
+.startup-card-title {
+  color: #0b0c0b;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.startup-container{
+  align-items: stretch;
+  align-content: stretch; 
+}

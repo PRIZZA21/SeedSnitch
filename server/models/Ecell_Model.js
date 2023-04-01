@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 
 const ecellSchema = new mongoose.Schema(
     {
-        name : { type: String, required: true, minlength: 2, maxlength: 50},
-        email: { type: String, required: true, minlength: 5, maxlength: 255, trim: true,lowercase: true},
+        name : { type: String, required: true},
+        email: { type: String, required: true, trim: true,lowercase: true},
         logo : { type: String, default: ""},
+        startups: [{
+            name: {type: String,required: true},
+            description: { type: String,required: true},
+        }],
         college : { type: String, required:true}
     },{ timestamps: true}
 );

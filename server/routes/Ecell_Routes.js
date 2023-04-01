@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllEcells, createEcell, updateEcelldetails, getEcelldetails, getTotalEcells } = require("../controllers/Ecell_Contollers");
+const { getAllEcells, createEcell, updateEcelldetails, getEcelldetails, getTotalEcells, addStartpEcell } = require("../controllers/Ecell_Contollers");
 const router = express.Router();
 
 router.get("/", getAllEcells);
@@ -9,6 +9,8 @@ router.post("/create", createEcell);
 router.route('/details/:id')
 .get(getEcelldetails)
 .put(updateEcelldetails)
+
+router.put('/addStartup/:id',addStartpEcell)
 
 
 

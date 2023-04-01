@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Infobar from "../../Common_Components/Infobar";
 import Loader from "../../Common_Components/Loader";
 
@@ -12,6 +13,12 @@ const Community = () => {
     axios.get("/api/ecells/all").then((res) => setEcellsList(res.data));
     setLoading(false);
   }, []);
+
+  let navigate = useNavigate()
+
+  const ecell_click_handler = (id) => {
+    navigate(`/community/ecell/${id}`)
+  }
 
   if (loading) return <Loader />;
 
@@ -29,8 +36,8 @@ const Community = () => {
               ecellsList.map((ecell) => (
                 <div
                   key={ecell._id}
-                  className="w-full h-100 bg-white rounded-lg border-2 md:shadow-md m-4 md:mx-6 md:my-10 md:w-1/5"
-                >
+                  className="w-full cursor-pointer h-100 bg-white rounded-lg border-2 md:shadow-md m-4 md:mx-6 md:my-10 md:w-1/5"
+                  onClick={()=>{ecell_click_handler(ecell._id)}} >
                   <img
                     src={`/${ecell.logo}`}
                     alt=""

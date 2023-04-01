@@ -52,6 +52,9 @@ const IncubatorTable = () => {
   const ecell_detailsHandler = (id) => {
     navigate(`/admin/ecells/${id}`);
   };
+  const ecell_startup_add = (id) => {
+    navigate(`/admin/ecell/addStartup/${id}`);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -100,6 +103,11 @@ const IncubatorTable = () => {
                   <TableData
                     child={
                       <button type="button" className="inline-block text-black">
+                        <span 
+                        onClick={() => ecell_startup_add(ecell._id)}
+                        className="font-bold text-xl mr-4 rounded-full">
+                          +
+                        </span>
                         <FontAwesomeIcon
                           icon={faEdit}
                           onClick={() => ecell_detailsHandler(ecell._id)}

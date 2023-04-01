@@ -11,7 +11,7 @@ const Input = ({ label, type, name, placeholder, required, onChange }) => {
         {label}
       </label>
       <input
-        className="appearance-none block w-full bg-gray-100 text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className="appearance-none block w-full bg-white text-darkBlue border border-grabg-gray-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         id={`grid-${name}`}
         type={type}
         name={name}

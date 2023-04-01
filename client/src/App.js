@@ -42,6 +42,8 @@ import AdminLayout from "./AdminLayout";
 import GeneralUserLayout from "./General_User_Panel/GeneralUserLayout";
 import PageNotFound from "./General_User_Panel/screens/PageNotFound";
 import GeneralAddBlog from "./Incubator_Panel/screens/GeneralAddBlog";
+import EcellStartups from "./General_User_Panel/screens/EcellStartups";
+import AddStartupEcell from "./Admin_Panel/screens/AddStartupEcell";
 
 const App = () => {
   return (
@@ -56,6 +58,7 @@ const App = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="community" element={<Community />} />
+          <Route path="community/ecell/:id" element={<EcellStartups />} />
           <Route path="blogs/page/:pageNumber" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogDetails />} />
           <Route path="login" element={<Login />} />
@@ -91,6 +94,7 @@ const App = () => {
             <Route path="add-ecell" element={<AddEcell />} />
             <Route path="add-incubator" element={<AddIncubator />} />
             <Route path="ecells/:id" element={<UpdateEcell />} />
+            <Route path="ecell/addStartup/:id" element={<AddStartupEcell />} />
             <Route path="blogs/:id" element={<UpdateBlog />} />
           </Route>
       </Routes>

@@ -118,7 +118,8 @@ exports.getEcelldetails = asyncHandler(async(req,res) => {
             name:ecell.name,
             email: ecell.email,
             logo: ecell.logo,
-            college: ecell.college
+            college: ecell.college,
+            startups: ecell.startups
         })
     }
 
@@ -158,3 +159,34 @@ exports.updateEcelldetails = asyncHandler(async(req,res) => {
     }
    
 })
+
+
+exports.addStartpEcell = asyncHandler(async(req,res) => {
+  
+    try {
+        const ecell = await Ecell_Model.findById(req.params.id)
+
+    if(ecell){
+
+        const newStartup = {
+            name : req.body.name,
+            description :req.body.description
+        }
+
+        ecell.startups.push(newStartup);
+
+
+        await ecell.save()
+        res.status(200).json({message: "Added Succesfully"})
+    }
+
+    else{
+        res.status(400).json({error:"Ecell Not Found"})
+    } 
+
+    } catch (error) {
+        console.log(error);
+    }
+   
+})
+
