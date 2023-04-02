@@ -363,19 +363,7 @@ details[open] .faq-card-spoiler {
   padding: 0.6% 0%;
   /* color: gray; */
 }
-#linkedin:hover {
-  color: rgb(59, 137, 255);
-}
-#instagram:hover {
-  color: violet;
-  /* color: rgb(196, 196, 196); */
-}
-#gmail:hover {
-  color: rgb(235, 134, 134);
-}
-#twitter:hover {
-  color: powderblue;
-}
+
 .footer .row a {
   text-decoration: none;
   /* color: gray; */
@@ -545,6 +533,9 @@ main p:last-child {
     background: rgba(255, 255, 255, 0.85);
   }
   #about-container form {
+    box-shadow: 10px 30px 40px -20px var(--grayishBlue);
+  }
+  .form {
     box-shadow: 10px 30px 40px -20px var(--grayishBlue);
   }
   #contact-form {
@@ -895,9 +886,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
-
-
 .startup-card {
   border: 1px solid #dce0e8;
   border-radius: 6px;
@@ -905,17 +893,15 @@ input:checked + .slider:before {
   position: relative;
 }
 
-
 .startup-card-description {
   list-style: none;
   font-size: 1.1rem;
   color: gray;
   font-weight: 400;
   width: 80%;
-  height:fit-content ;
+  height: fit-content;
   word-wrap: break-word;
 }
-
 
 .startup-card-title {
   color: #0b0c0b;
@@ -923,7 +909,31 @@ input:checked + .slider:before {
   font-size: 1.5rem;
 }
 
-.startup-container{
+.startup-container {
   align-items: stretch;
-  align-content: stretch; 
+  align-content: stretch;
+}
+.container2 {
+  align-items: stretch !important;
+  align-content: stretch;
+}
+.accept {
+  color: #fff;
+  background: #44cc44;
+  padding: 5px 20px;
+  box-shadow: 0 4px 0 0 #2ea62e;
+}
+.accept:hover {
+  background: #6fe76f;
+  box-shadow: 0 4px 0 0 #7ed37e;
+}
+.deny {
+  color: #fff;
+  background: tomato;
+  padding: 5px 20px;
+  box-shadow: 0 4px 0 0 #cb4949;
+}
+.deny:hover {
+  background: rgb(255, 147, 128);
+  box-shadow: 0 4px 0 0 #ef8282;
 }

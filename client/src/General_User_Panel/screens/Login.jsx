@@ -95,9 +95,9 @@ const Login = () => {
                   className="block tracking-wide text-darkBlue text-m font-normal mb-2"
                   htmlFor="grid-password"
                 >
-                  Don't have an account{" "}
+                  Don't have an account?{" "}
                   <Link to="/register" className="font-bold">
-                    &nbsp;Register Now
+                    &nbsp; Register now
                   </Link>
                 </span>
               </div>

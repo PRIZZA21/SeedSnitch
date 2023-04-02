@@ -16,8 +16,9 @@
   justify-content: center;
   align-items: center;
   /* max-width: 1400px; */
-  width: 100%;
+  width: 80%;
   margin-block: 2rem;
+  margin-bottom: 8rem;
   gap: 4rem;
 }
 
@@ -42,7 +43,8 @@
   /* background: linear-gradient(to right, #ffffff, #ece9e6); */
 }
 .card:hover {
-  box-shadow: 0px 30px 40px -20px var(--varyDarkBlue);
+  box-shadow: 0px 20px 15px -22px var(--varyDarkBlue);
+  transition: 0.2s ease-in;
 }
 .card__body {
   padding: 1rem;

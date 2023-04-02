@@ -149,12 +149,6 @@ const Apply = () => {
                 <h2 className="md:font-extrabold font-bold text-4xl md:text-5xl pb-2 text-accent">
                   Pitch <span className="text-[#242424]">your vision</span>
                 </h2>
-                <h2 className="font-light text-2xl hidden md:block md:font-normal text-[#242424]">
-                  Join us in shaping the future of innovation by submitting your
-                  startup idea. Apply now and take the first step towards
-                  realizing your entrepreneurial goals by submitting your
-                  application.
-                </h2>
               </div>
             </div>
           </section>
@@ -177,6 +171,7 @@ const Apply = () => {
                             htmlFor="grid-name"
                           >
                             First Name
+                            <span className="text-red-500">&nbsp;*</span>
                           </label>
                           <input
                             className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -196,6 +191,7 @@ const Apply = () => {
                             htmlFor="grid-email"
                           >
                             E-Mail
+                            <span className="text-red-500">&nbsp;*</span>
                           </label>
                           <input
                             className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -233,12 +229,14 @@ const Apply = () => {
                             className="font-inter text-[16px] block tracking-wide text-darkBlue  font-medium mb-2"
                             htmlFor="grid-linkedin"
                           >
-                            Linkedin Profile Link
+                            Linkedin Profile Link{" "}
+                            <span className="text-red-500">&nbsp;*</span>
                           </label>
                           <input
                             className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-name"
                             name="Linkedin"
+                            required
                             type="url"
                             onChange={(e) =>
                               setLinkedin_profile(e.target.value)
@@ -332,6 +330,7 @@ const Apply = () => {
                             htmlFor="grid-startname"
                           >
                             Startup Name
+                            <span className="text-red-500">&nbsp;*</span>
                           </label>
                           <input
                             className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -350,6 +349,7 @@ const Apply = () => {
                             htmlFor="grid-college"
                           >
                             College
+                            <span className="text-red-500">&nbsp;*</span>
                           </label>
                           <input
                             className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -368,6 +368,7 @@ const Apply = () => {
                             htmlFor="grid-number"
                           >
                             Contact Number
+                            <span className="text-red-500">&nbsp;*</span>
                           </label>
                           <input
                             className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -390,6 +391,7 @@ const Apply = () => {
                       >
                         What is the current status of your startup (Ideation,
                         Early-stage)?
+                        <span className="text-red-500">&nbsp;*</span>
                       </label>
                       <input
                         className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -415,6 +417,7 @@ const Apply = () => {
                         htmlFor="grid-prob"
                       >
                         Describe your startup?
+                        <span className="text-red-500">&nbsp;*</span>
                       </label>
                       <textarea
                         className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -439,9 +442,8 @@ const Apply = () => {
                       <textarea
                         className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-diff"
-                        rows="7"
+                        rows="6"
                         name="USP"
-                        required
                         onChange={(e) =>
                           setStart_up_differentiator(e.target.value)
                         }

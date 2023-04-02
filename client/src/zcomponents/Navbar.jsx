@@ -60,7 +60,7 @@ const Navbar = () => {
             Applications
           </NavLink>
         )}
-        {userInfo && (userInfo.isIncubator||userInfo.isEcell) && (
+        {userInfo && (userInfo.isIncubator || userInfo.isEcell) && (
           <NavLink to="/addBlog" className="link font-bold">
             Post Blog
           </NavLink>
@@ -198,12 +198,12 @@ const Navbar = () => {
           <span className="hamburger-bottom"></span>
         </button>
       </div>
-      <div className="lg:hidden">
+      <div className="lg:hidden ">
         <div
           className={
             openMenu
-              ? "absolute flex-col items-center self-end py-4 mt-10 space-y-4 hidden font-bold sm:w-min-3xl sm:self-center px-8 right-6 drop-shadow-md text-black bg-slate-50 "
-              : "absolute flex-col items-center self-end py-4 mt-10 space-y-4 font-bold sm:w-min-3xl sm:self-center px-2 right-6 drop-shadow-md text-black bg-slate-50 flex gap-y-4"
+              ? "absolute flex-col items-center self-end py-4 mt-10 space-y-4 hidden font-bold sm:w-min-3xl sm:self-center px-8 right-6 drop-shadow-md text-black bg-slate-50"
+              : "absolute flex-col items-center self-end py-4 mt-10 space-y-4 font-bold sm:w-min-3xl sm:self-center px-2 right-6 drop-shadow-md text-black bg-slate-50 flex gap-y-4  h-[300px]  overflow-scroll"
           }
         >
           {userInfo && userInfo.isIncubator && (
@@ -211,9 +211,14 @@ const Navbar = () => {
               Applications
             </Link>
           )}
-          {userInfo && (userInfo.isIncubator|| userInfo.isEcell) && (
+          {userInfo && (userInfo.isIncubator || userInfo.isEcell) && (
             <Link to="/addBlog" className="font-medium px-3">
               Post Blog
+            </Link>
+          )}
+          {!userInfo && (
+            <Link to="/login" className="font-medium px-3">
+              Login
             </Link>
           )}
           <Link to="/about" className="font-medium px-3">
@@ -249,11 +254,6 @@ const Navbar = () => {
           {userInfo && userInfo.isAdmin && (
             <Link to="/admin/applications/page/1" className="font-medium px-3">
               Admin Options
-            </Link>
-          )}
-          {!userInfo && (
-            <Link to="/login" className="font-medium px-3">
-              Login
             </Link>
           )}
           {userInfo && (

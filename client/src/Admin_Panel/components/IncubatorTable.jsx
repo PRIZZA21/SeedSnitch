@@ -79,7 +79,7 @@ const IncubatorTable = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="sm:px-8 py-4 overflow-x-auto ">
+    <div className="sm:px-8 py-4 overflow-x-auto font-serif">
       <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full leading-normal text-center">
           <thead>

@@ -40,10 +40,10 @@ const Home = () => {
     <div>
       <section
         id="intro"
-        className="hidden h-auto w-full overflow-hidden md:flex justify-between flex-row mt-24 px-24 mb-6 text-left "
+        className="hidden h-auto w-full overflow-hidden md:flex justify-between flex-row mt-24 px-24 mb-6 text-left  "
       >
         <div
-          className="w-1/2 space-y-8 flex flex-col justify-center items-start pt-20 text-center pl-32 md:gap-y-6"
+          className="w-1/2 space-y-8 flex flex-col justify-center items-start pt-20 text-center pl-32 md:gap-y-14"
           id="intro-text"
         >
           <div
@@ -83,28 +83,33 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="intro2" className="w-screen h-fit mb-6 block md:hidden">
-        <div className="w-full h-fit space-y-12 pt-12 pb-4 flex flex-col items-center justify-center mt-12 md:mt-28 rounded-xl z-10">
+      <section id="intro2" className="w-screen h-[500px] block md:hidden ">
+        <div className="w-full h-fit gap-10  pt-12 pb-4 flex flex-col items-center justify-center mt-12 md:mt-28 rounded-xl z-10">
           <div
-            className="container text-center text-5xl  text-accent font-[800] flex flex-col justify-center  py-8"
+            className="container text-center text-5xl  text-accent font-[800] flex flex-col justify-center  py-8 px-4"
             id="intro-text"
           >
             <span>Fueling the college startup revolution</span>
           </div>
-          <div className="pl-6 mx-auto">
+          {/* <div className="pl-6 mx-auto">
             <img src="img/2.jpg" className="object-cover " alt="" />
-          </div>
+          </div> */}
 
-          <div className="text-medBlue font-bold text-center text-[20px] px-8">
+          <div className="text-medBlue font-bold text-center text-[20px] px-4">
             <p>
               Supporting college entrepreneurs with funding prospects,
               networking, and campus representation.
             </p>
           </div>
-          <div>
+          <div className="flex flex-row items-center justify-between gap-x-4">
+            <Link to="/apply">
+              <button className="text-accent border border-black  bg-white rounded-md py-2 px-8 mt-4 text-[16px] hover:bg-[#084352]">
+                Apply
+              </button>
+            </Link>
             <Link to="/about">
               <button className="text-white bg-[#0C6980] rounded-md py-2 px-8 mt-4 text-[16px] hover:bg-[#084352]">
-                Learn More
+                Become an ambassador
               </button>
             </Link>
           </div>
@@ -112,7 +117,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="mt-2 md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full   md:bg-[#f8f8f8] ">
+      <section className=" md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full   md:bg-[#f8f8f8] ">
         <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12 ">
           <div className="w-full md:w-[800px] text-center p-4 md:p-2">
             <h2 className="md:font-extrabold text-4xl font-bold  md:text-5xl pb-2 text-accent">
@@ -169,9 +174,9 @@ const Home = () => {
               <div>
                 <h3>College Students</h3>
                 <p className="pb-2 pt-1 px-2">
-                  Our Ambassador Program is designed to incentivise and promote
-                  the spirit of entrepreneurship among college students and help
-                  them earn by referring startups to our platform.
+                  Earn by referring startups to our platform. Our Ambassador
+                  Program is designed to incentivise and promote the spirit of
+                  entrepreneurship among college students and encourage them.
                 </p>
               </div>
             </div>

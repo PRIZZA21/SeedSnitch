@@ -64,7 +64,7 @@ const Register = () => {
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="font-inter block tracking-wide text-darkBlue text-s font-medium mb-2"
                     htmlFor="grid-name"
                   >
                     Name
@@ -75,7 +75,6 @@ const Register = () => {
                     type="text"
                     name="Name"
                     required
-                    placeholder="Enter your name"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -84,7 +83,7 @@ const Register = () => {
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="font-inter block tracking-wide text-darkBlue text-s font-medium mb-2"
                     htmlFor="grid-email"
                   >
                     Email
@@ -95,7 +94,6 @@ const Register = () => {
                     type="email"
                     name="Email"
                     required
-                    placeholder="Enter your email id"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
@@ -104,7 +102,7 @@ const Register = () => {
               <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-full px-3">
                   <label
-                    className="block tracking-wide text-darkBlue text-xs font-bold mb-2"
+                    className="font-inter block tracking-wide text-darkBlue text-s font-medium mb-2"
                     htmlFor="grid-password"
                   >
                     Password
@@ -115,7 +113,6 @@ const Register = () => {
                     type="password"
                     required
                     name="Subject"
-                    placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -123,9 +120,9 @@ const Register = () => {
 
               <div className="w-full md:w-full px-3 mb-6">
                 <span className="block tracking-wide text-darkBlue text-m font-normal mb-2">
-                  Already a member{" "}
+                  Already a member?{" "}
                   <Link to="/login" className="font-bold">
-                    Login Now
+                    &nbsp;Login Now
                   </Link>
                 </span>
               </div>

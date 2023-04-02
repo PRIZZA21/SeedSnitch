@@ -62,11 +62,6 @@ const Ambassador = () => {
             <h2 className="md:font-extrabold font-bold text-3xl md:text-5xl pb-2 text-[#242424]">
               Become an <span className="text-accent">ambassador</span>
             </h2>
-            <h2 className="font-light text-2xl hidden md:block md:font-normal text-[#242424]">
-              Join the Seedsnitch Ambassador Program and assist your peers in
-              transforming ideas into startups while also earning incentives for
-              each referral.
-            </h2>
           </div>
         </div>
       </section>
@@ -160,6 +155,7 @@ const Ambassador = () => {
                       htmlFor="grid-name"
                     >
                       First Name
+                      <span className="text-red-500">&nbsp;*</span>
                     </label>
                     <input
                       name="Name"
@@ -177,7 +173,7 @@ const Ambassador = () => {
                       className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-name"
                     >
-                      Last Name
+                      Last Name<span className="text-red-500">&nbsp;*</span>
                     </label>
                     <input
                       name="LastName"
@@ -196,7 +192,7 @@ const Ambassador = () => {
                       className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-email"
                     >
-                      Email
+                      Email<span className="text-red-500">&nbsp;*</span>
                     </label>
                     <input
                       className="appearance-none font-serif block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -214,13 +210,15 @@ const Ambassador = () => {
                       className="block font-inter font-[16px] tracking-wide text-darkBlue  font-medium  mb-2"
                       htmlFor="grid-linkedin"
                     >
-                      Linkedin profile
+                      Linkedin profile{" "}
+                      <span className="text-red-500">&nbsp;*</span>
                     </label>
                     <input
                       className="appearance-none font-serif block w-full  text-darkBlue border border-gray rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-name"
                       name="Linkedin"
                       type="url"
+                      required
                     />
                   </div>
                 </div>
@@ -233,6 +231,7 @@ const Ambassador = () => {
                   >
                     How do you plan to network with startup founders or those in
                     the ideation stage at your college?
+                    <span className="text-red-500">&nbsp;*</span>
                   </label>
                   <textarea
                     className="font-serif w-full  text-darkBlue border border-b-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -252,6 +251,7 @@ const Ambassador = () => {
                     Do you know people who are working on a startup idea, and
                     you think we can help them? If so, drop their LinkedIn
                     profile. Remember, you get rewarded if we help them scale.
+                    <span className="text-red-500">&nbsp;*</span>
                   </label>
                   <textarea
                     name="Founder Linkedin"
@@ -269,6 +269,7 @@ const Ambassador = () => {
                     htmlFor="grid-desc"
                   >
                     Is there anything you want to tell us about yourself?
+                    <span className="text-red-500">&nbsp;*</span>
                   </label>
                   <textarea
                     name="About Yourself"

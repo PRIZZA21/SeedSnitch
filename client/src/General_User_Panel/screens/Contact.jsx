@@ -69,6 +69,12 @@ const Contact = () => {
       </section>
 
       <section className="h-auto py-10 px-2 relative md:mb-20 md:mt-0 mt-4">
+        <img
+          src="../img/contact.png"
+          className=" h-[350px] object-contain px-4 mx-auto "
+          alt=""
+        />
+
         <div className="h-full w-full flex flex-col gap-4 justify-between md:flex-row right-4">
           <div className="w-full md:w-1/2 h-full rounded-md mx-auto flex flex-row justify-center mr-3">
             <form
@@ -171,11 +177,6 @@ const Contact = () => {
             </form>
           </div>
           <div className="md:hidden flex flex-col items-center">
-            <img
-              src="../img/contact.png"
-              className="hidden h-[450px] object-contain"
-              alt=""
-            />
             <div className="bg-transparent p-2 flex flex-col justify-center items-start text-left">
               <div>
                 <p className="text-2xl font-semibold mb-4">

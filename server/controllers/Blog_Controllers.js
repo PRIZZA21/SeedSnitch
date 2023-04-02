@@ -11,7 +11,7 @@ const Blog_Model = require('../models/Blog_Model');
 exports.getAllBlogs = asyncHandler(async(req,res) => {
     try {
 
-        const pageSize = 4
+        const pageSize = 1000
         const page = Number(req.query.pageNumber) || 1 
         const count = await Blog_Model.count()
 

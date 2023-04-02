@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar bg-white pt-4 min-h-screen w-1/6 md:bg-[#f8f8f8] relative rounded-tr-3xl rounded-br-3xl drop-shadow-2xl z-50 border-t mr-10">
-      <Link to="/" className="flex flex-row">
+      <Link to="/" className="flex flex-row  pr-2">
         <img
           src="https://i.ibb.co/mBv3jLQ/favicon-ico.png"
           className="max-w-max h-10 px-5"

@@ -48,13 +48,13 @@ const BlogPage = () => {
 
   return (
     <div className="bg-white relative">
-      <Infobar start_text={""} end_text={"Blogs"} invert_text_color={true} />
+      <Infobar start_text={""} end_text={"Blog"} invert_text_color={true} />
 
-      <div className="container2 mx-auto">
+      <div className="container2 mx-auto ">
         {blogList &&
           blogList.map((blog) => (
             <div
-              className="card cursor-pointer"
+              className="card"
               key={blog._id}
               onClick={() => blog_detailsHandler(blog._id)}
             >
@@ -62,12 +62,11 @@ const BlogPage = () => {
                 <img
                   src={`/${blog.banner}`}
                   alt="card__image"
-                  className="card__image"
+                  className="card__image cursor-pointer"
                 />
               </div>
               <div className="card__body text-center">
-                <h4 className="font-medium"> {blog.title}</h4>
-                <p>Check out this Blog right now</p>
+                <p className="font-medium"> {blog.title}</p>
               </div>
               {/* <div className="card__footer">
                 <div className="user">

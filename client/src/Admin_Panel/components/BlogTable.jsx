@@ -24,7 +24,7 @@ const Paginate = ({ pages, page }) => {
 
 const TableData = ({ child }) => {
   return (
-    <td className="text-center px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
+    <td className="text-left px-5 py-5 border-b border-gray-200 bg-white text-[16px]">
       {child}
     </td>
   );
@@ -61,12 +61,12 @@ const IncubatorTable = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="sm:px-8 py-4 overflow-x-auto ">
+    <div className="sm:px-8 py-4 overflow-x-auto font-serif ">
       <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full leading-normal">
           <thead>
             {table_headers.map((theader) => (
-              <th className="px-5 py-3 text-center border-b-2 border-gray-200 font-serif text-left text-[16px]font-semibold text-gray-700  tracking-wider">
+              <th className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100  text-[16px] font-semibold text-black title font-serif tracking-wider">
                 {theader}
               </th>
             ))}

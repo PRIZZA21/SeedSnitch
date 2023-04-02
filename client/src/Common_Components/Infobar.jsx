@@ -8,18 +8,21 @@ const Infobar = ({
   link_text,
   additonalClass,
   invert_text_color,
+  new_addnl,
 }) => {
   return (
     <section
-      className={`gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full border border-b-slate-200 ${
+      className={`gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full border  border-b-slate-200 ${
         additonalClass ? additonalClass : "mt-20 bg-[#f8f8f8] "
       }`}
     >
-      <div className="text-center py-12 tab:gap-5 w-full h-auto  mx-auto flex tab:flex-row  gap-8 flex-col items-center tab:justify-around justify-center">
+      <div
+        className={` text-center py-12 tab:gap-5 w-full h-auto  mx-auto flex tab:flex-row  gap-8 flex-col items-center tab:justify-evenly justify-center`}
+      >
         <h2
           className={`md:font-extrabold font-bold text-4xl md:text-5xl pb-2  ${
             invert_text_color ? "text-[#242424]" : "text-accent"
-          }`}
+          } ${new_addnl ? new_addnl : ""}`}
         >
           {start_text}{" "}
           <span

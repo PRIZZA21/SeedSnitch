@@ -12,7 +12,7 @@ const About = () => {
             <h2 class="hidden md:block md:font-extrabold font-bold text-4xl md:text-5xl pb-2 text-black ">
               Get to know <span class="text-accent"> about us</span>
             </h2>
-            <h2 class="block md:hidden  font-bold text-4xl  pb-2 text-black py-12">
+            <h2 class="block md:hidden  font-bold text-4xl   text-black py-12">
               Get to know <span class="text-accent"> about us</span>
             </h2>
           </div>

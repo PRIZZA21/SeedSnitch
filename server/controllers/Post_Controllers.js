@@ -14,7 +14,7 @@ const User_Model = require('../models/User_Model');
 
 exports.getAllPosts = asyncHandler(async(req,res) => {
     try {
-        const pageSize = 5
+        const pageSize = 8
         const page = Number(req.query.pageNumber) || 1 
         const count = await Post_Model.count()
 
@@ -131,7 +131,7 @@ exports.likePost = asyncHandler(async(req,res)=> {
 exports.getPostByUserId = asyncHandler(async(req,res)=> {
     try {
 
-        const pageSize = 4
+        const pageSize = 8
         const page = Number(req.query.pageNumber) || 1 
         const count = await Post_Model.count({"author":req.params.id})
 

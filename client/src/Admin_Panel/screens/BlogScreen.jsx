@@ -9,10 +9,10 @@ const BlogScreen = () => {
     <div className="flex flex-row">
       <Sidebar />
 
-      <div className="w-full relative">
+      <div className="w-full relative ">
         <Infobar
-          start_text={"Blogs"}
-          end_text={"written to community"}
+          start_text={"Your"}
+          end_text={" Blogs"}
           link={"/admin/add-blog"}
           link_text={"Post a new Blog"}
           additonalClass={"mt-0 bg-white"}

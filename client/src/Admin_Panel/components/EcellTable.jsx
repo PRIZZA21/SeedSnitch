@@ -69,14 +69,14 @@ const IncubatorTable = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="sm:px-8 py-4 overflow-x-auto ">
+    <div className="sm:px-8 py-4 overflow-x-auto font-serif">
       <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full leading-normal text-center">
           <thead>
             {table_headers.map((theader) => (
               <th
                 key={theader}
-                className="px-5 py-3 text-center border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-black title font-serif tracking-wider"
+                className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-[16px] font-semibold text-black title font-serif tracking-wider"
               >
                 {theader}
               </th>
@@ -103,9 +103,10 @@ const IncubatorTable = () => {
                   <TableData
                     child={
                       <button type="button" className="inline-block text-black">
-                        <span 
-                        onClick={() => ecell_startup_add(ecell._id)}
-                        className="font-bold text-xl mr-4 rounded-full">
+                        <span
+                          onClick={() => ecell_startup_add(ecell._id)}
+                          className="font-bold text-xl mr-4 rounded-full"
+                        >
                           +
                         </span>
                         <FontAwesomeIcon

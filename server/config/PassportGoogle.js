@@ -15,7 +15,7 @@ passport.use(
 		User_Model.findOne({email: profile.emails[0].value})
 			.then((user)=>
 			{
-				let pwd= 'Shivam@12';
+				let pwd= 'Seedsnitch@12';
 				if(user) {return(done(null,user))}
 				else{
                     User_Model.create({

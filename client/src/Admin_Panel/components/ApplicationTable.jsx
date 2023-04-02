@@ -63,10 +63,10 @@ const ApplicationTable = () => {
     navigate(`/application/${id}`);
   };
 
-  if(loading) return (<Loader />)
+  if (loading) return <Loader />;
 
   return (
-    <div className="sm:px-8 py-4 overflow-x-auto ">
+    <div className="sm:px-8 py-4 overflow-x-auto font-serif">
       <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
         {loading ? (
           <Loader />
@@ -76,7 +76,7 @@ const ApplicationTable = () => {
               {table_headers.map((theader) => (
                 <th
                   key={theader}
-                  className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs text-center font-semibold text-black title font-serif tracking-wider"
+                  className="px-5 text-center py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-[16px] font-semibold text-black title font-serif tracking-wider"
                 >
                   {theader}
                 </th>
