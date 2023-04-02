@@ -79,7 +79,7 @@ const TechSupport = () => {
   return (
     <div
       className={`${
-        postsList ? "" : "md:pt-36"
+        postsList && postsList.length!==0 ? "" : "md:pt-20"
       } mt-16 mx-auto faq-body gap-x-8 h-full  flex flex-col items-center justify-end px-4 md:px-0 md:gap-x-16 w-full pb-12`}
     >
       <img

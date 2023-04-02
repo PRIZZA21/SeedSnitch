@@ -86,7 +86,7 @@ const Home = () => {
       <section id="intro2" className="w-screen h-[500px] block md:hidden ">
         <div className="w-full h-fit gap-10  pt-12 pb-4 flex flex-col items-center justify-center mt-12 md:mt-28 rounded-xl z-10">
           <div
-            className="container text-center text-5xl  text-accent font-[800] flex flex-col justify-center  py-8 px-4"
+            className="container text-left text-5xl  text-accent font-[800] flex flex-col justify-center  py-8 px-4"
             id="intro-text"
           >
             <span>Fueling the college startup revolution</span>
@@ -95,13 +95,13 @@ const Home = () => {
             <img src="img/2.jpg" className="object-cover " alt="" />
           </div> */}
 
-          <div className="text-medBlue font-bold text-center text-[20px] px-4">
+          <div className="text-medBlue font-bold text-left text-[20px] px-4">
             <p>
               Supporting college entrepreneurs with funding prospects,
               networking, and campus representation.
             </p>
           </div>
-          <div className="flex flex-row items-center justify-between gap-x-4">
+          <div className="flex flex-row items-center justify-between gap-x-2">
             <Link to="/apply">
               <button className="text-accent border border-black  bg-white rounded-md py-2 px-8 mt-4 text-[16px] hover:bg-[#084352]">
                 Apply
@@ -117,11 +117,11 @@ const Home = () => {
         </div>
       </section>
 
-      <section className=" md:mt-20 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full   md:bg-[#f8f8f8] ">
+      <section className=" md:mt-20 mt-28 gap-x-8 h-auto md:flex-row px-4 md:px-0 md:gap-x-16 w-full  md:bg-[#f8f8f8] ">
         <div className="text-center md:w-1/2 w-full h-full mx-auto flex flex-col items-center justify-start md:py-12 ">
-          <div className="w-full md:w-[800px] text-center p-4 md:p-2">
-            <h2 className="md:font-extrabold text-4xl font-bold  md:text-5xl pb-2 text-accent">
-              A Guide <span className="text-[#242424]">for Participants</span>
+          <div className="w-full md:w-[800px] text-center md:text-center py-4 md:p-2">
+            <h2 className="md:font-extrabold text-3xl font-bold  md:text-5xl pb-2 text-accent">
+              Guide <span className="text-[#242424]">for Participants</span>
             </h2>
           </div>
         </div>
