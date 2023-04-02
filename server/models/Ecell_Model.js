@@ -8,6 +8,7 @@ const ecellSchema = new mongoose.Schema(
         startups: [{
             name: {type: String,required: true},
             description: { type: String,required: true},
+            logo : { type: String, default: ""},
         }],
         college : { type: String, required:true}
     },{ timestamps: true}

@@ -13,7 +13,7 @@ const EcellStartups = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/api/ecells//details/${id}`).then((res) => {setEcell(res.data);});
+    axios.get(`/api/ecells/details/${id}`).then((res) => {setEcell(res.data);});
     setLoading(false);
   }, []);
 
@@ -40,9 +40,12 @@ const EcellStartups = () => {
            { ecell && ecell.startups && ecell.startups.map((x) => (
                 <div className="startup-card my-6 mx-6 px-8 py-4 w-1/4 ">
                   <div>
-                    <div className="startup-card-title pb-2">
-                      {" "}
-                      {x.name}
+                    <div className="flex row-flex justify-between">
+                      <div className="startup-card-title pb-2">
+                        {" "}
+                        {x.name}
+                      </div>
+                      <img src={`/${x.logo}`} className="rounded-full w-10 h-10" />
                     </div>
                     <div className="startup-card-description text-justify">
                       {x.description}

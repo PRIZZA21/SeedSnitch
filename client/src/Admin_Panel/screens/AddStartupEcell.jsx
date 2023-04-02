@@ -8,15 +8,49 @@ import { useNavigate, useParams } from 'react-router-dom'
 const AddStartupEcell = () => {
 
     const [name,setName] = useState('')
+    const [uploading,setUploading] = useState(false);
+    const [image,setImage] = useState('');
     const [description,setDescription] = useState('')
     const {id} = useParams()
+
+    const uploadFileHandler = async(e) => {
+
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image',file)
+        setUploading(true)
+  
+        try {
+          
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            }
+          }
+  
+          var { data } = await axios.post('/api/uploads', formData, config)
+          
+          data = (data.substr(8))
+          data = '/' +data;
+  
+          setImage(data)
+          setUploading(false)
+  
+        } 
+        
+        catch (error) {
+          console.error(error)
+          setUploading(false)
+        }
+  
+    }
 
     const redirect = window.location.search ? window.location.search.split('=')[1] : '/admin/ecells/page/1'
     let navigate = useNavigate();
     
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.put(`/api/ecells/addStartup/${id}`,{name,description})
+        axios.put(`/api/ecells/addStartup/${id}`,{name,image,description})
         navigate(redirect);
     }
 
@@ -35,6 +69,17 @@ const AddStartupEcell = () => {
                     <div className="w-full md:w-1/2 h-full rounded-md mx-auto flex flex-row justify-center">
                         <form className="w-full h-full max-w-lg px-4 py-6 mx-auto" id="blog-form" name="blog" onSubmit={submitHandler}>
          
+
+                            <Input 
+                                label="Startup Logo"
+                                type="file"
+                                name="image"
+                                placeholder=""
+                                required={true}
+                                onChange={uploadFileHandler}
+                            />
+                            
+    
                             <Input 
                                 label="Startup Name"
                                 type="text"
@@ -64,7 +109,10 @@ const AddStartupEcell = () => {
   
                             <div className="w-full mx-auto">
                                 <div className="w-full flex flex-row items-center">
-                                    <input className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] cursor-pointer" type="submit" value="Add Now"/>
+                                { !uploading ?
+                                (<input className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] cursor-pointer" type="submit" value="Add Now" />):
+                                (<div className="shadow color focus:shadow-outline focus:outline-none text-white font-semibold px-3 py-2 rounded w-full bg-accent hover:bg-[#37a697] text-center">Please wait till uploading</div>)
+                                }
                                 </div>
                             </div>
 

@@ -170,7 +170,8 @@ exports.addStartpEcell = asyncHandler(async(req,res) => {
 
         const newStartup = {
             name : req.body.name,
-            description :req.body.description
+            description :req.body.description,
+            logo: req.body.image
         }
 
         ecell.startups.push(newStartup);
