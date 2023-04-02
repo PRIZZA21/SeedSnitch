@@ -185,7 +185,6 @@ const Ambassador = () => {
                       id="grid-name"
                       type="text"
                       required
-                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>
@@ -205,6 +204,7 @@ const Ambassador = () => {
                       name="Email"
                       type="email"
                       required
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>

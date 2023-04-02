@@ -37,7 +37,7 @@ exports.ambassador_mail = (data) => {
     nodemailer.transporter.sendMail(
         {
             from   : process.env.GOOGLE_SENDER_EMAIL,
-            to     : data.email,
+            to     : data.details.email,
             subject: "Seedsnitch Campus Ambassador Program: Application Received",
             html   : htmlString
         },

@@ -11,7 +11,7 @@ exports.send_mail = asyncHandler(async(req,res)=>{
         details.email = req.body.email;
 
         const data={
-            deatils:details
+            details
         }
 
         ambassador_mail(data)
