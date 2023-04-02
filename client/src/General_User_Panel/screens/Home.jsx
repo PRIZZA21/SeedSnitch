@@ -43,7 +43,7 @@ const Home = () => {
         className="hidden h-auto w-full overflow-hidden md:flex justify-between flex-row mt-24 px-24 mb-6 text-left  "
       >
         <div
-          className="w-1/2 space-y-8 flex flex-col justify-center items-start pt-20 text-center pl-32 md:gap-y-14"
+          className="w-1/2  flex flex-col justify-center items-start pt-20 text-center pl-32 md:gap-y-14"
           id="intro-text"
         >
           <div
