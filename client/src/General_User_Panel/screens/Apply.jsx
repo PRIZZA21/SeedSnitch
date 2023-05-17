@@ -12,6 +12,8 @@ const Apply = () => {
   const [college_name, setCollege_name] = useState("");
   const [contact_number, setContact_number] = useState(0);
   const [start_up_stage, setStart_up_stage] = useState("");
+  const [start_up_registered,setStart_up_registered] = useState("");
+  const [start_up_industry,setStart_up_industry]=useState("");
   const [uploading, setUploading] = useState(false);
   const [pdf, setPdf] = useState("");
   const [start_up_problem, setStart_up_problem] = useState("");
@@ -89,6 +91,8 @@ const Apply = () => {
           college_name,
           contact_number,
           start_up_stage,
+          start_up_registered,
+          start_up_industry,
           start_up_problem,
           start_up_differentiator,
           pdf,
@@ -403,6 +407,57 @@ const Apply = () => {
                       />
                     </div>
                   </div>
+
+                  <div className="flex flex-wrap mb-6 w-full">
+                    <div className="w-full md:w-full px-3">
+                      <label
+                        className="block tracking-wide text-darkBlue  font-medium mb-2"
+                        htmlFor="grid-registered"
+                      >
+                        Is your Startup Registered?
+                        <span className="text-red-500">&nbsp;*</span>
+                      </label>
+                      <input
+                        className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-registered"
+                        type="text"
+                        required
+                        name="Startup registered"
+                        onChange={(e) => setStart_up_registered(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap mb-6 w-full">
+                  <div className="w-full md:w-full px-3">
+                  
+                  <label
+                        className="block tracking-wide text-darkBlue  font-medium mb-2"
+                        htmlFor="grid-registered"
+                      >
+                        Industry of thr Startup
+                        <span className="text-red-500">&nbsp;*</span>
+                      </label>
+
+                   <select name="industries" id="industry-select" className="font-serif appearance-none block w-full  text-darkBlue border border-gray rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                   onChange={(e)=>setStart_up_industry(e.target.value)}>
+                   <option value="">Please choose an option</option>
+                   <option value="dog">Dog</option>
+                   <option value="cat">Cat</option>
+                   <option value="hamster">Hamster</option>
+                   <option value="parrot">Parrot</option>
+                   <option value="spider">Spider</option>
+                   <option value="goldfish">Goldfish</option>
+                   </select>
+                  
+                  
+                  
+                  
+                  
+                  
+                  </div>
+                  </div>
+
                   <div className="w-full flex flex-wrap mb-2">
                     <div className="w-full mb-6 md:mb-0 px-3">
                       {/* <label
