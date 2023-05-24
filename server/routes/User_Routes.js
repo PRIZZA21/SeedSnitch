@@ -2,6 +2,7 @@ const express = require("express");
 const { registerUser, authenticateUser, getUserProfile, updateUserProfile } = require("../controllers/User_Controllers");
 const router = express.Router();
 const passport = require("passport");
+const passportSetup = require("../config/PassportGoogle")
 
 // Middleware to protect various routes
 const { protect } = require("../middlewares/Authorization");
@@ -51,7 +52,7 @@ router.get("/glogout", (req, res) => {
 
 router.get("/auth/google", passport.authenticate("google", ["profile", "email"]));
 
-router.get("/auth/google/callback",
+router.get("/auth/google/callback", 
 	passport.authenticate("google", {
 		successRedirect : 'https://seed-snitch-server.onrender.com/',
 		failureRedirect : '/api/users/glogin/failed'
