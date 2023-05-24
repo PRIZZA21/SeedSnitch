@@ -14,6 +14,7 @@ const AdminLayout = (props) => {
 
   return (
     <div className='bg-[#FAFAFA]'>
+      
         <Outlet />
     </div>
   )
