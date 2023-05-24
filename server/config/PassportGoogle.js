@@ -6,8 +6,8 @@ const User_Model = require("../models/User_Model");
 passport.use(
 	new GoogleStrategy(
 	{
-		clientID: process.env.CLIENT_ID,
-		clientSecret: process.env.CLIENT_SECRET,
+		clientID: "818895579939-fs5gv3df78nn6um2o0ghej8q6pu2fiup.apps.googleusercontent.com",
+		clientSecret:"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" ,
 		callbackURL: "/api/users/auth/google/callback",
 		scope: ["profile", "email"]
 	},
