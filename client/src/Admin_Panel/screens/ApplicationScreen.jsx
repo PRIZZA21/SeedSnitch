@@ -8,7 +8,7 @@ const ApplicationScreen = () => {
     <div className="flex flex-row">
       <Sidebar />
 
-      <div className="w-full bg-white relative">
+      <div className="w-full bg-white relative">3
         <Infobar
           start_text={"Applications"}
           end_text={"with us"}

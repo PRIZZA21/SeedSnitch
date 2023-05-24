@@ -87,7 +87,7 @@ const App = () => {
             <Route path="ecells/page/:pageNumber" element={<EcellScreen />}/>
             <Route path="blogs/page/:pageNumber" element={<BlogScreen />} />
             <Route path="applications" element={<ApplicationScreen />}/>
-            <Route path="incubators" element={<IncubatorScreen />}/>
+            <Route path="incubators" element={<IncubatorApplicationsScreen />}/>
             <Route path="ecells" element={<EcellScreen />}/>
             <Route path="blogs" element={<BlogScreen />} />
             <Route path="add-blog" element={<AddBlog />} />

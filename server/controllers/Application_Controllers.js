@@ -11,7 +11,8 @@ const User_Model = require('../models/User_Model');
 
 
 const applications24hrchecker = asyncHandler(async()=>{
-    const incubators = await Incubator_Model.find();
+    const incubators = await Incubator_Model.find()
+    
 
     for(let i =0;i<incubators.length;i++){
 
